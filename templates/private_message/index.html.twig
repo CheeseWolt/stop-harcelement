@@ -3,12 +3,13 @@
 {% block title %}PrivateMessage index{% endblock %}
 
 {% block body %}
+<div class="container">
     <h1>PrivateMessage index</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>User</th>
                 <th>Date</th>
                 <th>Content</th>
                 <th>actions</th>
@@ -17,7 +18,7 @@
         <tbody>
         {% for private_message in private_messages %}
             <tr>
-                <td>{{ private_message.id }}</td>
+                <td>{{ private_message.user.userName }}</td>
                 <td>{{ private_message.date ? private_message.date|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ private_message.content }}</td>
                 <td>
@@ -33,5 +34,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('private_message_new') }}">Create new</a>
+    {# <a href="{{ path('private_message_new') }}">Create new</a> #}
+</div>
 {% endblock %}
