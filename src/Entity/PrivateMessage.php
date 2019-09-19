@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,6 +38,10 @@ class PrivateMessage
      * @ORM\JoinColumn(nullable=false)
      */
     private $alert;
+
+    public function __construct() {
+        $this->date = new DateTime('now');
+    }
 
     public function getId(): ?int
     {
