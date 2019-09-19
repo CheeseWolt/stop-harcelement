@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\PrivateMessage;
+use App\Entity\{PrivateMessage,Alert};
 use App\Form\PrivateMessageType;
 use App\Repository\PrivateMessageRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,11 +26,13 @@ class PrivateMessageController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="private_message_new", methods={"GET","POST"})
+     * @Route("/new/{alert_id}", name="private_message_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request,$alert_id): Response
     {
+        $alert = $this->getDoctrine()->getRepository(Alert::class)->find($alert_id);
         $privateMessage = new PrivateMessage();
+        $privateMessage->setAlert($alert)->setUser($alert->getAlertSender());
         $form = $this->createForm(PrivateMessageType::class, $privateMessage);
         $form->handleRequest($request);
 

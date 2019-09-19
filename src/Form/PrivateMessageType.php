@@ -14,8 +14,6 @@ class PrivateMessageType extends AbstractType
     {
         $builder
             ->add('content')
-            ->add('user')
-            ->add('alert')
         ;
     }
 
