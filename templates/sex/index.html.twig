@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sex index{% endblock %}
+
+{% block body %}
+    <h1>Sex index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sex in sexes %}
+            <tr>
+                <td>{{ sex.id }}</td>
+                <td>{{ sex.name }}</td>
+                <td>
+                    <a href="{{ path('sex_show', {'id': sex.id}) }}">show</a>
+                    <a href="{{ path('sex_edit', {'id': sex.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('sex_new') }}">Create new</a>
+{% endblock %}

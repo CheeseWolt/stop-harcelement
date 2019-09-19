@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Alert{% endblock %}
+
+{% block body %}
+    <h1>Create new Alert</h1>
+
+    {{ include('alert/_form.html.twig') }}
+
+    <a href="{{ path('alert_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{asset('assets/css/monstyle.css')}}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-12 backgroundDivRed">
+            <div class="marginRight0 backgroundDivBlue">
+                <div class="row text-center">
+                    <div class="col-12">
+                        <h4>Bienvenue sur</h4>
+                    </div>
+                    <div class="col-12">
+                        <h2>STOP-HARCELEMENT</h2>
+                    </div>
+                    <div class="col-6">
+                        {# <a href="{{path('connexion')}}"><button class="btn btn-primary">S'identifier</button></a> #}
+                    </div>
+                    <div class="col-6">
+                        {# <a href="{{path('infos_utiles')}}"><button class="btn btn-primary">Infos utiles</button></a> #}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-12 backgroundDivGreen">
+            <br>Mon<br>Premier<br>Article<br>.
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-12 backgroundDivRed">
+            <br>Mon<br>Deuxieme<br>Article<br>.
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-12 backgroundDivBlue">
+            <br>Mon<br>Troisieme<br>Article<br>.
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Alert index{% endblock %}
+
+{% block body %}
+    <h1>Alert index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>AlertDate</th>
+                <th>EventDate</th>
+                <th>IpAddress</th>
+                <th>Content</th>
+                <th>StartSupportDate</th>
+                <th>EndSupportDate</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for alert in alerts %}
+            <tr>
+                <td>{{ alert.id }}</td>
+                <td>{{ alert.alertDate ? alert.alertDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ alert.eventDate ? alert.eventDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ alert.ipAddress }}</td>
+                <td>{{ alert.content }}</td>
+                <td>{{ alert.startSupportDate ? alert.startSupportDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ alert.endSupportDate ? alert.endSupportDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('alert_show', {'id': alert.id}) }}">show</a>
+                    <a href="{{ path('alert_edit', {'id': alert.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('alert_new') }}">Create new</a>
+{% endblock %}

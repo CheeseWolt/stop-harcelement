@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PrivateMessage index{% endblock %}
+
+{% block body %}
+    <h1>PrivateMessage index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Content</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for private_message in private_messages %}
+            <tr>
+                <td>{{ private_message.id }}</td>
+                <td>{{ private_message.date ? private_message.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ private_message.content }}</td>
+                <td>
+                    <a href="{{ path('private_message_show', {'id': private_message.id}) }}">show</a>
+                    <a href="{{ path('private_message_edit', {'id': private_message.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('private_message_new') }}">Create new</a>
+{% endblock %}

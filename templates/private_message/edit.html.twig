@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit PrivateMessage{% endblock %}
+
+{% block body %}
+    <h1>Edit PrivateMessage</h1>
+
+    {{ include('private_message/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('private_message_index') }}">back to list</a>
+
+    {{ include('private_message/_delete_form.html.twig') }}
+{% endblock %}

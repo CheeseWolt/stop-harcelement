@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ClassLevel{% endblock %}
+
+{% block body %}
+    <h1>Create new ClassLevel</h1>
+
+    {{ include('class_level/_form.html.twig') }}
+
+    <a href="{{ path('class_level_index') }}">back to list</a>
+{% endblock %}
