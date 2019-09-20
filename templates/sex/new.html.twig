@@ -3,9 +3,21 @@
 {% block title %}New Sex{% endblock %}
 
 {% block body %}
-    <h1>Create new Sex</h1>
-
-    {{ include('sex/_form.html.twig') }}
-
-    <a href="{{ path('sex_index') }}">back to list</a>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Create new Sex</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {{ include('sex/_form.html.twig') }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <a href="{{ path('sex_index') }}"><button class="btn btn-primary">retour aux sexes</button></a>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -3,33 +3,43 @@
 {% block title %}Role index{% endblock %}
 
 {% block body %}
-    <h1>Role index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for role in roles %}
-            <tr>
-                <td>{{ role.id }}</td>
-                <td>{{ role.name }}</td>
-                <td>
-                    <a href="{{ path('role_show', {'id': role.id}) }}">show</a>
-                    <a href="{{ path('role_edit', {'id': role.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('role_new') }}">Create new</a>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Liste des Roles</h1>
+        </div>
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for role in roles %}
+                    <tr>
+                        <td>{{ role.id }}</td>
+                        <td>{{ role.name }}</td>
+                        <td>
+                            <a href="{{ path('role_show', {'id': role.id}) }}"><button class="btn btn-primary">Afficher</button></a>
+                            <a href="{{ path('role_edit', {'id': role.id}) }}"><button class="btn btn-success">Editer</button></a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <a href="{{ path('role_new') }}"><button class="btn btn-success">Ajouter un role</button></a>
+        </div>
+    </div>
+</div>
 {% endblock %}

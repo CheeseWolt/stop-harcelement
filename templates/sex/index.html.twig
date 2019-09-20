@@ -3,33 +3,43 @@
 {% block title %}Sex index{% endblock %}
 
 {% block body %}
-    <h1>Sex index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for sex in sexes %}
-            <tr>
-                <td>{{ sex.id }}</td>
-                <td>{{ sex.name }}</td>
-                <td>
-                    <a href="{{ path('sex_show', {'id': sex.id}) }}">show</a>
-                    <a href="{{ path('sex_edit', {'id': sex.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('sex_new') }}">Create new</a>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Sex index</h1>
+        </div>
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for sex in sexes %}
+                    <tr>
+                        <td>{{ sex.id }}</td>
+                        <td>{{ sex.name }}</td>
+                        <td>
+                            <a href="{{ path('sex_show', {'id': sex.id}) }}"><button class="btn btn-primary">Afficher</button></a>
+                            <a href="{{ path('sex_edit', {'id': sex.id}) }}"><button class="btn btn-success">Editer</button></a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <a href="{{ path('sex_new') }}"><button class="btn btn-success">Ajouter un sex</button></a>
+        </div>
+    </div>
+</div>
 {% endblock %}

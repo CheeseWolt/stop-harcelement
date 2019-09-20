@@ -3,9 +3,21 @@
 {% block title %}New Alert{% endblock %}
 
 {% block body %}
-    <h1>Create new Alert</h1>
-
-    {{ include('alert/_form.html.twig') }}
-
-    <a href="{{ path('alert_index') }}">back to list</a>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Create new Alert</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {{ include('alert/_form.html.twig') }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <a href="{{ path('alert_index') }}"><button class="btn btn-primary">retour aux alertes</button></a>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -3,33 +3,43 @@
 {% block title %}AlertStyle index{% endblock %}
 
 {% block body %}
-    <h1>AlertStyle index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for alert_style in alert_styles %}
-            <tr>
-                <td>{{ alert_style.id }}</td>
-                <td>{{ alert_style.name }}</td>
-                <td>
-                    <a href="{{ path('alert_style_show', {'id': alert_style.id}) }}">show</a>
-                    <a href="{{ path('alert_style_edit', {'id': alert_style.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('alert_style_new') }}">Create new</a>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>AlertStyle index</h1>
+        </div>
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for alert_style in alert_styles %}
+                    <tr>
+                        <td>{{ alert_style.id }}</td>
+                        <td>{{ alert_style.name }}</td>
+                        <td>
+                            <a href="{{ path('alert_style_show', {'id': alert_style.id}) }}"><button class="btn btn-primary">Afficher</button></a>
+                            <a href="{{ path('alert_style_edit', {'id': alert_style.id}) }}"><button class="btn btn-success">Editer</button></a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <a href="{{ path('alert_style_new') }}"><button class="btn btn-success">Ajouter un type</button></a>
+        </div>
+    </div>
+</div>
 {% endblock %}

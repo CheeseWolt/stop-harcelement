@@ -3,33 +3,43 @@
 {% block title %}ClassName index{% endblock %}
 
 {% block body %}
-    <h1>ClassName index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for class_name in class_names %}
-            <tr>
-                <td>{{ class_name.id }}</td>
-                <td>{{ class_name.name }}</td>
-                <td>
-                    <a href="{{ path('class_name_show', {'id': class_name.id}) }}">show</a>
-                    <a href="{{ path('class_name_edit', {'id': class_name.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('class_name_new') }}">Create new</a>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>ClassName index</h1>
+        </div>
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for class_name in class_names %}
+                    <tr>
+                        <td>{{ class_name.id }}</td>
+                        <td>{{ class_name.name }}</td>
+                        <td>
+                            <a href="{{ path('class_name_show', {'id': class_name.id}) }}"><button class="btn btn-primary">Afficher</button></a>
+                            <a href="{{ path('class_name_edit', {'id': class_name.id}) }}"><button class="btn btn-success">Editer</button></a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <a href="{{ path('class_name_new') }}"><button class="btn btn-success">Ajouter une classe</button></a>
+        </div>
+    </div>
+</div>
 {% endblock %}

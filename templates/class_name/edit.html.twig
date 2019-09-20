@@ -3,11 +3,26 @@
 {% block title %}Edit ClassName{% endblock %}
 
 {% block body %}
-    <h1>Edit ClassName</h1>
-
-    {{ include('class_name/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('class_name_index') }}">back to list</a>
-
-    {{ include('class_name/_delete_form.html.twig') }}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Edit ClassName</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {{ include('class_name/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <a href="{{ path('class_name_index') }}"><button class="btn btn-primary">retour aux classes</button></a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {{ include('class_name/_delete_form.html.twig') }}
+        </div>
+    </div>
+</div>
 {% endblock %}

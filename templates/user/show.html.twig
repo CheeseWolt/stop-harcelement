@@ -3,52 +3,69 @@
 {% block title %}User{% endblock %}
 
 {% block body %}
-    <h1>User</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>User</h1>
+        </div>
+        <div class="col-12">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ user.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>UserName</th>
+                        <td>{{ user.userName }}</td>
+                    </tr>
+                    <tr>
+                        <th>LastName</th>
+                        <td>{{ user.lastName }}</td>
+                    </tr>
+                    <tr>
+                        <th>FirstName</th>
+                        <td>{{ user.firstName }}</td>
+                    </tr>
+                    <tr>
+                        <th>Password</th>
+                        <td>{{ user.password }}</td>
+                    </tr>
+                    <tr>
+                        <th>BirthDate</th>
+                        <td>{{ user.birthDate ? user.birthDate|date('Y-m-d') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Phone</th>
+                        <td>{{ user.phone }}</td>
+                    </tr>
+                    <tr>
+                        <th>Address</th>
+                        <td>{{ user.address }}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{ user.email }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-right">
+            <a href="{{ path('user_edit', {'id': user.id}) }}"><button class="btn btn-success">Editer</button></a>
+        </div>
+        <div class="col-12"><hr></div>
+        <div class="col-6">
+            <a href="{{ path('user_index') }}"><button class="btn btn-primary">retour aux utilisateurs</button></a>
+        </div>
+        <div class="col-6 text-right">
+            {{ include('user/_delete_form.html.twig') }}
+        </div>
+    </div>
+</div>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
-            </tr>
-            <tr>
-                <th>UserName</th>
-                <td>{{ user.userName }}</td>
-            </tr>
-            <tr>
-                <th>LastName</th>
-                <td>{{ user.lastName }}</td>
-            </tr>
-            <tr>
-                <th>FirstName</th>
-                <td>{{ user.firstName }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
-            </tr>
-            <tr>
-                <th>BirthDate</th>
-                <td>{{ user.birthDate ? user.birthDate|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Phone</th>
-                <td>{{ user.phone }}</td>
-            </tr>
-            <tr>
-                <th>Address</th>
-                <td>{{ user.address }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ user.email }}</td>
-            </tr>
-        </tbody>
-    </table>
 
-    <a href="{{ path('user_index') }}">back to list</a>
 
-    <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
 
-    {{ include('user/_delete_form.html.twig') }}
 {% endblock %}

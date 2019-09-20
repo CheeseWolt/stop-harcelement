@@ -13,7 +13,7 @@ class AlertStyleType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('alerts')
+            // ->add('alerts')
         ;
     }
 

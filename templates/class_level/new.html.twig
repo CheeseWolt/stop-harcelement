@@ -3,9 +3,21 @@
 {% block title %}New ClassLevel{% endblock %}
 
 {% block body %}
-    <h1>Create new ClassLevel</h1>
-
-    {{ include('class_level/_form.html.twig') }}
-
-    <a href="{{ path('class_level_index') }}">back to list</a>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Create new ClassLevel</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {{ include('class_level/_form.html.twig') }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <a href="{{ path('class_level_index') }}"><button class="btn btn-primary">retour aux rangs de classe</button></a>
+        </div>
+    </div>
+</div>
 {% endblock %}
