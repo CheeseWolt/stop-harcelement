@@ -9,15 +9,6 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class ConnectionController extends AbstractController
 {
-    /**
-     * @Route("/connection", name="connection")
-     */
-    public function index()
-    {
-        return $this->render('connection/index.html.twig', [
-            'controller_name' => 'ConnectionController',
-        ]);
-    }
 
     /**
      * @Route("/login", name="app_login")
@@ -32,12 +23,13 @@ class ConnectionController extends AbstractController
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
+        $user = $this->getUser();
 
-        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error, 'user'=>$user]);
     }
 
     /**
-     * @Route("/logout", name="app_logout")
+     * @Route("/logout", name="app_logout", methods={"GET"})
      */
     public function logout()
     {

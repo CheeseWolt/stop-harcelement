@@ -9,26 +9,34 @@ security:
         app_user_provider:
             entity:
                 class: App\Entity\User
-                property: username
+                property: userName
 
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        login:
-            pattern:  ^/connection
+        main:
             stateless: true
-            anonymous: true
+            anonymous: ~
             guard:
                 authenticators:
                     - App\Security\UserAuthenticator
             logout:
                 path: app_logout
                 # where to redirect after logout
-                # target: app_any_route
+                target: app_login
 
-        main:
-            anonymous: true
+        # main:
+            # pattern:  ^/
+            # stateless: true
+            # anonymous: true
+            # guard:
+            #     authenticators:
+            #         - App\Security\UserAuthenticator
+            # logout:
+                # path: app_logout
+                # where to redirect after logout
+                # target: app_login
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
@@ -42,4 +50,6 @@ security:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
         # - { path: ^/private/message, roles: IS_AUTHENTICATED_FULLY }
+        # - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        # - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
         
