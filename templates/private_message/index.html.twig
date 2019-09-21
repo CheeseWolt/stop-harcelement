@@ -1,39 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}PrivateMessage index{% endblock %}
+{% block title %}PrivateMessage index
+{% endblock %}
 
 {% block body %}
-<div class="container">
-    <h1>PrivateMessage index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>User</th>
-                <th>Date</th>
-                <th>Content</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="container">
+        <h1>Messages privés de {{ app.user.userName }}</h1>
+    {% if private_messages %}
+    
         {% for private_message in private_messages %}
-            <tr>
-                <td>{{ private_message.user.userName }}</td>
-                <td>{{ private_message.date ? private_message.date|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ private_message.content }}</td>
-                <td>
-                    <a href="{{ path('private_message_show', {'id': private_message.id}) }}">show</a>
-                    <a href="{{ path('private_message_edit', {'id': private_message.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
+            <div class="card col-8 {% if private_message.user.userName == app.user.userName %} offset-4 {% endif %}">
+                <h5 class="card-title">{{private_message.user.userName}}</h5>
+                <p class="card-text">{{private_message.content}}
+                </p>
+                <div class="card-footer">{{ private_message.date ? private_message.date|date('Y-m-d H:i:s') : '' }}</div>
+            </div>
         {% endfor %}
-        </tbody>
-    </table>
+    {% else %}
+        <h2>Auncun message.</h2>
+    {% endif %}
 
-    {# <a href="{{ path('private_message_new') }}">Create new</a> #}
-</div>
+{# <a href="{{ path('private_message_new') }}">Create new</a> #}
+    </div>
 {% endblock %}

@@ -9,19 +9,23 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/private/message")
+ * @IsGranted("IS_AUTHENTICATED_FULLY")
  */
 class PrivateMessageController extends AbstractController
 {
     /**
-     * @Route("/", name="private_message_index", methods={"GET"})
+     * @Route("/{alert_id}", name="private_message_index", methods={"GET"})
      */
-    public function index(PrivateMessageRepository $privateMessageRepository): Response
+    public function index($alert_id): Response
     {
+        $alert = $this->getDoctrine()->getRepository(Alert::class)->find($alert_id);
+        $pms = $alert->getPrivateMessages();
         return $this->render('private_message/index.html.twig', [
-            'private_messages' => $privateMessageRepository->findAll(),
+            'private_messages' => $pms,
         ]);
     }
 
