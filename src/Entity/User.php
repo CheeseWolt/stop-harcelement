@@ -346,4 +346,19 @@ class User implements UserInterface
         // see section on salt below
         return null;
     }
+    public function serialize(): string
+    {
+        // add $this->salt too if you don't use Bcrypt or Argon2i
+        return serialize([$this->id, $this->userName, $this->password]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function unserialize($serialized): void
+    {
+        // add $this->salt too if you don't use Bcrypt or Argon2i
+        [$this->id, $this->userName, $this->password] = unserialize($serialized, ['allowed_classes' => false]);
+    }
+
 }
