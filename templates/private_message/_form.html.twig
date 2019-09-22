@@ -1,4 +1,10 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+<div class="card col-8 offset-4">
+    <h5 class="card-title">{{app.user.userName}}</h5>
+    <p class="card-text">
+        {{ form_label(form.content,'') }}
+        {{ form_row(form.content,{"attr":{'class':'form-control'}})}}
+    </p>
+    <button class="btn btn-primary">{{ button_label|default('Envoyer') }}</button>
+</div>
 {{ form_end(form) }}

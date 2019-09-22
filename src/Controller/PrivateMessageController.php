@@ -18,14 +18,30 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class PrivateMessageController extends AbstractController
 {
     /**
-     * @Route("/{alert_id}", name="private_message_index", methods={"GET"})
+     * @Route("/{alert_id}", name="private_message_index", methods={"GET","POST"})
      */
-    public function index($alert_id): Response
+    public function index($alert_id, Request $request): Response
     {
         $alert = $this->getDoctrine()->getRepository(Alert::class)->find($alert_id);
         $pms = $alert->getPrivateMessages();
+        $pm = new PrivateMessage();
+        $pm->setAlert($alert)->setUser($this->getUser());
+        $form = $this->createForm(PrivateMessageType::class,$pm);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($pm);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('private_message_index',['alert_id'=>$alert_id]);
+        }
+
+
         return $this->render('private_message/index.html.twig', [
             'private_messages' => $pms,
+            'form'=>$form->createView(),
         ]);
     }
 

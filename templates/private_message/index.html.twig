@@ -9,17 +9,18 @@
     {% if private_messages %}
     
         {% for private_message in private_messages %}
-            <div class="card col-8 {% if private_message.user.userName == app.user.userName %} offset-4 {% endif %}">
+            <div class="card mb-4 col-8 {% if private_message.user.userName == app.user.userName %} offset-4 {% endif %}">
                 <h5 class="card-title">{{private_message.user.userName}}</h5>
                 <p class="card-text">{{private_message.content}}
                 </p>
-                <div class="card-footer">{{ private_message.date ? private_message.date|date('Y-m-d H:i:s') : '' }}</div>
+                <div class="card-footer">{{ private_message.date ? private_message.date|date('d-m-Y H:i:s') : '' }}</div>
             </div>
         {% endfor %}
     {% else %}
         <h2>Auncun message.</h2>
     {% endif %}
-
+    
+    {{ include('private_message/_form.html.twig') }}
 {# <a href="{{ path('private_message_new') }}">Create new</a> #}
     </div>
 {% endblock %}
