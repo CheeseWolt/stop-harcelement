@@ -2,13 +2,15 @@
 
 namespace App\Controller;
 
+use DateTime;
 use App\Entity\Alert;
 use App\Form\AlertType;
 use App\Repository\AlertRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/alert")
@@ -91,4 +93,23 @@ class AlertController extends AbstractController
 
         return $this->redirectToRoute('alert_index');
     }
+
+
+    /**
+     * @Route("manage/{id}", name="alert_manage")
+     * @IsGranted("ROLE_USER")
+     */
+    public function manage(Request $request, Alert $alert): Response
+    {
+
+        $alert->setAlertManager($this->getUser())->setStartSupportDate(new DateTime('now'));
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($alert);
+        $em->flush();
+        return $this->render('alert/show.html.twig', [
+            'alert' => $alert,
+        ]);
+    }
+
+
 }
