@@ -4,7 +4,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{asset('assets/css/monstyle.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/homeStyle.css')}}">
 {% endblock %}
 
 {% block body %}
@@ -14,11 +14,15 @@
         <div class="col-12 backgroundDivRed">
             <div class="marginRight0 backgroundDivBlue">
                 <div class="row text-center">
-                    <div class="col-12">
-                        <h4>Bienvenue sur</h4>
-                    </div>
-                    <div class="col-12">
-                        <h2>STOP-HARCELEMENT</h2>
+                    <div class="section">
+                        <div class="col-12">
+                            <h2>Témoin ou victime, ne restez pas silencieux</h2>
+                        </div>
+                        <div class="col-12">
+                            <h4>Le harcèlement est un enchaînement d'agissements hostiles répétés visant à affaiblir
+    psychologiquement la personne qui en est la victime.</h4>
+    <button type="button" class="btn btn-light"><h3>Connexion</h3></button>
+                        </div>
                     </div>
                     <div class="col-6">
                         {# <a href="{{path('connexion')}}"><button class="btn btn-primary">S'identifier</button></a> #}
@@ -33,7 +37,16 @@
     <br>
     <div class="row">
         <div class="col-12 backgroundDivGreen">
-            <br>Mon<br>Premier<br>Article<br>.
+            <div class="section">
+                <h3>Pourquoi utiliser StopHarcelement ?</h3>
+                <br>
+                <p>La confidentialité est le mot clé de notre application, permettant aux victimes de s'ouvrir sincèrement, sans risque de représailles.</p>
+				<p>Avec notre interface numérique, accèdez facilement a nos différentes fonctionnalitées.</p>
+                <p> Accèdez aux nouveaux rapports et à vos discussions privées en 1 click.</p>
+                <p>Consultez facilement les statistiques de votre établissement afin de mettre en place une stratégie adaptée au(x) problème(s).</p>
+                <p></p>
+                <p></p>
+            </div>
         </div>
     </div>
     <br>
