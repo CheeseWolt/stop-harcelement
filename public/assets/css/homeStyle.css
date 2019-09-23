@@ -25,7 +25,7 @@ h4 {
 strong {
     color: white;
 }
-button {
+.btn-light {
     margin: 10px;
     box-shadow: 5px 5px 3px rgba(9, 2, 100, 0.5);
 
