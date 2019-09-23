@@ -22,28 +22,11 @@ class ProfilController extends AbstractController
      */
     public function index()
     {
-        // PARTIE A REMPLACER PROCHAINEMENT :
-        // Creation d'un utilisateur (normalement récuperé via la connexion)
-        $role = $this->getDoctrine()->getRepository(Role::class)->find(1); // Retirer le use "use App\Entity\Role;" si suppression.
-        $sex = $this->getDoctrine()->getRepository(Sex::class)->find(2); // Retirer le use "use App\Entity\Sex;" si suppression.
-        $studentClassName = $this->getDoctrine()->getRepository(ClassName::class)->find(1); // Retirer le use "use App\Entity\ClassName;" si suppression.
-        $utilisateur = new User(); // Retirer le use "use App\Entity\User;" si suppression.
-        $utilisateur->setUserName('Vanilla')
-            ->setLastName('Ysondre')
-            ->setFirstName('Kagurazaka')
-            ->setPassword('1234')
-            ->setBirthDate(new DateTime()) // Retirer le use "use App\Entity\User;" si suppression.
-            ->setPhone('0123456789')
-            ->setAddress("147 sentier de l'église 59320 hallennes lez haubourdin")
-            ->setRole($role)
-            ->setSex($sex)
-            ->setStudentClassName($studentClassName)
-            ->setEmail('abc@abc.fr');
-        // FIN DE PARTIE A SUPPRIMER
+        $user = $this->getUser();
 
         return $this->render('profil/index.html.twig', [
             'controller_name' => 'ProfilController',
-            'utilisateur' => $utilisateur,
+            'utilisateur' => $user,
         ]);
     }
 
@@ -52,24 +35,7 @@ class ProfilController extends AbstractController
      */
     public function infosPersos(Request $request)
     {
-        // PARTIE A REMPLACER PROCHAINEMENT :
-        // Creation d'un utilisateur (normalement récuperé via la connexion)
-        $role = $this->getDoctrine()->getRepository(Role::class)->find(1); // Retirer le use "use App\Entity\Role;" si suppression.
-        $sex = $this->getDoctrine()->getRepository(Sex::class)->find(2); // Retirer le use "use App\Entity\Sex;" si suppression.
-        $studentClassName = $this->getDoctrine()->getRepository(ClassName::class)->find(1); // Retirer le use "use App\Entity\ClassName;" si suppression.
-        $user = new User(); // Retirer le use "use App\Entity\User;" si suppression.
-        $user->setUserName('Vanilla')
-            ->setLastName('Ysondre')
-            ->setFirstName('Kagurazaka')
-            ->setPassword('1234')
-            ->setBirthDate(new DateTime()) // Retirer le use "use App\Entity\User;" si suppression.
-            ->setPhone('0123456789')
-            ->setAddress("147 sentier de l'église 59320 hallennes lez haubourdin")
-            ->setRole($role)
-            ->setSex($sex)
-            ->setStudentClassName($studentClassName)
-            ->setEmail('abc@abc.fr');
-        // FIN DE PARTIE A SUPPRIMER
+        $user = $this->getUser();
 
         $form = $this->createForm(ProfilUpdateType::class, $user);
         $form->handleRequest($request);
