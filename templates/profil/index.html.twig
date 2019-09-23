@@ -3,18 +3,47 @@
 {% block title %}Hello ProfilController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/galma/Documents/GitHub/stop-harcelement/src/Controller/ProfilController.php'|file_link(0) }}">src/Controller/ProfilController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/galma/Documents/GitHub/stop-harcelement/templates/profil/index.html.twig'|file_link(0) }}">templates/profil/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1>Bienvenue sur votre espace personnel, {{ utilisateur.userName }}</h1>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-3">{{ utilisateur.lastName }}</div>
+                    <div class="col-3">{{ utilisateur.firstName }}</div>
+                    <div class="col-3">vous êtes {{ utilisateur.role.name }}</div>
+                    <div class="col-3 text-right">
+                        <a href="{{path('infospersos')}}"><button class="btn btn-secondary">Mes infos persos</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        {# DIV ADMIN #}
+        {% if utilisateur.role.id == 1 %}
+            {{ include('profil/admin.html.twig') }}
+        {% endif %}
+        {# DIV SECRETARIAT #}
+        {% if utilisateur.role.id == 2 %}
+            {{ include('profil/secretariat.html.twig') }}
+        {% endif %}
+        {# DIV PROF #}
+        {% if utilisateur.role.id == 3 %}
+            {{ include('profil/professeur.html.twig') }}
+        {% endif %}
+        {# DIV ELEVE #}
+        {% if utilisateur.role.id == 4 %}
+            {{ include('profil/eleve.html.twig') }}
+        {% endif %}
+        {# <div class="row">
+            <div class="col-12 text-right">
+                <a href="{{path('connection')}}"><button class="btn btn-danger">Se deconnecter</button></a>
+            </div>
+        </div> #}
+    </div>
 {% endblock %}

@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/login">Connexion</a>
+                <a class="nav-link" href="/connection">Connexion</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/profil">Profil</a>
@@ -43,17 +43,9 @@
             </li> -->
         </ul>
         <div class="btn-group">
-            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions Utiles</button>
-            <div class="dropdown-menu">
-                <!-- <a class="dropdown-item" href="/private/message">gerer messages</a> -->
-                <a class="dropdown-item" href="/user">gerer utilisateurs</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/login">Deconnexion</a>
-            </div>
-        </div>
-        <div class="btn-group">
             <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions reservée Admin</button>
             <div class="dropdown-menu">
+                {% if utilisateur.role.id == 1 %}
                 <a class="dropdown-item" href="/sex">gerer Sexes</a>
                 <a class="dropdown-item" href="/role">gerer Roles</a>
                 <a class="dropdown-item" href="/class/level">gerer rangs de classe</a>
@@ -61,6 +53,11 @@
                 <a class="dropdown-item" href="/status">gerer status</a>
                 <a class="dropdown-item" href="/alertstyle">gerer types d'alerte</a>
                 <a class="dropdown-item" href="/class/name">gerer les classes</a>
+                {% endif %}
+                <a class="dropdown-item" href="/private/message">gerer messages</a>
+                <a class="dropdown-item" href="/user">gerer utilisateurs</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{path('connection')}}">Deconnexion</a>
             </div>
         </div>
         <!-- <form class="form-inline mt-2 mt-md-0">
