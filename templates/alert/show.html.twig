@@ -4,54 +4,38 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1>Alert</h1>
+    <div class="container p-5">
+        <h1>Signalement</h1>
+        <div class="card my-5" style="width: 100%;">
+            <div class="card-header">Type(s) de Harcelement(s) :
+                {% for type in alert.alertStyle %}
+                    <h5 class="card-title">{{  type.name  }}</h5>
+                {% endfor %}
             </div>
-            <div class="col-12">
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <th>Date du signalement</th>
-                            <td>{{ alert.alertDate ? alert.alertDate|date('d-m-Y H:i:s') : '' }}</td>
-                        </tr>
-                        <tr>
-                            <th>Date des faits</th>
-                            <td>{{ alert.eventDate ? alert.eventDate|date('d-m-Y H:i:s') : '' }}</td>
-                        </tr>
-                        <tr>
-                            <th>IpAddress</th>
-                            <td>{{ alert.ipAddress }}</td>
-                        </tr>
-                        <tr>
-                            <th>Déscription</th>
-                            <td>{{ alert.content }}</td>
-                        </tr>
-                        <tr>
-                            <th>Pris en charge par</th>
-                            <td>{{ alert.alertManager.userName }}</td>
-                        </tr>
-                        <tr>
-                            <th>Début de prise en charge</th>
-                            <td>{{ alert.startSupportDate ? alert.startSupportDate|date('Y-m-d H:i:s') : '' }}</td>
-                        </tr>
-                        <tr>
-                            <th>Fin de prise en charge</th>
-                            <td>{{ alert.endSupportDate ? alert.endSupportDate|date('Y-m-d H:i:s') : '' }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex flex-row justify-content-around"><span> Utilisateur :
+                    {{ alert.alertSender.firstName  ~ ' ' ~  alert.alertSender.lastName  }}</span><span>Role : {{ alert.status.name }}</span></li>
+                <li class="list-group-item d-flex flex-row justify-content-around"><span>Date du signalement :
+                    {{ alert.alertDate ?  alert.alertDate|date('d/m/Y H:i:s') : ''  }}</span><span>Date des faits :
+                    {{ alert.eventDate ? alert.eventDate|date('d/m/Y H:i:s') : ''  }}</span></li>
+                <div class="card-body">
+                    <h5 class="card-title">Description</h5>
+                    <p class="card-text">{{ alert.content }}</p>
+                </div>
+                {% if alert.alertManager is  null %}
+                    <a href="{{ path('alert_manage',{'id':alert.id}) }}" class="btn btn-primary">
+                        Prendre en charge
+                    </a>
+                {% else %}
+                    <li class="list-group-item">Pris en charge par :
+                        {{ alert.alertManager.userName ?? '' }}</li>
+                    <li class="list-group-item">Début de prise en charge :
+                        {{ alert.startSupportDate ? alert.startSupportDate|date('d/m/Y') : ''  }}</li>
+                    <li class="list-group-item">Fin de prise en charge :
+                        {{ alert.endSupportDate ? alert.endSupportDate|date('d/m/Y') : ''  }}</li>
+                {% endif %}
+            </ul>
         </div>
-        <div class="row ">
-            <div class="col-12 text-right">
-                <a href="{{ path('alert_edit', {'id': alert.id}) }}" class="btn btn-success">
-                    Editer
-                </a>
-            </div>
-        </div>
-        <div class="col-12"><hr></div>
         <div class="d-flex flex-row justify-content-between">
             <div class="justify-content-between">
                 <a href="{{ path('alert_index') }}" class="btn btn-primary">
@@ -59,13 +43,9 @@
                 </a>
             </div>
             <div class="justify-content-between">
-                <a href="{{ path('alert_manage',{'id':alert.id}) }}" class="btn btn-primary">
-                    Prendre en charge
-                </a>
-            </div>
-            <div class="justify-content-between">
                 {{ include('alert/_delete_form.html.twig') }}
             </div>
         </div>
+
     </div>
 {% endblock %}
