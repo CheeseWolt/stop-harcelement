@@ -111,5 +111,20 @@ class AlertController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("close/{id}", name="alert_close")
+     * @IsGranted("ROLE_USER")
+     */
+    public function close(Request $request, Alert $alert): Response
+    {
+        $alert->setEndSupportDate(new DateTime('now'));
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($alert);
+        $em->flush();
+        return $this->render('alert/show.html.twig', [
+            'alert' => $alert,
+        ]);
+    }
+
 
 }
