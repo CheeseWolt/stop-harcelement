@@ -54,10 +54,12 @@
             <label for="lastname">Role</label>
             <input class="form-control" type="text" id="lastname" readonly value="{{ user.role.name }}">
         </div>
+        {% if user.studentClassName %}
         <div class="col-6">
             <label for="lastname">Classe</label>
             <input class="form-control" type="text" id="lastname" readonly value="{{ user.studentClassName.classLevel.name ? user.studentClassName.classLevel.name : '' }} {{ user.studentClassName.name ? user.studentClassName.name : '' }}">
         </div>
+        {% endif %}
     </div>
     <br><hr>
     {# {{ form_widget(formProfilUpdate) }} #}
