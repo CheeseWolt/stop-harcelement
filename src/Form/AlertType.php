@@ -14,30 +14,32 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class AlertType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('alertDate')
-            // ->add('alertDate',HiddenType::class, array('data' => date('Y-m-d')))   //Date du signalement
-            ->add('eventDate')
-            // ->add('eventDate',DateTimeType::class)      //Date de l'evenement
-            ->add('ipAddress')
-            // ->add('ipAddress', HiddenType::class, array('data' => 1))   //Adresse ip
-            // ->add('content')
-            ->add('content',TextareaType::class)       //Contenu
-            ->add('alertSender', EntityType::class, [
-                'class'=>User::class, 
-                'choice_label'=>'lastName'
+            //->add('alertDate',HiddenType::class, array('data' => date('Y-m-d')))   //Date du signalement
+            ->add('eventDate',DateTimeType::class, [        //Date de l'evenement
+                'widget' => 'single_text',
+                'html5'=>true,
+                'attr' => ['class' => 'js-datepicker'],
+
+                ])          
+            ->add('ipAddress', TextType::class)           
+            ->add('content',TextareaType::class)            //Contenu
+            ->add('alertSender', EntityType::class, [       //Signalement expéditeur
+                'class'=> User::class, 
+                'choice_label'=>'lastName'          
             ])
-            ->add('alertManager', EntityType::class, [
-                'class'=>User::class, 
-                'required'=>false, 
-                'expanded'=>true,
-                'choice_label'=>'lastName'
-            ])
+            // ->add('alertManager', EntityType::class, [
+            //     'class'=>User::class, 
+            //     'required'=>false, 
+            //     'expanded'=>true,
+            //     'choice_label'=>'lastName'
+            //])
             ->add('location', EntityType::class, [
                 'class'=>Location::class, 
                 'expanded'=>true,
@@ -51,7 +53,7 @@ class AlertType extends AbstractType
             ->add('alertStyle', EntityType::class, [
                 'class'=>AlertStyle::class, 
                 'multiple'=>true,
-                'expanded'=>true,
+                'expanded' => true,
                 'choice_label'=>'name'
             ])
         ;

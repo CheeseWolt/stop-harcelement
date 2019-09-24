@@ -21,7 +21,9 @@
                         <div class="col-12">
                             <h4>Le harcèlement est un enchaînement d'agissements hostiles répétés visant à affaiblir
     psychologiquement la personne qui en est la victime.</h4>
-    <a href="{{ path ("app_login")}}" class="btn btn-light">Connexion</a>
+    {% if app.user is null %}
+        <a href="{{ path ("app_login")}}" class="btn btn-light">Connexion</a>
+    {% endif %}
                         </div>
                     </div>
                     <div class="col-6">

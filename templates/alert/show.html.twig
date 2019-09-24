@@ -13,11 +13,19 @@
                 {% endfor %}
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item d-flex flex-row justify-content-around"><span> Utilisateur :
-                    {{ alert.alertSender.firstName  ~ ' ' ~  alert.alertSender.lastName  }}</span><span>Role : {{ alert.status.name }}</span></li>
-                <li class="list-group-item d-flex flex-row justify-content-around"><span>Date du signalement :
-                    {{ alert.alertDate ?  alert.alertDate|date('d/m/Y H:i:s') : ''  }}</span><span>Date des faits :
-                    {{ alert.eventDate ? alert.eventDate|date('d/m/Y H:i:s') : ''  }}</span></li>
+                <li class="list-group-item d-flex flex-row justify-content-around">
+                    <span>
+                        Utilisateur :
+                        {{ alert.alertSender.firstName  ~ ' ' ~  alert.alertSender.lastName  }}</span>
+                    <span>Role :
+                        {{ alert.status.name }}</span>
+                </li>
+                <li class="list-group-item d-flex flex-row justify-content-around">
+                    <span>Date du signalement :
+                        {{ alert.alertDate ?  alert.alertDate|date('d/m/Y H:i:s') : ''  }}</span>
+                    <span>Date des faits :
+                        {{ alert.eventDate ? alert.eventDate|date('d/m/Y H:i:s') : ''  }}</span>
+                </li>
                 <div class="card-body">
                     <h5 class="card-title">Description</h5>
                     <p class="card-text">{{ alert.content }}</p>
@@ -30,9 +38,15 @@
                     <li class="list-group-item">Pris en charge par :
                         {{ alert.alertManager.userName ?? '' }}</li>
                     <li class="list-group-item">Début de prise en charge :
-                        {{ alert.startSupportDate ? alert.startSupportDate|date('d/m/Y') : ''  }}</li>
+                        {{ alert.startSupportDate ? alert.startSupportDate|date('d/m/Y à H:i:s') : ''  }}</li>
                     <li class="list-group-item">Fin de prise en charge :
-                        {{ alert.endSupportDate ? alert.endSupportDate|date('d/m/Y') : ''  }}</li>
+                        {{ alert.endSupportDate ? alert.endSupportDate|date('d/m/Y à H:i:s') : ''  }}</li>
+                    {% if alert.endSupportDate is null %}
+                        <a href="{{ path('alert_close',{'id':alert.id}) }}" class="btn btn-danger">
+                            Fin de prise en charge
+                        </a>
+                    {% endif %}
+
                 {% endif %}
             </ul>
         </div>
@@ -46,6 +60,6 @@
                 {{ include('alert/_delete_form.html.twig') }}
             </div>
         </div>
-
+        {% include "private_message/index.html.twig" %}
     </div>
 {% endblock %}
