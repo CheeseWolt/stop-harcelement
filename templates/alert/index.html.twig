@@ -1,55 +1,64 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des signalement{% endblock %}
+{% block title %}Liste des signalement
+{% endblock %}
 
 {% block body %}
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <h1>Liste des signalements</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Liste des signalements</h1>
+            </div>
+            <div class="col-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Type de harcelement</th>
+                            <th>Dates des signalements</th>
+                            <th>Dates des événements</th>
+                            <th>Adresse Ip</th>
+                            <th>Lieu des faits</th>
+                            <th>Date de prise en charge</th>
+                            <th>Fin de prise en charge</th>
+                            <th>actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for alert in alerts %}
+                            <tr>
+                                <td>
+                                    {% for type in alert.alertStyle %}
+                                        {{ type.name }}
+                                    {% endfor %}
+                                </td>
+                                <td>{{ alert.alertDate ? alert.alertDate|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ alert.eventDate ? alert.eventDate|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ alert.ipAddress }}</td>
+                                <td>
+                                        {{ alert.location.name }}
+                                </td>
+                                <td>{{ alert.startSupportDate ? alert.startSupportDate|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ alert.endSupportDate ? alert.endSupportDate|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>
+                                    <a href="{{ path('alert_show', {'id': alert.id}) }}" class="btn btn-primary">Afficher</a>
+                                    <a href="{{ path('alert_edit', {'id': alert.id}) }}" class="btn btn-success">Editer</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="8">Pas d'enregistrement trouvé</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="col-12">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Dates des signalements</th>
-                        <th>Dates des événements</th>
-                        <th>Adresses Ip</th>
-                        <th>Contenus des signalements</th>
-                        <th>Date de prise en charge</th>
-                        <th>Fin de prise en charge</th>
-                        <th>actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for alert in alerts %}
-                    <tr>
-                        <td>{{ alert.id }}</td>
-                        <td>{{ alert.alertDate ? alert.alertDate|date('Y-m-d H:i:s') : '' }}</td>
-                        <td>{{ alert.eventDate ? alert.eventDate|date('Y-m-d H:i:s') : '' }}</td>
-                        <td>{{ alert.ipAddress }}</td>
-                        <td>{{ alert.content }}</td>
-                        <td>{{ alert.startSupportDate ? alert.startSupportDate|date('Y-m-d H:i:s') : '' }}</td>
-                        <td>{{ alert.endSupportDate ? alert.endSupportDate|date('Y-m-d H:i:s') : '' }}</td>
-                        <td>
-                            <a href="{{ path('alert_show', {'id': alert.id}) }}"><button class="btn btn-primary">Afficher</button></a>
-                            <a href="{{ path('alert_edit', {'id': alert.id}) }}"><button class="btn btn-success">Editer</button></a>
-                        </td>
-                    </tr>
-                {% else %}
-                    <tr>
-                        <td colspan="8">Pas d'enregistrement trouvé</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+        <div class="row">
+            <div class="col-12">
+                <a href="{{ path('alert_new') }}">
+                    <button class="btn btn-success">Ajouter une alerte</button>
+                </a>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12">
-            <a href="{{ path('alert_new') }}"><button class="btn btn-success">Ajouter une alerte</button></a>
-        </div>
-    </div>
-</div>
 {% endblock %}
