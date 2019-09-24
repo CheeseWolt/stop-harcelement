@@ -3,16 +3,13 @@
 namespace App\Controller;
 
 use DateTime;
-use App\Entity\Alert;
-use App\Form\AlertType;
-use App\Entity\PrivateMessage;
-use App\Form\PrivateMessageType;
+use App\Entity\{Alert,PrivateMessage};
+use App\Form\{AlertType,PrivateMessageType};
 use App\Repository\AlertRepository;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\{Request,Response};
 use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/alert")
@@ -21,6 +18,7 @@ class AlertController extends AbstractController
 {
     /**
      * @Route("/", name="alert_index", methods={"GET"})
+     * @IsGranted("ROLE_PROFESSEUR")
      */
     public function index(AlertRepository $alertRepository): Response
     {
@@ -81,6 +79,7 @@ class AlertController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="alert_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function edit(Request $request, Alert $alert): Response
     {
@@ -101,6 +100,7 @@ class AlertController extends AbstractController
 
     /**
      * @Route("/{id}", name="alert_delete", methods={"DELETE"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Alert $alert): Response
     {
@@ -116,7 +116,7 @@ class AlertController extends AbstractController
 
     /**
      * @Route("manage/{id}", name="alert_manage")
-     * @IsGranted("ROLE_USER")
+     * @IsGranted("ROLE_PROFESSEUR")
      */
     public function manage(Request $request, Alert $alert): Response
     {
@@ -132,7 +132,7 @@ class AlertController extends AbstractController
 
     /**
      * @Route("close/{id}", name="alert_close")
-     * @IsGranted("ROLE_USER")
+     * @IsGranted("ROLE_PROFESSEUR")
      */
     public function close(Request $request, Alert $alert): Response
     {
