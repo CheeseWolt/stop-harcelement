@@ -25,7 +25,7 @@ class Alert
     private $alertDate;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     private $eventDate;
 
@@ -82,6 +82,11 @@ class Alert
      * @ORM\ManyToMany(targetEntity="App\Entity\AlertStyle", inversedBy="alerts")
      */
     private $alertStyle;
+
+    /**
+     * @ORM\Column(type="time")
+     */
+    private $eventTime;
 
     public function __construct()
     {
@@ -269,6 +274,18 @@ class Alert
         if ($this->alertStyle->contains($alertStyle)) {
             $this->alertStyle->removeElement($alertStyle);
         }
+
+        return $this;
+    }
+
+    public function getEventTime(): ?\DateTimeInterface
+    {
+        return $this->eventTime;
+    }
+
+    public function setEventTime(\DateTimeInterface $eventTime): self
+    {
+        $this->eventTime = $eventTime;
 
         return $this;
     }
