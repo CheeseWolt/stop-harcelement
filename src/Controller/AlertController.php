@@ -58,6 +58,7 @@ class AlertController extends AbstractController
         $pms = $alert->getPrivateMessages();
         $pm = new PrivateMessage();
         $pm->setAlert($alert)->setUser($this->getUser());
+
         $form = $this->createForm(PrivateMessageType::class,$pm);
 
         $form->handleRequest($request);
@@ -125,9 +126,7 @@ class AlertController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->persist($alert);
         $em->flush();
-        return $this->render('alert/show.html.twig', [
-            'alert' => $alert,
-        ]);
+        return $this->redirectToRoute('alert_show',['id'=>$alert->getId()]);
     }
 
     /**
@@ -140,9 +139,7 @@ class AlertController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->persist($alert);
         $em->flush();
-        return $this->render('alert/show.html.twig', [
-            'alert' => $alert,
-        ]);
+        return $this->redirectToRoute('alert_show',['id'=>$alert->getId()]);
     }
 
 

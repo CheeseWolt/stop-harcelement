@@ -30,21 +30,24 @@
                     <h5 class="card-title">Description</h5>
                     <p class="card-text">{{ alert.content }}</p>
                 </div>
-                {% if alert.alertManager is  null %}
-                    <a href="{{ path('alert_manage',{'id':alert.id}) }}" class="btn btn-primary">
-                        Prendre en charge
-                    </a>
-                {% else %}
-                    <li class="list-group-item">Pris en charge par :
-                        {{ alert.alertManager.userName ?? '' }}</li>
-                    <li class="list-group-item">Début de prise en charge :
-                        {{ alert.startSupportDate ? alert.startSupportDate|date('d/m/Y à H:i:s') : ''  }}</li>
-                    <li class="list-group-item">Fin de prise en charge :
-                        {{ alert.endSupportDate ? alert.endSupportDate|date('d/m/Y à H:i:s') : ''  }}</li>
-                    {% if alert.endSupportDate is null %}
-                        <a href="{{ path('alert_close',{'id':alert.id}) }}" class="btn btn-danger">
-                            Fin de prise en charge
+                {% if is_granted('ROLE_PROFESSEUR') %}
+
+                    {% if alert.alertManager is  null %}
+                        <a href="{{ path('alert_manage',{'id':alert.id}) }}" class="btn btn-primary">
+                            Prendre en charge
                         </a>
+                    {% else %}
+                        <li class="list-group-item">Pris en charge par :
+                            {{ alert.alertManager.userName ?? '' }}</li>
+                        <li class="list-group-item">Début de prise en charge :
+                            {{ alert.startSupportDate ? alert.startSupportDate|date('d/m/Y à H:i:s') : ''  }}</li>
+                        <li class="list-group-item">Fin de prise en charge :
+                            {{ alert.endSupportDate ? alert.endSupportDate|date('d/m/Y à H:i:s') : ''  }}</li>
+                        {% if alert.endSupportDate is null %}
+                            <a href="{{ path('alert_close',{'id':alert.id}) }}" class="btn btn-danger">
+                                Fin de prise en charge
+                            </a>
+                        {% endif %}
                     {% endif %}
 
                 {% endif %}
