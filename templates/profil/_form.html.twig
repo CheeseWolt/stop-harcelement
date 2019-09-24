@@ -1,4 +1,65 @@
 {{ form_start(formProfilUpdate) }}
-    {{ form_widget(formProfilUpdate) }}
+    <div class="row">
+        <div class="col-12 text-center">
+            <h4>INFOS PERSOS:</h4>
+        </div>
+        <div class="col-6">
+            <label for="lastname">Nom</label>
+            <input class="form-control" type="text" id="lastname" readonly value="{{ user.lastName }}">
+        </div>
+        <div class="col-6">
+            <label for="firstname">Prenom</label>
+            <input class="form-control" type="text" id="firstname" readonly value="{{ user.firstName }}">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <label for="birthdate">Date de naissance</label>
+            <input class="form-control" type="text" id="birthdate" readonly value="{{ user.birthDate ? user.birthDate|date('Y-m-d') : '' }}">
+        </div>
+        <div class="col-4">
+            {{ form_row(formProfilUpdate.phone, {'label':'Numéro de téléphone :', 'attr':{'class':'form-control control-label'}}) }}
+        </div>
+        <div class="col-4">
+            <label for="sex">Sexe</label>
+            <input class="form-control" type="text" id="sex" readonly value="{{ user.sex.name }}">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {{ form_row(formProfilUpdate.address, {'label':'Adresse :', 'attr':{'class':'form-control control-label'}}) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {{ form_row(formProfilUpdate.email, {'label':'Email :', 'attr':{'class':'form-control control-label'}}) }}
+        </div>
+    </div>
+    <br><hr>
+    <div class="row">
+        <div class="col-12 text-center">
+            <h4>IDENTIFIANTS:</h4>
+        </div>
+        <div class="col-6">
+            {{ form_row(formProfilUpdate.userName, {'label':'Pseudo :', 'attr':{'class':'form-control control-label'}}) }}
+        </div>
+        <div class="col-6">
+            <label for="lastname">Mot de passe</label>
+            <button class="btn btn-secondary form-control control-label" href="">Changer mon mot de passe</button>
+        </div>
+    </div>
+    <br><hr>
+    <div class="row">
+        <div class="col-6">
+            <label for="lastname">Role</label>
+            <input class="form-control" type="text" id="lastname" readonly value="{{ user.role.name }}">
+        </div>
+        <div class="col-6">
+            <label for="lastname">Classe</label>
+            <input class="form-control" type="text" id="lastname" readonly value="{{ user.studentClassName.classLevel.name ? user.studentClassName.classLevel.name : '' }} {{ user.studentClassName.name ? user.studentClassName.name : '' }}">
+        </div>
+    </div>
+    <br><hr>
+    {# {{ form_widget(formProfilUpdate) }} #}
     <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(formProfilUpdate) }}

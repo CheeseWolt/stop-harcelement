@@ -4,11 +4,7 @@
 
 {% block body %}
 <div class="container">
-    <div class="row">
-        <div class="col-12">
-            <h1>Edit User</h1>
-        </div>
-    </div>
+    <br>
     <div class="row">
         <div class="col-12">
             {{ include('user/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
@@ -16,7 +12,7 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <a href="{{ path('user_index') }}"><button class="btn btn-primary">retour aux utilisateurs</button></a>
+            <a href="{{ path('profil_index') }}"><button class="btn btn-primary">retour au profil</button></a>
         </div>
     </div>
     <div class="row">
