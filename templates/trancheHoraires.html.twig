@@ -1,0 +1,110 @@
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+
+<script>
+Highcharts.chart('trancheHoraire', {
+  chart: {
+    plotBackgroundColor: null,
+    plotBorderWidth: null,
+    plotShadow: false,
+    type: 'pie'
+  },
+  title: {
+    text: 'tranches horaires des incidents'
+  },
+  tooltip: {
+    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+  },
+  plotOptions: {
+    pie: {
+      allowPointSelect: true,
+      cursor: 'pointer',
+      dataLabels: {
+        enabled: true,
+        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+      }
+    }
+  },
+  series: [{
+    name: 'Brands',
+    colorByPoint: true,
+    data: [{
+      name: '1H',
+      y: 8.33,
+      sliced: true,
+      selected: true
+    }, {
+      name: '2H',
+      y: 8.33
+    }, {
+      name: '3H',
+      y: 8.33
+    }, {
+      name: '4H',
+      y: 8.33
+    }, {
+      name: '5H',
+      y: 8.33
+    }, {
+      name: '6H',
+      y: 8.33
+    }, {
+      name: '7H',
+      y: 8.33
+    }, {
+      name: '8H',
+      y: 8.33
+    }, {
+      name: '9H',
+      y: 8.33
+    }, {
+      name: '10H',
+      y: 8.33
+    }, {
+      name: '11H',
+      y: 8.33
+    }, {
+      name: '12H',
+      y: 8.33
+    }, {
+      name: '13H',
+      y: 8.33
+    }, {
+      name: '14H',
+      y: 8.33
+    }, {
+      name: '15H',
+      y: 8.33
+    }, {
+      name: '16H',
+      y: 8.33
+    }, {
+      name: '17H',
+      y: 8.33
+    }, {
+      name: '18H',
+      y: 8.33
+    }, {
+      name: '19H',
+      y: 8.33
+    }, {
+      name: '20H',
+      y: 8.33
+    }, {
+      name: '21H',
+      y: 8.33
+    }, {
+      name: '22H',
+      y: 8.33
+    }, {
+      name: '23H',
+      y: 8.33
+    }, {
+      name: '24H',
+      y: 8.33
+    }, ]
+  }]
+});
+</script>

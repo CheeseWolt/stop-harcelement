@@ -7,20 +7,40 @@
 {% endblock %}
 {% block body %}
     <h1>Statistiques</h1>
-    <div class="container">
+    <div class="contenant">
         <div class="row">
             <div class="col-6">
-                <h4>Graphique</h4>
+                <div id="nbIncident">
+                    {% include 'nbIncident.html.twig' %}
+                </div>
             </div>
             <div class="col-6">
-                <h4>Graphique</h4>
+                <div id="incidentType">
+                    {% include 'incidentType.html.twig' %}
+                </div>
+            </div> 
+            <div class="col-12">
+                <div id="bubble">
+                    {% include 'bubble.html.twig' %}
+                </div>
+            </div>   
+            <div class="col-6">
+                <div id="trancheHoraire">
+                    {% include 'trancheHoraires.html.twig' %}
+                </div>
             </div>
             <div class="col-6">
-                <h4>Graphique</h4>
+                <div id="localisation">
+                    {% include 'localisation.html.twig' %}
+                </div>
+            </div>             
+            <div class="col-12">
+                <div id="age">
+                    {% include 'age.html.twig' %}
+                </div>
             </div>
-            <div class="col-6">
-                <h4>Graphique</h4>
-            </div>
+   
+
         </div>
     </div>
 {% endblock %}

@@ -1,0 +1,59 @@
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<link rel="stylesheet" href="{{asset('assets/css/homeStyle.css')}}">
+
+<script >
+// Build the chart
+Highcharts.chart('localisation', {
+    chart: {
+      plotBackgroundColor: null,
+      plotBorderWidth: null,
+      plotShadow: false,
+      type: 'pie'
+    },
+    title: {
+      text: 'Localisation des incidents'
+    },
+    tooltip: {
+      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+      pie: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: false
+        },
+        showInLegend: true
+      }
+    },
+    series: [{
+      name: 'Brands',
+      colorByPoint: true,
+      data: [{
+        name: 'Salle de classe',
+        y: 61.41,
+        sliced: true,
+        selected: true
+      }, {
+        name: 'Toilettes',
+        y: 11.84
+      }, {
+        name: 'Vestiaire',
+        y: 10.85
+      }, {
+        name: 'Salle de sport',
+        y: 4.67
+      }, {
+        name: 'Cantine',
+        y: 4.18
+      }, {
+        name: "Hors de l'établissement",
+        y: 7.05
+      }]
+    }]
+  });</script>
+
+

@@ -1,0 +1,57 @@
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<link rel="stylesheet" href="{{asset('assets/css/homeStyle.css')}}">
+
+<style>
+#column {
+    min-width: 310px; 
+    height: 400px; 
+    margin: 0 auto;
+}
+</style>
+{# <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div> #}
+<script>
+    Highcharts.chart('incidentType', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: "Type d'aggression/date"
+    },
+    xAxis: {
+        categories: ['Septembre', 'Octobre', 'Novembre', 'Décembre', 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet']
+    },
+    yAxis: {
+        min: 0,
+        title: {
+        text: "Nombre d'incident"
+        }
+    },
+    tooltip: {
+        pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
+        shared: true
+    },
+    plotOptions: {
+        column: {
+        stacking: 'percent'
+        }
+    },
+    series: [{
+        name: 'Brimades',
+        data: [5, 3, 4, 7, 2]
+    }, {
+        name: 'Insultes',
+        data: [2, 2, 3, 2, 1]
+    }, {
+        name: 'Agression physique',
+        data: [3, 4, 4, 2, 5]
+    }, {
+        name: 'Agression sexuelle',
+        data: [2, 2, 3, 2, 1]
+    }, {
+        name: 'vols',
+        data: [2, 2, 3, 2, 1]
+    }]
+    });
+</script>
