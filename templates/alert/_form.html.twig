@@ -1,7 +1,7 @@
 <div class="login-box fixed-height">
     {{ form_start(form) }}
     <div class="form-group">
-    
+
         <div class="form-group">
             {{form_row(form.eventDate, {'label':'Date de l\'événement :', 'attr':{'class':'form-control control-label', 'autofocus':'true'}})}}
         </div>
@@ -23,7 +23,10 @@
         <div class="form-group">
             {{form_row(form.alertStyle, {'label':'Type de l\'agression :', 'attr':{'class':'form-control control-label'}})}}
         </div>
-        <button type="submit" class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+        <div class="form-group btn-container">
+            <button type="submit" class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+        </div>
     </div>
     {{ form_end(form) }}
 </div>
+
