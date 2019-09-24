@@ -53,4 +53,16 @@ class ProfilController extends AbstractController
             'formProfilUpdate'=>$form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/newpassword", name="new_password", methods={"GET","POST"})
+     */
+    public function newPassword()
+    {
+        $user = $this->getUser();
+
+        return $this->render('profil/updatepassword.html.twig', [
+            'user'=>$user,
+        ]);
+    }
 }
