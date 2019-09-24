@@ -46,4 +46,4 @@ security:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     role_hierarchy:
-        ROLE_ADMIN: ROLE_PROFESSEUR , ROLE_SECRETARIAT
+        ROLE_ADMIN: ROLE_PROFESSEUR , ROLE_SECRETARIAT , ROLE_ELEVE
