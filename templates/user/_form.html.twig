@@ -1,4 +1,70 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {# <div class="row">
+        <div class="col-12">
+            <select for="user_role" name="user[role]">
+                {% if app.user.role.name == 'ROLE_ADMIN' %}
+                <option value="ROLE_ADMIN">Admin</option>
+                <option value="ROLE_SECRETARIAT">Secretaire</option>
+                {% endif %}
+                <option value="ROLE_PROFESSEUR">Professeur</option>
+                <option value="ROLE_ELEVE">Eleve</option>
+            </select>
+        </div>
+    </div> #}
+    <div class="row">
+        <div class="col-12 text-center">
+            <h4>INFOS PERSOS:</h4>
+        </div>
+        <div class="col-6">
+            {{ form_row(form.lastName, {'label':'Nom :', 'attr':{'class':'form-control control-label', 'autofocus':'true'}}) }}
+        </div>
+        <div class="col-6">
+            {{ form_row(form.firstName, {'label':'Prenom :', 'attr':{'class':'form-control control-label'}}) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            {{ form_row(form.birthDate, {'label':'Date de naissance :', 'attr':{'class':'form-control control-label'}}) }}
+        </div>
+        <div class="col-4">
+            {{ form_row(form.phone, {'label':'Numéro de téléphone :', 'attr':{'class':'form-control control-label'}}) }}
+        </div>
+        <div class="col-4">
+            {{ form_row(form.sex, {'label':'Sexe :', 'attr':{'class':'form-control control-label'}}) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {{ form_row(form.address, {'label':'Adresse :', 'attr':{'class':'form-control control-label'}}) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {{ form_row(form.email, {'label':'Email :', 'attr':{'class':'form-control control-label'}}) }}
+        </div>
+    </div>
+    <br><hr>
+    <div class="row">
+        <div class="col-12 text-center">
+            <h4>IDENTIFIANTS:</h4>
+        </div>
+        <div class="col-6">
+            {{ form_row(form.userName, {'label':'Pseudo :', 'attr':{'class':'form-control control-label'}}) }}
+        </div>
+        <div class="col-6">
+            {{ form_row(form.password, {'label':'Password :', 'attr':{'class':'form-control control-label'}}) }}
+        </div>
+    </div>
+    <br><hr>
+    <div class="row">
+        <div class="col-6">
+            {{ form_row(form.role, {'label':'Role :', 'attr':{'class':'form-control control-label'}}) }}
+        </div>
+        <div class="col-6">
+            {{ form_row(form.studentClassName, {'label':'Classe fréquentée :', 'attr':{'class':'form-control control-label'}}) }}
+        </div>
+    </div>
+    <br><hr>
+    {# {{ form_widget(form) }} #}
     <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}
