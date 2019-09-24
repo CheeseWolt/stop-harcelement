@@ -22,7 +22,7 @@ class AlertType extends AbstractType
         $builder
             //->add('alertDate',HiddenType::class, array('data' => date('Y-m-d')))   //Date du signalement
             ->add('eventDate',DateTimeType::class, [        //Date de l'evenement
-                'format'=>'dd-MM-yyyy'
+                'format'=>'dd-MM-yyyy H:i:s'
                 ])          
             ->add('ipAddress')           
             ->add('content',TextareaType::class)            //Contenu
