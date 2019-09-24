@@ -28,6 +28,12 @@ class AlertType extends AbstractType
                 'attr' => ['class' => 'js-datepicker'],
 
                 ])          
+            ->add('eventTime',DateTimeType::class, [        //Date de l'evenement
+                'widget' => 'single_text',
+                'html5'=>true,
+                'attr' => ['class' => 'js-datepicker'],
+
+                ])          
             ->add('ipAddress', TextType::class)           
             ->add('content',TextareaType::class)            //Contenu
             ->add('alertSender', EntityType::class, [       //Signalement expéditeur
