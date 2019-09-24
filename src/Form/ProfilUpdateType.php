@@ -18,29 +18,29 @@ class ProfilUpdateType extends AbstractType
     {
         $builder
             ->add('userName')
-            ->add('lastName')
-            ->add('firstName')
-            ->add('password')
-            ->add('birthDate', DateType::class, [
-                'required'=>false,
-                'format'=>'dd-MM-yyyy',
-                'empty_data'=> ''
-            ])
+            // ->add('lastName')
+            // ->add('firstName')
+            // ->add('password')
+            // ->add('birthDate', DateType::class, [
+            //     'required'=>false,
+            //     'format'=>'dd-MM-yyyy',
+            //     'empty_data'=> ''
+            // ])
             ->add('phone')
             ->add('address')
             ->add('email')
-            ->add('role', EntityType::class, [
-                'class'=>Role::class,
-                'choice_label'=>'name'
-            ])
-            ->add('sex', EntityType::class, [
-                'class'=>Sex::class,
-                'choice_label'=>'name'
-            ])
-            ->add('studentClassName', EntityType::class, [
-                'class'=>ClassName::class,
-                'choice_label'=>'name'
-            ])
+            // ->add('role', EntityType::class, [
+            //     'class'=>Role::class,
+            //     'choice_label'=>'name'
+            // ])
+            // ->add('sex', EntityType::class, [
+            //     'class'=>Sex::class,
+            //     'choice_label'=>'name'
+            // ])
+            // ->add('studentClassName', EntityType::class, [
+            //     'class'=>ClassName::class,
+            //     'choice_label'=>'name'
+            // ])
         ;
     }
 
