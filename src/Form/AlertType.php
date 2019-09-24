@@ -14,6 +14,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class AlertType extends AbstractType
 {
@@ -22,9 +23,12 @@ class AlertType extends AbstractType
         $builder
             //->add('alertDate',HiddenType::class, array('data' => date('Y-m-d')))   //Date du signalement
             ->add('eventDate',DateTimeType::class, [        //Date de l'evenement
-                'format'=>'dd-MM-yyyy H:i:s'
+                'widget' => 'single_text',
+                'html5'=>true,
+                'attr' => ['class' => 'js-datepicker'],
+
                 ])          
-            ->add('ipAddress')           
+            ->add('ipAddress', TextType::class)           
             ->add('content',TextareaType::class)            //Contenu
             ->add('alertSender', EntityType::class, [       //Signalement expéditeur
                 'class'=> User::class, 
