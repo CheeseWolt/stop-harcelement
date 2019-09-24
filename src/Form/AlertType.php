@@ -20,24 +20,22 @@ class AlertType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('alertDate')
-            // ->add('alertDate',HiddenType::class, array('data' => date('Y-m-d')))   //Date du signalement
-            ->add('eventDate')
-            // ->add('eventDate',DateTimeType::class)      //Date de l'evenement
-            ->add('ipAddress')
-            // ->add('ipAddress', HiddenType::class, array('data' => 1))   //Adresse ip
-            // ->add('content')
-            ->add('content',TextareaType::class)       //Contenu
-            ->add('alertSender', EntityType::class, [
-                'class'=>User::class, 
-                'choice_label'=>'lastName'
+            //->add('alertDate',HiddenType::class, array('data' => date('Y-m-d')))   //Date du signalement
+            ->add('eventDate',DateTimeType::class, [        //Date de l'evenement
+                'format'=>'dd-MM-yyyy'
+                ])          
+            ->add('ipAddress')           
+            ->add('content',TextareaType::class)            //Contenu
+            ->add('alertSender', EntityType::class, [       //Signalement expéditeur
+                'class'=> User::class, 
+                'choice_label'=>'lastName'          
             ])
-            ->add('alertManager', EntityType::class, [
-                'class'=>User::class, 
-                'required'=>false, 
-                'expanded'=>true,
-                'choice_label'=>'lastName'
-            ])
+            // ->add('alertManager', EntityType::class, [
+            //     'class'=>User::class, 
+            //     'required'=>false, 
+            //     'expanded'=>true,
+            //     'choice_label'=>'lastName'
+            //])
             ->add('location', EntityType::class, [
                 'class'=>Location::class, 
                 'expanded'=>true,
@@ -51,7 +49,7 @@ class AlertType extends AbstractType
             ->add('alertStyle', EntityType::class, [
                 'class'=>AlertStyle::class, 
                 'multiple'=>true,
-                'expanded'=>true,
+                'expanded' => true,
                 'choice_label'=>'name'
             ])
         ;

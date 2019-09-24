@@ -1,24 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Alert index{% endblock %}
+{% block title %}Liste des signalement{% endblock %}
 
 {% block body %}
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1>Alert index</h1>
+            <h1>Liste des signalements</h1>
         </div>
         <div class="col-12">
             <table class="table">
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>AlertDate</th>
-                        <th>EventDate</th>
-                        <th>IpAddress</th>
-                        <th>Content</th>
-                        <th>StartSupportDate</th>
-                        <th>EndSupportDate</th>
+                        <th>Dates des signalements</th>
+                        <th>Dates des événements</th>
+                        <th>Adresses Ip</th>
+                        <th>Contenus des signalements</th>
+                        <th>Début des signalements</th>
+                        <th>Fin des signalments</th>
                         <th>actions</th>
                     </tr>
                 </thead>
@@ -39,7 +39,7 @@
                     </tr>
                 {% else %}
                     <tr>
-                        <td colspan="8">no records found</td>
+                        <td colspan="8">Pas d'enregistrement trouvé</td>
                     </tr>
                 {% endfor %}
                 </tbody>
