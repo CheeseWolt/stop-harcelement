@@ -5,12 +5,14 @@ namespace App\Controller;
 use DateTime;
 use App\Entity\Alert;
 use App\Form\AlertType;
+use App\Entity\PrivateMessage;
+use App\Form\PrivateMessageType;
 use App\Repository\AlertRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/alert")
@@ -53,10 +55,27 @@ class AlertController extends AbstractController
     /**
      * @Route("/{id}", name="alert_show", methods={"GET"})
      */
-    public function show(Alert $alert): Response
+    public function show(Alert $alert, Request $request): Response
     {
+        $pms = $alert->getPrivateMessages();
+        $pm = new PrivateMessage();
+        $pm->setAlert($alert)->setUser($this->getUser());
+        $form = $this->createForm(PrivateMessageType::class,$pm);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($pm);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('alert_show',['id'=>$alert->getId()]);
+        }
+
         return $this->render('alert/show.html.twig', [
             'alert' => $alert,
+            'private_messages' => $pms,
+            'form'=>$form->createView(),
         ]);
     }
 
