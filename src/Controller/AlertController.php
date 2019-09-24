@@ -51,7 +51,7 @@ class AlertController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="alert_show", methods={"GET"})
+     * @Route("/{id}", name="alert_show")
      */
     public function show(Alert $alert, Request $request): Response
     {
