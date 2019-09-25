@@ -36,7 +36,6 @@ class AlertType extends AbstractType
                 'widget' => 'single_text',
                 'html5'=>true,
                 'label' => 'Heure de l\'événement',
-                'attr' => ['class' => 'js-datepicker'],
 
                 ])          
             ->add('ipAddress', TextType::class, [
