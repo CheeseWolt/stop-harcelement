@@ -14,15 +14,6 @@
             {{ include('alert/_form.html.twig') }}
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-6 form-group btn-container">
-            <button type="submit" class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
-        </div>
-        <div class="col-6 form-group btn-container text-right">
-            <a href="{{ path('alert_index') }}"><button class="btn btn-primary">retour aux signalements</button></a>
-        </div>
-    </div>
 </div>
 
 <style>

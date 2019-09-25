@@ -32,7 +32,7 @@
                                     {% endfor %}
                                 </td>
                                 <td>{{ alert.alertDate ? alert.alertDate|date('Y-m-d H:i:s') : '' }}</td>
-                                <td>{{ alert.eventDate ? alert.eventDate|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ alert.eventDate ? alert.eventDate|date('d-m-Y') : '' }} {{ alert.eventTime ? alert.eventTime|date('H:i:s') : '' }}</td>
                                 <td>{{ alert.ipAddress }}</td>
                                 <td>
                                         {{ alert.location.name }}

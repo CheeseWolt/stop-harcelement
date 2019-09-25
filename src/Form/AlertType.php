@@ -30,13 +30,12 @@ class AlertType extends AbstractType
                            'placeholder' => 'jj/mm/aaaa',
                            'autofocus'=>'true'
                         ],
-
+                'format'=>'dd-MM-yyyy',
                 ])          
             ->add('eventTime',TimeType::class, [        //Date de l'evenement
                 'widget' => 'single_text',
                 'html5'=>true,
                 'label' => 'Heure de l\'événement',
-
                 ])          
             ->add('ipAddress', TextType::class, [
                 'label' => 'Adresse Ip',
