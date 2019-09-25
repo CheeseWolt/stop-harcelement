@@ -18,6 +18,19 @@ class AlertRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Alert::class);
     }
+    /**
+     * @param $role
+     * @return User[]
+     */
+    public function findAllrole($role):array {
+        $qb = $this->createQueryBuilder('r')
+                   ->andWhere('r.role > :role')
+                   ->setParameter('role', $role)
+                   ->orderBy('r.role', 'ASC')
+                    ->getQuery();
+
+        return $qb->execute();
+                }
 
     // /**
     //  * @return Alert[] Returns an array of Alert objects
