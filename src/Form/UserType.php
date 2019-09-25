@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use DateTime;
 use App\Entity\Sex;
 use App\Entity\Role;
 use App\Entity\User;
@@ -11,6 +12,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 
 class UserType extends AbstractType
 {
@@ -21,10 +23,9 @@ class UserType extends AbstractType
             ->add('lastName')
             ->add('firstName')
             ->add('password')
-            ->add('birthDate', DateType::class, [
+            ->add('birthDate', BirthdayType::class, [
                 'required'=>false,
                 'format'=>'dd-MM-yyyy',
-                'empty_data'=> ''
             ])
             ->add('phone')
             ->add('address')
