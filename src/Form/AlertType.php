@@ -27,13 +27,15 @@ class AlertType extends AbstractType
                 'html5'=>false,
                 'label' => 'Date de l\'événement',
                 'attr' => ['class' => 'js-datepicker',
-                           'placeholder' => 'jj/mm/aaaa'],
+                           'placeholder' => 'jj/mm/aaaa',
+                           'autofocus'=>'true'
+                        ],
 
                 ])          
             ->add('eventTime',TimeType::class, [        //Date de l'evenement
                 'widget' => 'single_text',
                 'html5'=>true,
-                'label' => 'Date de l\'événement',
+                'label' => 'Heure de l\'événement',
                 'attr' => ['class' => 'js-datepicker'],
 
                 ])          
