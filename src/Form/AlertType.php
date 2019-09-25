@@ -28,7 +28,6 @@ class AlertType extends AbstractType
                 'label' => 'Date de l\'événement',
                 'attr' => ['class' => 'js-datepicker',
                            'placeholder' => 'jj/mm/aaaa',
-                           'autofocus'=>'true'
                         ],
                 'format'=>'dd-MM-yyyy',
                 ])          
