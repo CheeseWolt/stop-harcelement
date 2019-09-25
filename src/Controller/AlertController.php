@@ -33,6 +33,7 @@ class AlertController extends AbstractController
     public function new(Request $request): Response
     {
         $alert = new Alert();
+        $alert->setAlertSender($this->getUser());
         $form = $this->createForm(AlertType::class, $alert);
         $form->handleRequest($request);
 
