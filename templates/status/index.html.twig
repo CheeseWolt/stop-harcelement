@@ -1,26 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Status index{% endblock %}
+{% block title %}Gestion des status{% endblock %}
 
 {% block body %}
 <div class="container">
+    <br>
     <div class="row">
-        <div class="col-12">
-            <h1>Liste des status</h1>
+        <div class="col-12 text-center">
+            <h1>Gestion des status</h1>
+            <br>
         </div>
-        <div class="col-12">
-            <table class="table">
+        <div class="col-12 text-center">
+            <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>actions</th>
+                        <th>Status</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                 {% for status in statuses %}
                     <tr>
-                        <td>{{ status.id }}</td>
                         <td>{{ status.name }}</td>
                         <td>
                             <a href="{{ path('status_show', {'id': status.id}) }}"><button class="btn btn-primary">Afficher</button></a>

@@ -1,26 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Role index{% endblock %}
+{% block title %}Gestion des rôles{% endblock %}
 
 {% block body %}
 <div class="container">
+    <br>
     <div class="row">
-        <div class="col-12">
-            <h1>Liste des Roles</h1>
+        <div class="col-12 text-center">
+            <h1>Gestion des rôles</h1>
+            <br>
         </div>
-        <div class="col-12">
-            <table class="table">
+        <div class="col-12 text-center">
+            <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>actions</th>
+                        <th>Rôle</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                 {% for role in roles %}
                     <tr>
-                        <td>{{ role.id }}</td>
                         <td>{{ role.name }}</td>
                         <td>
                             <a href="{{ path('role_show', {'id': role.id}) }}"><button class="btn btn-primary">Afficher</button></a>
@@ -38,7 +38,7 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <a href="{{ path('role_new') }}"><button class="btn btn-success">Ajouter un role</button></a>
+            <a href="{{ path('role_new') }}"><button class="btn btn-success">Ajouter un rôle</button></a>
         </div>
     </div>
 </div>

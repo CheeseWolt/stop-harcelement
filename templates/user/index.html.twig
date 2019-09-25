@@ -1,36 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User index{% endblock %}
+{% block title %}Gestion des utilisateurs{% endblock %}
 
 {% block body %}
 <div class="container">
+    <br>
     <div class="row">
-        <div class="col-12">
-            <h1>Liste des utilisateurs</h1>
+        <div class="col-12 text-center">
+            <h1>Gestion des utilisateurs</h1>
+            <br>
         </div>
-        <div class="col-12">
-            <table class="table">
+        <div class="col-12 text-center">
+            <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>UserName</th>
-                        <th>LastName</th>
-                        <th>FirstName</th>
-                        <th>BirthDate</th>
-                        <th>Phone</th>
-                        <th>Address</th>
+                        <th>Pseudo</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Date de naissance</th>
+                        <th>Téléphone</th>
+                        <th>Adresse</th>
                         <th>Email</th>
-                        <th>actions</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                 {% for user in users %}
                     <tr>
-                        <td>{{ user.id }}</td>
                         <td>{{ user.userName }}</td>
                         <td>{{ user.lastName }}</td>
                         <td>{{ user.firstName }}</td>
-                        <td>{{ user.birthDate ? user.birthDate|date('Y-m-d') : '' }}</td>
+                        <td>{{ user.birthDate ? user.birthDate|date('d-m-Y') : '' }}</td>
                         <td>{{ user.phone }}</td>
                         <td>{{ user.address }}</td>
                         <td>{{ user.email }}</td>
