@@ -40,6 +40,11 @@ class ClassName
      */
     private $classLevel;
 
+    public function __toString()
+    {
+        return  $this->getClassLevel()->getName() . ' ' . $this->getName();
+    }
+
     public function __construct()
     {
         $this->userStudent = new ArrayCollection();
