@@ -42,7 +42,8 @@ class AlertType extends AbstractType
             ->add('content', TextareaType::class, [         //Contenu
                 'label' => 'Description de l\'événement',
                 'attr' => [
-                    'placeholder' => 'Faites içi votre description'
+                    'placeholder' => 'Faites içi votre description',
+                    'rows' => 7
                 ]
             ])            
             // ->add('alertSender', EntityType::class, [       //Signalement expéditeur
