@@ -1,19 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Sex{% endblock %}
+{% block title %}Ajouter un sexe{% endblock %}
 
 {% block body %}
 <div class="container">
+    <br>
     <div class="row">
-        <div class="col-12">
-            <h1>Create new Sex</h1>
+        <div class="col-12 text-center">
+            <h1>Ajouter un sexe</h1>
         </div>
     </div>
+    <br>
     <div class="row">
         <div class="col-12">
             {{ include('sex/_form.html.twig') }}
         </div>
     </div>
+    <hr>
     <div class="row">
         <div class="col-12">
             <a href="{{ path('sex_index') }}"><button class="btn btn-primary">retour aux sexes</button></a>

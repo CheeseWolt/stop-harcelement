@@ -1,14 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ClassName{% endblock %}
+{% block title %}Classe{% endblock %}
 
 {% block body %}
 <div class="container">
+    <br>
     <div class="row">
-        <div class="col-12">
-            <h1>ClassName</h1>
+        <div class="col-12 text-center">
+            <h1>Classe</h1>
+            <br>
         </div>
-        <div class="col-12">
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
             <table class="table">
                 <tbody>
                     <tr>
@@ -16,8 +20,32 @@
                         <td>{{ class_name.id }}</td>
                     </tr>
                     <tr>
-                        <th>Name</th>
+                        <th>Niveau scolaire</th>
+                        <td>{{ class_name.classLevel.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nom</th>
                         <td>{{ class_name.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Professeur principale</th>
+                        <td>
+                        {% if class_name.userManager.sex.name == 'Masculin' %}
+                            Mr 
+                        {% endif %}
+                        {% if class_name.userManager.sex.name == 'Feminin' %}
+                            Mme 
+                        {% endif %}
+                        {{ class_name.userManager.lastName }} {{ class_name.userManager.firstName }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Eleves</th>
+                        <td>
+                            {% for eleve in class_name.userStudent %}
+                                {{ eleve.lastname }} {{ eleve.firstName }}, 
+                            {% endfor %}
+                        </td>
                     </tr>
                 </tbody>
             </table>

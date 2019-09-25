@@ -1,22 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New ClassLevel{% endblock %}
+{% block title %}Ajouter un niveau scolaire{% endblock %}
 
 {% block body %}
 <div class="container">
+    <br>
     <div class="row">
-        <div class="col-12">
-            <h1>Create new ClassLevel</h1>
+        <div class="col-12 text-center">
+            <h1>Ajouter un niveau scolaire</h1>
         </div>
     </div>
+    <br>
     <div class="row">
         <div class="col-12">
             {{ include('class_level/_form.html.twig') }}
         </div>
     </div>
+    <hr>
     <div class="row">
         <div class="col-12">
-            <a href="{{ path('class_level_index') }}"><button class="btn btn-primary">retour aux rangs de classe</button></a>
+            <a href="{{ path('class_level_index') }}"><button class="btn btn-primary">retour aux niveaux scolaire</button></a>
         </div>
     </div>
 </div>

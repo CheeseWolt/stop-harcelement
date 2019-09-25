@@ -4,11 +4,15 @@
 
 {% block body %}
 <div class="container">
+    <br>
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 text-center">
             <h1>User</h1>
         </div>
-        <div class="col-12">
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-12 text-center">
             <table class="table">
                 <tbody>
                     <tr>
@@ -16,31 +20,27 @@
                         <td>{{ user.id }}</td>
                     </tr>
                     <tr>
-                        <th>UserName</th>
+                        <th>Pseudo</th>
                         <td>{{ user.userName }}</td>
                     </tr>
                     <tr>
-                        <th>LastName</th>
+                        <th>Nom</th>
                         <td>{{ user.lastName }}</td>
                     </tr>
                     <tr>
-                        <th>FirstName</th>
+                        <th>Prenom</th>
                         <td>{{ user.firstName }}</td>
                     </tr>
                     <tr>
-                        <th>Password</th>
-                        <td>{{ user.password }}</td>
-                    </tr>
-                    <tr>
-                        <th>BirthDate</th>
+                        <th>Date de naissance</th>
                         <td>{{ user.birthDate ? user.birthDate|date('Y-m-d') : '' }}</td>
                     </tr>
                     <tr>
-                        <th>Phone</th>
+                        <th>Téléphone</th>
                         <td>{{ user.phone }}</td>
                     </tr>
                     <tr>
-                        <th>Address</th>
+                        <th>Adresse</th>
                         <td>{{ user.address }}</td>
                     </tr>
                     <tr>

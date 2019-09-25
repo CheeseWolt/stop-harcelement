@@ -1,26 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit AlertStyle{% endblock %}
+{% block title %}Modifier un type d'alerte{% endblock %}
 
 {% block body %}
 <div class="container">
+    <br>
     <div class="row">
-        <div class="col-12">
-            <h1>Edit AlertStyle</h1>
+        <div class="col-12 text-center">
+            <h1>Modifier un type d'alerte</h1>
         </div>
     </div>
+    <br>
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 text-right">
             {{ include('alert_style/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
         </div>
     </div>
+    <hr>
     <div class="row">
-        <div class="col-12">
-            <a href="{{ path('alert_style_index') }}"><button class="btn btn-primary">retour aux types</button></a>
+        <div class="col-6">
+            <a href="{{ path('alert_style_index') }}"><button class="btn btn-primary">retour aux types d'alerte</button></a>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
+        <div class="col-6 text-right">
             {{ include('alert_style/_delete_form.html.twig') }}
         </div>
     </div>

@@ -1,25 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New AlertStyle{% endblock %}
+{% block title %}Ajouter un type d'alerte{% endblock %}
 
 {% block body %}
 <div class="container">
+    <br>
     <div class="row">
-        <div class="col-12">
-            <h1>Create new AlertStyle</h1>
+        <div class="col-12 text-center">
+            <h1>Ajouter un type d'alerte</h1>
         </div>
     </div>
+    <br>
     <div class="row">
         <div class="col-12">
             {{ include('alert_style/_form.html.twig') }}
         </div>
     </div>
+    <hr>
     <div class="row">
         <div class="col-12">
-            <a href="{{ path('alert_style_index') }}"><button class="btn btn-primary">retour aux types</button></a>
+            <a href="{{ path('alert_style_index') }}"><button class="btn btn-primary">retour aux types d'alerte</button></a>
         </div>
     </div>
 </div>
-
-
 {% endblock %}

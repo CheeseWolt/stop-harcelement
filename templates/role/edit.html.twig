@@ -1,26 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Role{% endblock %}
+{% block title %}Modifier un Rôle{% endblock %}
 
 {% block body %}
 <div class="container">
+    <br>
     <div class="row">
-        <div class="col-12">
-            <h1>Edit Role</h1>
+        <div class="col-12 text-center">
+            <h1>Modifier un Rôle</h1>
         </div>
     </div>
+    <br>
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 text-right">
             {{ include('role/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
         </div>
     </div>
+    <hr>
     <div class="row">
-        <div class="col-12">
-            <a href="{{ path('role_index') }}"><button class="btn btn-primary">retour aux roles</button></a>
+        <div class="col-6">
+            <a href="{{ path('role_index') }}"><button class="btn btn-primary">retour aux rôles</button></a>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
+        <div class="col-6 text-right">
             {{ include('role/_delete_form.html.twig') }}
         </div>
     </div>

@@ -14,8 +14,9 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Niveau</th>
+                        <th>Niveau scolaire</th>
                         <th>Nom</th>
+                        <th>Professeur principal</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -24,6 +25,14 @@
                     <tr>
                         <td>{{ class_name.classLevel.name }}</td>
                         <td>{{ class_name.name }}</td>
+                        <td>
+                        {% if class_name.userManager.sex.name == 'Masculin' %}
+                            Mr 
+                        {% endif %}
+                        {% if class_name.userManager.sex.name == 'Feminin' %}
+                            Mme 
+                        {% endif %}
+                        {{ class_name.userManager.lastName }} {{ class_name.userManager.firstName }}</td>
                         <td>
                             <a href="{{ path('class_name_show', {'id': class_name.id}) }}"><button class="btn btn-primary">Afficher</button></a>
                             <a href="{{ path('class_name_edit', {'id': class_name.id}) }}"><button class="btn btn-success">Editer</button></a>

@@ -1,14 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Sex{% endblock %}
+{% block title %}Sexe{% endblock %}
 
 {% block body %}
 <div class="container">
+    <br>
     <div class="row">
-        <div class="col-12">
-            <h1>Sex</h1>
+        <div class="col-12 text-center">
+            <h1>Sexe</h1>
+            <br>
         </div>
-        <div class="col-12">
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
             <table class="table">
                 <tbody>
                     <tr>
@@ -16,7 +20,7 @@
                         <td>{{ sex.id }}</td>
                     </tr>
                     <tr>
-                        <th>Name</th>
+                        <th>Sexe</th>
                         <td>{{ sex.name }}</td>
                     </tr>
                 </tbody>

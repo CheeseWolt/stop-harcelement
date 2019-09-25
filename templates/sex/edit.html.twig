@@ -1,26 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Sex{% endblock %}
+{% block title %}Modifier un sexe{% endblock %}
 
 {% block body %}
 <div class="container">
+    <br>
     <div class="row">
-        <div class="col-12">
-            <h1>Edit Sex</h1>
+        <div class="col-12 text-center">
+            <h1>Modifier un sexe</h1>
         </div>
     </div>
+    <br>
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 text-right">
             {{ include('sex/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
         </div>
     </div>
+    <hr>
     <div class="row">
-        <div class="col-12">
+        <div class="col-6">
             <a href="{{ path('sex_index') }}"><button class="btn btn-primary">retour aux sexes</button></a>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
+        <div class="col-6 text-right">
             {{ include('sex/_delete_form.html.twig') }}
         </div>
     </div>

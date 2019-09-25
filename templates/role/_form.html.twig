@@ -1,4 +1,13 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+    <div class="row">
+        <div class="col-12 text-center">
+            {{ form_row(form.name, {'label':'Role :', 'attr':{'class':'form-control control-label', 'autofocus':'true'}}) }}
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-12 text-right">
+            <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+        </div>
+    </div>
 {{ form_end(form) }}

@@ -1,26 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit ClassLevel{% endblock %}
+{% block title %}Modifier un niveau scolaire{% endblock %}
 
 {% block body %}
     <div class="container">
+        <br>
         <div class="row">
-            <div class="col-12">
-                <h1>Edit ClassLevel</h1>
+            <div class="col-12 text-center">
+                <h1>Modifier un niveau scolaire</h1>
             </div>
         </div>
+        <br>
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 text-right">
                 {{ include('class_level/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
             </div>
         </div>
+        <hr>
         <div class="row">
-            <div class="col-12">
-                <a href="{{ path('class_level_index') }}"><button class="btn btn-primary">retour aux rangs de classe</button></a>
+            <div class="col-6">
+                <a href="{{ path('class_level_index') }}"><button class="btn btn-primary">retour aux niveaux scolaires</button></a>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
+            <div class="col-6 text-right">
                 {{ include('class_level/_delete_form.html.twig') }}
             </div>
         </div>

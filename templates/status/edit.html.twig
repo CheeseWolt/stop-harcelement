@@ -1,26 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Status{% endblock %}
+{% block title %}Modifier un Status{% endblock %}
 
 {% block body %}
 <div class="container">
+    <br>
     <div class="row">
-        <div class="col-12">
-            <h1>Edit Status</h1>
+        <div class="col-12 text-center">
+            <h1>Modifier un Status</h1>
         </div>
     </div>
+    <br>
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 text-right">
             {{ include('status/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
         </div>
     </div>
+    <hr>
     <div class="row">
-        <div class="col-12">
+        <div class="col-6">
             <a href="{{ path('status_index') }}"><button class="btn btn-primary">retour aux status</button></a>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
+        <div class="col-6 text-right">
             {{ include('status/_delete_form.html.twig') }}
         </div>
     </div>

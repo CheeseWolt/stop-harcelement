@@ -1,26 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Location{% endblock %}
+{% block title %}Modifier un lieu{% endblock %}
 
 {% block body %}
 <div class="container">
+    <br>
     <div class="row">
-        <div class="col-12">
-            <h1>Edit Location</h1>
+        <div class="col-12 text-center">
+            <h1>Modifier un lieu</h1>
         </div>
     </div>
+    <br>
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 text-right">
             {{ include('location/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
         </div>
     </div>
+    <hr>
     <div class="row">
-        <div class="col-12">
+        <div class="col-6">
             <a href="{{ path('location_index') }}"><button class="btn btn-primary">retour aux lieux</button></a>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
+        <div class="col-6 text-right">
             {{ include('location/_delete_form.html.twig') }}
         </div>
     </div>
