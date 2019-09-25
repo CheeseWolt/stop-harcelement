@@ -59,11 +59,13 @@
             {
                 name: 'Témoins',
                 color: 'rgba(248,161,63,1)',
-                data: [{% if dtv %}
-                        {% for alert in dtv[1] %}
+                data: [
+                    {% if dtv[2] is defined %}
+                        {% for alert in dtv[2] %}
                             {{ alert }},
                         {% endfor %}
-                    {% endif %}],
+                    {% endif %}
+                    ],
                 tooltip: {
                     valuePrefix: '$',
                     valueSuffix: ' M'
@@ -74,11 +76,13 @@
             }, {
                 name: 'Victimes',
                 color: 'rgba(186,60,61,.9)',
-                data: [{% if dtv %}
-                            {% for alert in dtv[2] %}
+                data: [
+                    {% if dtv[1] is defined %}
+                            {% for alert in dtv[1] %}
                                 {{ alert }},
                             {% endfor %}
-                        {% endif %}],
+                        {% endif %}
+                        ],
                 tooltip: {
                     valuePrefix: '$',
                     valueSuffix: ' M'
