@@ -1,12 +1,29 @@
 {% form_theme form 'bootstrap_4_layout.html.twig' %}
 
-    {{ form(form)}}
+{{ form_start(form) }}
+<div class="row">
+    <div class="col-6">
+        <div class="form-group">
+            {{form_row(form.eventDate)}}
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group">
+            {{form_row(form.eventTime)}}
+        </div>
+    </div>
+</div>
+
+{{ form_rest(form)}}
+{{ form_end(form) }}
+
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.fr.min.js"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.fr.min.js"></script>
 <script>
     $(document).ready(function () {
-        $('.js-datepicker').datepicker({language: 'fr-FR'});
+        $('.js-datepicker').datepicker({ language: 'fr-FR' });
     });
 </script>
-
