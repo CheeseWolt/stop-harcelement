@@ -4,85 +4,85 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
 <script>
-Highcharts.chart('nbIncident', {
-    chart: {
-        type: 'column'
-    },
-    title: {
-        text: 'Déclaration témoin-victime/temps'
-    },
-    xAxis: {
-        categories: [
-            'Septembre',
-            'Octobre',
-            'Novembre',
-            'Décembre',
-            'Janvier',
-            'Février',
-            'Mars',
-            'Avril',
-            'Mai',
-            'Juin',
-            'Juillet'
-        ]
-    },
-    yAxis: [{
-        min: 0,
-        max: 50,
-        title: {
-            text: "Déclarations d'élèves"
-        }, 
-    }, {
-        min: 0,
-        max: 50,
-        title: {
-            text: ' '
+    Highcharts.chart('nbIncident', {
+        chart: {
+            type: 'column'
         },
-        opposite: true
-    }],
-    legend: {
-        shadow: false
-    },
-    tooltip: {
-        shared: true
-    },
-    plotOptions: {
-        column: {
-            grouping: false,
-            shadow: false,
-            borderWidth: 0
-        }
-    },
-    series: [{
-        name: 'Témoins',
-        color: 'rgba(248,161,63,1)',
-        data: [
-        {% for alert in dtv[1] %}
-            {{  alert  }},
-        {% endfor %}
+        title: {
+            text: 'Déclaration témoin-victime/temps'
+        },
+        xAxis: {
+            categories: [
+                'Septembre',
+                'Octobre',
+                'Novembre',
+                'Décembre',
+                'Janvier',
+                'Février',
+                'Mars',
+                'Avril',
+                'Mai',
+                'Juin',
+                'Juillet'
+            ]
+        },
+        yAxis: [
+            {
+                min: 0,
+                max: 50,
+                title: {
+                    text: "Déclarations d'élèves"
+                }
+            }, {
+                min: 0,
+                max: 50,
+                title: {
+                    text: ' '
+                },
+                opposite: true
+            }
         ],
-        tooltip: {
-            valuePrefix: '$',
-            valueSuffix: ' M'
+        legend: {
+            shadow: false
         },
-        pointPadding: 0.3,
-        pointPlacement: 0.2,
-        yAxis: 1
-    }, {
-        name: 'Victimes',
-        color: 'rgba(186,60,61,.9)',
-        data: [
-                {% for alert in dtv[2] %}
-            {{  alert  }},
-        {% endfor %}]
-        ,
         tooltip: {
-            valuePrefix: '$',
-            valueSuffix: ' M'
+            shared: true
         },
-        pointPadding: 0.4,
-        pointPlacement: 0.2,
-        yAxis: 1
-    }]
-});
+        plotOptions: {
+            column: {
+                grouping: false,
+                shadow: false,
+                borderWidth: 0
+            }
+        },
+        series: [
+            {
+                name: 'Témoins',
+                color: 'rgba(248,161,63,1)',
+                data: [{% if dtv %}
+                        {% for alert in dtv[1] %}
+                            {{ alert }},{% endfor %}
+                    {% endif %}],
+                tooltip: {
+                    valuePrefix: '$',
+                    valueSuffix: ' M'
+                },
+                pointPadding: 0.3,
+                pointPlacement: 0.2,
+                yAxis: 1
+            }, {
+                name: 'Victimes',
+                color: 'rgba(186,60,61,.9)',
+                data: [{% if dtv %}{% for alert in dtv[2] %}
+                            {{ alert }},{% endfor %}]{% endif %},
+                tooltip: {
+                    valuePrefix: '$',
+                    valueSuffix: ' M'
+                },
+                pointPadding: 0.4,
+                pointPlacement: 0.2,
+                yAxis: 1
+            }
+        ]
+    });
 </script>
