@@ -29,13 +29,13 @@
         yAxis: [
             {
                 min: 0,
-                max: 50,
+                max: {{ dtvMax < 10 ? 10 : dtvMax }},
                 title: {
                     text: "Déclarations d'élèves"
                 }
             }, {
                 min: 0,
-                max: 50,
+                max: {{ dtvMax < 10 ? 10 : dtvMax }},
                 title: {
                     text: ' '
                 },
@@ -66,10 +66,6 @@
                         {% endfor %}
                     {% endif %}
                     ],
-                tooltip: {
-                    valuePrefix: '$',
-                    valueSuffix: ' M'
-                },
                 pointPadding: 0.3,
                 pointPlacement: 0.2,
                 yAxis: 1
