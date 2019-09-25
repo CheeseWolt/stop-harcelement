@@ -1,26 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ClassLevel index{% endblock %}
+{% block title %}Gestion des niveaux scolaires{% endblock %}
 
 {% block body %}
 <div class="container">
+    <br>
     <div class="row">
-        <div class="col-12">
-            <h1>Liste des rangs de classes</h1>
+        <div class="col-12 text-center">
+            <h1>Gestion des niveaux scolaires</h1>
+            <br>
         </div>
-        <div class="col-12">
-            <table class="table">
+        <div class="col-12 text-center">
+            <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>actions</th>
+                        <th>Niveau scolaire</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                 {% for class_level in class_levels %}
                     <tr>
-                        <td>{{ class_level.id }}</td>
                         <td>{{ class_level.name }}</td>
                         <td>
                             <a href="{{ path('class_level_show', {'id': class_level.id}) }}"><button class="btn btn-primary">Afficher</button></a>
