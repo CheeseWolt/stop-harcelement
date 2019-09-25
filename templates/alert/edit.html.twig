@@ -20,4 +20,23 @@
         </div>
     </div>
 </div>
+
+<style>
+    .container {
+        width: 50%;
+    }
+    fieldset.form-group::after {
+        content: '';
+        border-bottom: 1px solid #CCC;
+        height: 10px;
+        display: block;
+        margin: 10px 0;
+    }
+    label:not(.form-check-label),
+    legend {
+        font-weight: bold;
+    }
+</style>
 {% endblock %}
+
+

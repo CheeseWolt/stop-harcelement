@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des signalement
+{% block title %}Liste des signalements
 {% endblock %}
 
 {% block body %}
@@ -16,10 +16,7 @@
                             <th>Type de harcelement</th>
                             <th>Dates des signalements</th>
                             <th>Dates des événements</th>
-                            <th>Adresse Ip</th>
                             <th>Lieu des faits</th>
-                            <th>Date de prise en charge</th>
-                            <th>Fin de prise en charge</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -33,12 +30,9 @@
                                 </td>
                                 <td>{{ alert.alertDate ? alert.alertDate|date('Y-m-d H:i:s') : '' }}</td>
                                 <td>{{ alert.eventDate ? alert.eventDate|date('d-m-Y') : '' }} {{ alert.eventTime ? alert.eventTime|date('H:i:s') : '' }}</td>
-                                <td>{{ alert.ipAddress }}</td>
                                 <td>
-                                        {{ alert.location.name }}
+                                    {{ alert.location.name }}
                                 </td>
-                                <td>{{ alert.startSupportDate ? alert.startSupportDate|date('Y-m-d H:i:s') : '' }}</td>
-                                <td>{{ alert.endSupportDate ? alert.endSupportDate|date('Y-m-d H:i:s') : '' }}</td>
                                 <td>
                                     <a href="{{ path('alert_show', {'id': alert.id}) }}" class="btn btn-primary">Afficher</a>
                                     <a href="{{ path('alert_edit', {'id': alert.id}) }}" class="btn btn-success">Editer</a>
