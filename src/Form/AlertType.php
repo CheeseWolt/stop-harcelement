@@ -26,7 +26,8 @@ class AlertType extends AbstractType
                 'widget' => 'single_text',
                 'html5'=>false,
                 'label' => 'Date de l\'événement',
-                'attr' => ['class' => 'js-datepicker'],
+                'attr' => ['class' => 'js-datepicker',
+                           'placeholder' => 'jj/mm/aaaa'],
 
                 ])          
             ->add('eventTime',TimeType::class, [        //Date de l'evenement
@@ -39,13 +40,17 @@ class AlertType extends AbstractType
             ->add('ipAddress', TextType::class, [
                 'label' => 'Adresse Ip',
                 ])           
-            ->add('content', TextareaType::class, [
+            ->add('content', TextareaType::class, [         //Contenu
                 'label' => 'Description de l\'événement',
-            ])            //Contenu
-            ->add('alertSender', EntityType::class, [       //Signalement expéditeur
-                'class'=> User::class, 
-                'choice_label'=>'lastName'          
-            ])
+                'attr' => [
+                    'placeholder' => 'Faites içi votre description'
+                ]
+            ])            
+            // ->add('alertSender', EntityType::class, [       //Signalement expéditeur
+            //     'class'=> User::class, 
+            //     'choice_label'=>'lastName',
+            //     'label' => 'Signalement de l\'utilisateur',          
+            // ])
             // ->add('alertManager', EntityType::class, [
             //     'class'=>User::class, 
             //     'required'=>false, 
@@ -55,18 +60,21 @@ class AlertType extends AbstractType
             ->add('location', EntityType::class, [
                 'class'=>Location::class, 
                 'expanded'=>true,
-                'choice_label'=>'name'
+                'choice_label'=>'name',
+                'label' => 'Lieu de l\'événement',
             ])
             ->add('status', EntityType::class, [
                 'class'=>Status::class, 
                 'expanded'=>true,
-                'choice_label'=>'name'
+                'choice_label'=>'name',
+                'label' => 'Votre statut'
             ])
             ->add('alertStyle', EntityType::class, [
                 'class'=>AlertStyle::class, 
                 'multiple'=>true,
                 'expanded' => true,
-                'choice_label'=>'name'
+                'choice_label'=>'name',
+                'label' => 'Type du signalement',
             ])
         ;
     }
