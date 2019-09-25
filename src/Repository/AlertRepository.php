@@ -18,19 +18,26 @@ class AlertRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Alert::class);
     }
-    /**
-     * @param $role
-     * @return User[]
-     */
-    public function findAllrole($role):array {
-        $qb = $this->createQueryBuilder('r')
-                   ->andWhere('r.role > :role')
-                   ->setParameter('role', $role)
-                   ->orderBy('r.role', 'ASC')
-                    ->getQuery();
 
-        return $qb->execute();
-                }
+    public function getStatusRatio()
+    {
+        $query = $this->createQueryBuilder('a')
+                ->select('count(a) as nb , count(a.status) , SUBSTRING(a.eventDate,6,2) as mois')
+                ->groupBy('mois')
+                ->orderBy('mois', 'ASC')
+                ->getQuery();
+        return $query->execute();
+    }
+
+    public function getStatusRatioByMonth()
+    {
+        $em = $this->getEntityManager();
+        $sql = 'SELECT alert.status_id as idAlert, count(alert.status_id) as nb, Substring(alert.event_date, 6, 2) as mois FROM `alert` Group BY mois, idAlert ';
+        $conn = $em->getConnection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 
     // /**
     //  * @return Alert[] Returns an array of Alert objects

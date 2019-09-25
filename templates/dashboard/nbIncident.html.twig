@@ -56,7 +56,11 @@ Highcharts.chart('nbIncident', {
     series: [{
         name: 'Témoins',
         color: 'rgba(248,161,63,1)',
-        data: [5, 20, 7, 6, 12, 7],
+        data: [
+        {% for alert in dtv[1] %}
+            {{  alert  }},
+        {% endfor %}
+        ],
         tooltip: {
             valuePrefix: '$',
             valueSuffix: ' M'
@@ -67,7 +71,11 @@ Highcharts.chart('nbIncident', {
     }, {
         name: 'Victimes',
         color: 'rgba(186,60,61,.9)',
-        data: [2, 5, 10, 6, 12, 7],
+        data: [
+                {% for alert in dtv[2] %}
+            {{  alert  }},
+        {% endfor %}]
+        ,
         tooltip: {
             valuePrefix: '$',
             valueSuffix: ' M'
