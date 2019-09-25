@@ -18,9 +18,8 @@
                         <th>Nom</th>
                         <th>Prenom</th>
                         <th>Date de naissance</th>
-                        <th>Téléphone</th>
-                        <th>Adresse</th>
-                        <th>Email</th>
+                        <th>Classe fréquentée</th>
+                        <th>Classe managée</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -31,9 +30,23 @@
                         <td>{{ user.lastName }}</td>
                         <td>{{ user.firstName }}</td>
                         <td>{{ user.birthDate ? user.birthDate|date('d-m-Y') : '' }}</td>
-                        <td>{{ user.phone }}</td>
-                        <td>{{ user.address }}</td>
-                        <td>{{ user.email }}</td>
+                        <td>
+                            {% if user.studentClassName %}
+                                {{ user.studentClassName.classLevel.name }} {{ user.studentClassName.name }}
+                            {% else %}
+                                /
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if user.teacherClassName %}
+                                {% for classe in user.teacherClassName %}
+                                    {{ classe.classLevel.name }} {{ classe.name }}, 
+                                {% endfor %}
+                            {% endif %}
+                            {% if user.role.name != 'ROLE_PROFESSEUR' %}
+                                /
+                            {% endif %}
+                        </td>
                         <td>
                             <a href="{{ path('user_show', {'id': user.id}) }}"><button class="btn btn-primary">Afficher</button></a>
                             <a href="{{ path('user_edit', {'id': user.id}) }}"><button class="btn btn-success">Editer</button></a>
