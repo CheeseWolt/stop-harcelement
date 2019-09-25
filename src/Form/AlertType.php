@@ -25,17 +25,23 @@ class AlertType extends AbstractType
             ->add('eventDate', DateType::class, [        //Date de l'evenement
                 'widget' => 'single_text',
                 'html5'=>false,
+                'label' => 'Date de l\'événement',
                 'attr' => ['class' => 'js-datepicker'],
 
                 ])          
             ->add('eventTime',TimeType::class, [        //Date de l'evenement
                 'widget' => 'single_text',
                 'html5'=>true,
+                'label' => 'Date de l\'événement',
                 'attr' => ['class' => 'js-datepicker'],
 
                 ])          
-            ->add('ipAddress', TextType::class)           
-            ->add('content', TextareaType::class)            //Contenu
+            ->add('ipAddress', TextType::class, [
+                'label' => 'Adresse Ip',
+                ])           
+            ->add('content', TextareaType::class, [
+                'label' => 'Description de l\'événement',
+            ])            //Contenu
             ->add('alertSender', EntityType::class, [       //Signalement expéditeur
                 'class'=> User::class, 
                 'choice_label'=>'lastName'          
