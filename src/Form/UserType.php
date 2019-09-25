@@ -40,7 +40,7 @@ class UserType extends AbstractType
             ])
             ->add('studentClassName', EntityType::class, [
                 'class'=>ClassName::class,
-                'choice_label'=>'name'
+                // 'choice_label'=>'name'
             ])
         ;
     }
