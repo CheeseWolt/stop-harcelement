@@ -4,6 +4,7 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
 <script>
+
     Highcharts.chart('nbIncident', {
         chart: {
             type: 'column'
@@ -13,17 +14,11 @@
         },
         xAxis: {
             categories: [
-                'Septembre',
-                'Octobre',
-                'Novembre',
-                'Décembre',
-                'Janvier',
-                'Février',
-                'Mars',
-                'Avril',
-                'Mai',
-                'Juin',
-                'Juillet'
+                {% if dtv is defined %}
+                    {% for key, month in dtv[1] %}
+                        "{{ key }}",
+                    {% endfor %}
+                {% endif %}
             ]
         },
         yAxis: [
