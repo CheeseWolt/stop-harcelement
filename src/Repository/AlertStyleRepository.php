@@ -19,6 +19,21 @@ class AlertStyleRepository extends ServiceEntityRepository
         parent::__construct($registry, AlertStyle::class);
     }
 
+    public function getStylesByMonth()
+    {
+        $em = $this->getEntityManager();
+        $sql = 'SELECT alert_style.name as typeAlert, substring(alert.event_date,6,2) as month, COUNT(alert.id) as nbAlert
+                FROM alert 
+                JOIN alert_alert_style ON alert.id = alert_alert_style.alert_id 
+                JOIN alert_style on alert_alert_style.alert_style_id = alert_style.id 
+                GROUP BY month, typeAlert ';
+        $conn = $em->getConnection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+
     // /**
     //  * @return AlertStyle[] Returns an array of AlertStyle objects
     //  */

@@ -10,17 +10,22 @@
     margin: 0 auto;
 }
 </style>
-{# <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div> #}
 <script>
     Highcharts.chart('incidentType', {
     chart: {
         type: 'column'
     },
     title: {
-        text: "Type d'aggression/date"
+        text: "Répartition des agressions par mois"
     },
     xAxis: {
-        categories: ['Septembre', 'Octobre', 'Novembre', 'Décembre', 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet']
+        categories: [
+                {% if tam is defined %}
+                    {% for key, month in tam["Physique"] %}
+                        "{{ key }}",
+                    {% endfor %}
+                {% endif %}
+        ]
     },
     yAxis: {
         min: 0,
@@ -33,25 +38,23 @@
         shared: true
     },
     plotOptions: {
-        column: {
-        stacking: 'percent'
+        series: {
+            stacking: 'normal'
         }
     },
-    series: [{
-        name: 'Brimades',
-        data: [5, 3, 4, 7, 2]
-    }, {
-        name: 'Insultes',
-        data: [2, 2, 3, 2, 1]
-    }, {
-        name: 'Agression physique',
-        data: [3, 4, 4, 2, 5]
-    }, {
-        name: 'Agression sexuelle',
-        data: [2, 2, 3, 2, 1]
-    }, {
-        name: 'vols',
-        data: [2, 2, 3, 2, 1]
-    }]
+    series: [
+        {% if tam is defined %}
+            {% for key, style in tam %}
+                {
+                    name: '{{key}}',
+                    data: [
+                        {% for nb in style %}
+                            {{ nb }},
+                        {% endfor %}
+                    ]
+                },
+            {% endfor %}
+        {% endif %}
+    ]
     });
 </script>
