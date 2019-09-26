@@ -41,32 +41,14 @@ class AlertRepository extends ServiceEntityRepository
     }
 
     // GRAPH 2 Type d'Aggression / Mois
-    // public function getEventType()
-    // {
-    //     $query = $this->createQueryBuilder('a')
-    //                   ->select('count(a) as nb , count(a.alertType) , SUBSTRING(a.eventDate,6,2) as mois')
-    //                   ->groupBy('mois')
-    //                   ->orderBy('mois', 'ASC')
-    //                   ->getQuery();
-    //     return $query->execute();
-    // }
 
-    // public function getEventTypeByMonth()
-    // {
-    //     $em = $this->getEntityManager();
-    //     $sql = 'SELECT alert_style.id as idAlertStyle, count(alert_style.id) as nb, Substring(alert.event_date, 6, 2) as mois FROM `alert` Group BY mois, idAlertStyle';
-    //     $conn = $em->getConnection();
-    //     $stmt = $conn->prepare($sql);
-    //     $stmt->execute();
-    //     return $stmt->fetchAll();
-    // }
 
     // GRAPH 3 Victime genre / type d'aggression
         public function getVictimGenre() {
 
         }
         public function getVictimGenreByAlertType() {
-            
+
         }
 
 
