@@ -40,8 +40,7 @@ class UserController extends AbstractController
         $Secretariat = new Role();
         $roles['Professeur'] = $Prof->setName('ROLE_PROFESSEUR');
         $roles['Élève'] = $Eleve->setName('ROLE_ELEVE');
-
-        if ($this->getUser()->getRole() == 'ROLE_ADMIN') {
+        if ($this->getUser()->getRoles()[0] == 'ROLE_ADMIN') {
             $roles['Admin'] = $Admin->setName('ROLE_ADMIN');
             $roles['Secrétariat'] = $Secretariat->setName('ROLE_SECRETARIAT');
         }
