@@ -14,10 +14,7 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Pseudo</th>
-                        <th>Nom</th>
-                        <th>Prenom</th>
-                        <th>Date de naissance</th>
+                        <th>Identité</th>
                         <th>Classe fréquentée</th>
                         <th>Classe managée</th>
                         <th>Actions</th>
@@ -26,10 +23,7 @@
                 <tbody>
                 {% for user in users %}
                     <tr>
-                        <td>{{ user.userName }}</td>
-                        <td>{{ user.lastName }}</td>
-                        <td>{{ user.firstName }}</td>
-                        <td>{{ user.birthDate ? user.birthDate|date('d-m-Y') : '' }}</td>
+                        <td>{{ user.lastName }} {{ user.firstName }}</td>
                         <td>
                             {% if user.studentClassName %}
                                 {{ user.studentClassName.classLevel.name }} {{ user.studentClassName.name }}
