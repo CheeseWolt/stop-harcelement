@@ -29,9 +29,13 @@ class UserType extends AbstractType
                 'required'=>false,
                 'format'=>'dd-MM-yyyy',
             ])
-            ->add('phone',TelType::class)
+            ->add('phone',TelType::class,[
+                'required'=>false
+            ])
             ->add('address', TextType::class)
-            ->add('email', EmailType::class)
+            ->add('email', EmailType::class,[
+                'required'=>false
+            ])
             ->add('role', EntityType::class, [
                 'class'=>Role::class,
                 'choice_label'=>'name'
@@ -42,6 +46,7 @@ class UserType extends AbstractType
             ])
             ->add('studentClassName', EntityType::class, [
                 'class'=>ClassName::class,
+                'required'=>false
                 // 'choice_label'=>'name'
             ])
         ;
