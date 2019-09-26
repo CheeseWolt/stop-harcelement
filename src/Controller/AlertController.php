@@ -42,7 +42,7 @@ class AlertController extends AbstractController
             $entityManager->persist($alert);
             $entityManager->flush();
 
-            return $this->redirectToRoute('alert_index');
+            return $this->redirectToRoute('profil_index');
         }
 
         return $this->render('alert/new.html.twig', [
