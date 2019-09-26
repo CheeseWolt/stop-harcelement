@@ -1,65 +1,6 @@
 <div class="row">
     {% for alert in alerts %}
-        <div class="alertCard">
-            <div class="col-12">
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <h3>Événement du </h3>
-                        <h3>{{ alert.eventDate|date('d-m-Y') }} à {{ alert.eventTime|date('H:i') }}</h3>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <div class="col-12">
-                <div class="row">
-                    <div class="col-6 text-left">
-                        <label class="label">posté le</label>
-                        <label class="value">{{ alert.alertDate|date("d-m-Y") }}</label>
-                    </div>
-                    <div class="col-6 text-right">
-                        <label class="label">à</label>
-                        <label class="value">{{ alert.alertDate|date("H:i") }}</label>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <div class="col-12">
-                <div class="row">
-                    {% for alertStyle in alert.alertStyle %}
-                            <div class="capsuleAlertStyle imgcenter">
-                                {{ alertStyle.name }}
-                            </div>
-                    {% endfor %}
-                </div>
-            </div>
-            <hr>
-            <div class="col-12">
-                <div class="row">
-                    <div class="col-6 text-left">
-                        <label class="label">Lieu: </label>
-                        <label class="value">{{ alert.location.name }}</label>
-                    </div>
-                    <div class="col-6 text-right">
-                        <label class="label">status: </label>
-                        <label class="value">{{ alert.status.name }}</label>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <div class="col-12">
-                <div class="row imgcenter">
-                    {{ alert.content|length > 150 ? alert.content|slice(0, 150) ~ '...' : alert.content }}
-                </div>
-            </div>
-            <hr>
-            <div class="col-12">
-                <div class="row">
-                    <div class="col-12">
-                        <a href="/alert/{{ alert.id }}" class="btn btn-primary width100">Detail</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {{ include('profil/alertcard.html.twig') }}
     {% endfor %}
 </div>
 <br>
