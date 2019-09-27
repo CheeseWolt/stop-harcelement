@@ -1,121 +1,125 @@
-
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/highcharts-more.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <link rel="stylesheet" href="{{asset('assets/css/homeStyle.css')}}">
 
 <script>
-Highcharts.chart('bubble', {
-    chart: {
-        type: 'packedbubble',
-        height: '100%'
-    },
-    title: {
-        text: "Victimes/type d'aggression"
-    },
-    tooltip: {
-        useHTML: true,
-        pointFormat: '<b>{point.name} : </b> {point.value} cas'
-    },
-    plotOptions: {
-        packedbubble: {
-            minSize: '20%',
-            maxSize: '100%',
-            zMin: 0,
-            zMax: 100,
-            layoutAlgorithm: {
-                gravitationalConstant: 0.05,
-                splitSeries: true,
-                seriesInteraction: false,
-                dragBetweenSeries: true,
-                parentNodeLimit: true
-            },
-            dataLabels: {
-                enabled: true,
-                format: '{point.name}',
-                filter: {
-                    property: 'y',
-                    operator: '>',
-                    value: 25
+    Highcharts.chart('bubble', {
+        chart: {
+            type: 'packedbubble',
+            height: '100%'
+        },
+        title: {
+            text: "Victimes/type d'aggression"
+        },
+        tooltip: {
+            useHTML: true,
+            pointFormat: '<b>{point.name} : </b> {point.value} cas'
+        },
+        plotOptions: {
+            packedbubble: {
+                minSize: '20%',
+                maxSize: '100%',
+                zMin: 0,
+                zMax: 100,
+                layoutAlgorithm: {
+                    gravitationalConstant: 0.05,
+                    splitSeries: true,
+                    seriesInteraction: false,
+                    dragBetweenSeries: true,
+                    parentNodeLimit: true
                 },
-                style: {
-                    color: 'black',
-                    textOutline: 'none',
-                    fontWeight: 'normal'
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}',
+                    filter: {
+                        property: 'y',
+                        operator: '>',
+                        value: 25
+                    },
+                    style: {
+                        color: 'black',
+                        textOutline: 'none',
+                        fontWeight: 'normal'
+                    }
                 }
             }
-        }
-    },
-    series: [{
-        name: 'Brimades',
-        data: [{
-            name: 'Homme',
-            value: 20,
-        }, {
-            name: 'Femme',
-            value: 30
         },
-        {
-            name: "Autres",
-            value: 6
-        }]
-    }, {
-        name: 'Insultes',
-        data: [{
-            name: "Homme",
-            value: 60
-        },
-        {
-            name: "Femme",
-            value: 45
-        },
-        {
-            name: "autre",
-            value: 13
-        }]
-    }, {
-        name: 'Agression Physiques',
-        data: [{
-            name: "Homme",
-            value: 30
-        },
-        {
-            name: "Femme",
-            value: 22
-        },
-        {
-            name: "Autre",
-            value: 19
-        }]
-    }, {
-        name: 'Agression Sexuel',
-        data: [{
-            name: "Homme",
-            value: 7
-        },
-        {
-            name: "Femme",
-            value: 25
-        },
-        {
-            name: "Autre",
-            value: 20
-        }]
-    }, {
-        name: 'Vols',
-        data: [{
-            name: "Homme",
-            value: 20
-        },
-        {
-            name: "Femmes",
-            value: 40
-        },
-        {
-            name: "Autre",
-            value: 22
-        }]
-    } ]
-});
-
+        series: [
+            {
+                name: 'Brimades',
+                data: [
+                    {
+                        name: 'Homme',
+                        value: 20
+                    }, {
+                        name: 'Femme',
+                        value: 30
+                    }, {
+                        name: "Autres",
+                        value: 6
+                    }
+                ]
+            },
+            {
+                name: 'Insultes',
+                data: [
+                    {
+                        name: "Homme",
+                        value: 60
+                    }, {
+                        name: "Femme",
+                        value: 45
+                    }, {
+                        name: "autre",
+                        value: 13
+                    }
+                ]
+            },
+            {
+                name: 'Agression Physiques',
+                data: [
+                    {
+                        name: "Homme",
+                        value: 30
+                    }, {
+                        name: "Femme",
+                        value: 22
+                    }, {
+                        name: "Autre",
+                        value: 19
+                    }
+                ]
+            },
+            {
+                name: 'Agression Sexuel',
+                data: [
+                    {
+                        name: "Homme",
+                        value: 7
+                    }, {
+                        name: "Femme",
+                        value: 25
+                    }, {
+                        name: "Autre",
+                        value: 20
+                    }
+                ]
+            }, {
+                name: 'Vols',
+                data: [
+                    {
+                        name: "Homme",
+                        value: 20
+                    }, {
+                        name: "Femmes",
+                        value: 40
+                    }, {
+                        name: "Autre",
+                        value: 22
+                    }
+                ]
+            }
+        ]
+    });
 </script>
