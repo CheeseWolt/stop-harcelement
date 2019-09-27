@@ -107,5 +107,27 @@ class ProfilController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/alerthistory", name="alerthistory", methods={"GET"})
+     */
+    public function getAlertsHistoryByRole()
+    {
+        $user = $this->getUser();
+        if($user->getRole()->getName() == "ROLE_ELEVE")
+        {
+            $alerts = $user->getAlerts();
+        }
+        if($user->getRole()->getName() == "ROLE_PROFESSEUR")
+        {
+            $alerts = $this->getDoctrine()->getRepository(Alert::class)->findBy(['alertManager'=>$user]);
+        }
+        if($user->getRole()->getName() == "ROLE_ADMIN")
+        {
+            $alerts = $this->getDoctrine()->getRepository(Alert::class)->findBy(['alertManager'=>$user]);
+        }
+        return $this->render('profil/alertHistory.html.twig', [
+            'alerts'=>$alerts,
+        ]);
+    }
 
 }
