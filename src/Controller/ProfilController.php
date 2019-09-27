@@ -32,18 +32,18 @@ class ProfilController extends AbstractController
         {
             $alerts = $user->getAlerts();
         }
-        if($user->getRole()->getName() == "ROLE_PROFESSEUR")
+        if($user->getRole()->getName() == "ROLE_PROFESSEUR" || "ROLE_ADMIN")
         {
             $alerts = $this->getDoctrine()->getRepository(Alert::class)->findBy(['alertManager'=>$user]);
         }
-        if($user->getRole()->getName() == "ROLE_ADMIN")
-        {
-            $alerts = $this->getDoctrine()->getRepository(Alert::class)->findBy(['alertManager'=>$user]);
-        }
-        if($user->getRole()->getName() == "ROLE_SECRETARIAT")
-        {
-            $alerts = null;
-        }
+        // if($user->getRole()->getName() == "ROLE_ADMIN")
+        // {
+        //     $alerts = $this->getDoctrine()->getRepository(Alert::class)->findBy(['alertManager'=>$user]);
+        // }
+        // if($user->getRole()->getName() == "ROLE_SECRETARIAT")
+        // {
+        //     $alerts = null;
+        // }
 
         return $this->render('profil/index.html.twig', [
             'controller_name' => 'ProfilController',
