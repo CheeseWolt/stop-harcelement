@@ -22,7 +22,8 @@ class DashboardController extends AbstractController
         // on initialise un tableau au format tab[ type de harcelement ][ mois du heacelement ] = nombre de harcelement
         for ($status = 1; $status < 3; $status++) {
             for ($mois = 1; $mois < 13; $mois++) {
-                $dtv[$status][$this->monthTranslation($mois)] = "0";  
+                $dtv[$status][$this->monthTranslation($mois)] = "0";
+                $month[] = $this->monthTranslation($mois);
             }
         }
 
@@ -63,6 +64,7 @@ class DashboardController extends AbstractController
             'dtvMax' => $dtvMax,
             'tam'=> $tam,
             'tamMax'=> $tamMax,
+            'month'=> $month,
         ]);
 
 

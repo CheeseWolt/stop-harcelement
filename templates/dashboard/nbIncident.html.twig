@@ -15,8 +15,8 @@
         xAxis: {
             categories: [
                 {% if dtv is defined %}
-                    {% for key, month in dtv[1] %}
-                        "{{ key }}",
+                    {% for m in month %}
+                        "{{ m }}",
                     {% endfor %}
                 {% endif %}
             ]

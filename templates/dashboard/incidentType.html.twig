@@ -21,8 +21,8 @@
     xAxis: {
         categories: [
                 {% if tam is defined %}
-                    {% for key, month in tam["Physique"] %}
-                        "{{ key }}",
+                    {% for m in month %}
+                        "{{ m }}",
                     {% endfor %}
                 {% endif %}
         ]
