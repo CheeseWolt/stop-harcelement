@@ -30,19 +30,19 @@
         </div>
         <br>
         {# DIV ADMIN #}
-        {% if utilisateur.role.id == 1 %}
+        {% if utilisateur.role.name == "ROLE_ADMIN" %}
             {{ include('profil/admin.html.twig') }}
         {% endif %}
         {# DIV SECRETARIAT #}
-        {% if utilisateur.role.id == 2 %}
+        {% if utilisateur.role.name == "ROLE_SECRETARIAT" %}
             {{ include('profil/secretariat.html.twig') }}
         {% endif %}
         {# DIV PROF #}
-        {% if utilisateur.role.id == 3 %}
+        {% if utilisateur.role.name == "ROLE_PREFESSEUR" %}
             {{ include('profil/professeur.html.twig') }}
         {% endif %}
         {# DIV ELEVE #}
-        {% if utilisateur.role.id == 4 %}
+        {% if utilisateur.role.name == "ROLE_ELEVE" %}
             {{ include('profil/eleve.html.twig') }}
         {% endif %}
         {# <div class="row">
