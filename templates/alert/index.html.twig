@@ -35,7 +35,7 @@
                                 </td>
                                 <td>
                                     <a href="{{ path('alert_show', {'id': alert.id}) }}" class="btn btn-primary">Afficher</a>
-                                    <a href="{{ path('alert_edit', {'id': alert.id}) }}" class="btn btn-success">Editer</a>
+                                    {# <a href="{{ path('alert_edit', {'id': alert.id}) }}" class="btn btn-success">Editer</a> #}
                                 </td>
                             </tr>
                         {% else %}
@@ -47,6 +47,7 @@
                 </table>
             </div>
         </div>
+        {% if is_granted('ROLE_ADMIN') %}
         <div class="row">
             <div class="col-12">
                 <a href="{{ path('alert_new') }}">
@@ -54,5 +55,6 @@
                 </a>
             </div>
         </div>
+        {% endif %}
     </div>
 {% endblock %}
