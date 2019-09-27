@@ -1,28 +1,24 @@
 <div class="row">
-    <div class="col-12">Ceci</div>
-    <div class="col-12">Est</div>
-    <div class="col-12">La</div>
-    <div class="col-12">Div</div>
-    <div class="col-12">Du</div>
-    <div class="col-12">Profile</div>
-    <div class="col-12">Admin</div>
+    {% for alert in alerts %}
+        {{ include('profil/alertcard.html.twig') }}
+    {% endfor %}
 </div>
 <br>
 <div class="row">
-    <div class="col-12">
+    <div class="col-12 text-center">
         Pour consulter la liste des cas signalés par les élèves, c'est ici :
     </div>
 </div>
 <div class="row">
     <div class="col-12"><br></div>
     <div class="col-4">
-        <a href="{{path('alert_index')}}"><button class="btn btn-primary width100">Consulter les signalements</button></a>
+        <a href="{{path('alert_index')}}"><button class="btn btn-primary">Consulter les signalements</button></a>
     </div>
     <div class="col-4 text-center">
-        <a href="{{path('user_new')}}"><button class="btn btn-primary width100">Inscrire un membre</button></a>
+        <a href="{{path('user_new')}}"><button class="btn btn-primary">Inscrire un membre</button></a>
     </div>
     <div class="col-4 text-right">
-        <a href="{{path('dashboard')}}"><button class="btn btn-primary width100">Consulter les stats</button></a>
+        <a href="{{path('dashboard')}}"><button class="btn btn-primary">Consulter les stats</button></a>
     </div>
     <div><br></div>
 </div>

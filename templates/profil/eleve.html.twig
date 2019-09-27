@@ -1,11 +1,7 @@
 <div class="row">
-    <div class="col-12">Ceci</div>
-    <div class="col-12">Est</div>
-    <div class="col-12">La</div>
-    <div class="col-12">Div</div>
-    <div class="col-12">Du</div>
-    <div class="col-12">Profile</div>
-    <div class="col-12">Eleve</div>
+    {% for alert in alerts %}
+        {{ include('profil/alertcard.html.twig') }}
+    {% endfor %}
 </div>
 <br>
 <div class="row">

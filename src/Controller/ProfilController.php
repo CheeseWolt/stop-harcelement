@@ -6,6 +6,7 @@ use DateTime;
 use App\Entity\Sex;
 use App\Entity\Role;
 use App\Entity\User;
+use App\Entity\Alert;
 use App\Entity\ClassName;
 use App\Form\ProfilUpdateType;
 use App\Form\UpdatePasswordType;
@@ -27,10 +28,23 @@ class ProfilController extends AbstractController
     public function index()
     {
         $user = $this->getUser();
+        if($user->getRole()->getName() == "ROLE_ELEVE")
+        {
+            $alerts = $user->getAlerts();
+        }
+        if($user->getRole()->getName() == "ROLE_PROFESSEUR")
+        {
+            $alerts = $this->getDoctrine()->getRepository(Alert::class)->findBy(['alertManager'=>$user]);
+        }
+        if($user->getRole()->getName() == "ROLE_ADMIN")
+        {
+            $alerts = $this->getDoctrine()->getRepository(Alert::class)->findBy(['alertManager'=>$user]);
+        }
 
         return $this->render('profil/index.html.twig', [
             'controller_name' => 'ProfilController',
             'utilisateur' => $user,
+            'alerts' => $alerts,
         ]);
     }
 
@@ -83,10 +97,11 @@ class ProfilController extends AbstractController
             }
         }
 
-
         return $this->render('profil/updatepassword.html.twig', [
             'user'=>$user,
             'form'=>$form->createView(),
         ]);
     }
+
+
 }

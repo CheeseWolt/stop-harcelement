@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DashboardController!{% endblock %}
+{% block title %}Hello DashboardController!
+{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{asset('assets/css/homeStyle.css')}}">
@@ -18,12 +19,12 @@
                 <div id="incidentType">
                     {% include 'dashboard/incidentType.html.twig' %}
                 </div>
-            </div> 
+            </div>
             <div class="col-12">
                 <div id="bubble">
                     {% include 'dashboard/bubble.html.twig' %}
                 </div>
-            </div>   
+            </div>
             <div class="col-6">
                 <div id="trancheHoraire">
                     {% include 'dashboard/trancheHoraires.html.twig' %}
@@ -33,7 +34,7 @@
                 <div id="localisation">
                     {% include 'dashboard/localisation.html.twig' %}
                 </div>
-            </div>             
+            </div>
         </div>
     </div>
 {% endblock %}

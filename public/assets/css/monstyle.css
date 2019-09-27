@@ -32,3 +32,40 @@
     margin-right: auto;
     margin-left: auto;
 }
+
+/* Pour la liste alerte profil eleve */
+.alertCard{
+    width: 350px;
+    height: 500px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 2px solid;
+    border-radius: 5px;
+    background-color: rgb(220, 220, 220);
+}
+
+.alertCard .label {
+    font-size: 0.7rem;
+}
+
+.alertCard .value {
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.imgcenter {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.capsuleAlertStyle {
+    border: 1px solid;
+    border-radius: 5px;
+    padding-right: 2px;
+    padding-left: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+/*  fin */
