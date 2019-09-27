@@ -40,6 +40,10 @@ class ProfilController extends AbstractController
         {
             $alerts = $this->getDoctrine()->getRepository(Alert::class)->findBy(['alertManager'=>$user]);
         }
+        if($user->getRole()->getName() == "ROLE_SECRETARIAT")
+        {
+            $alerts = null;
+        }
 
         return $this->render('profil/index.html.twig', [
             'controller_name' => 'ProfilController',
