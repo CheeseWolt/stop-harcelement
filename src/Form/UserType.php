@@ -24,7 +24,7 @@ class UserType extends AbstractType
             ->add('userName', TextType::class)
             ->add('lastName', TextType::class)
             ->add('firstName', TextType::class)
-            ->add('password', TextType::class)
+            // ->add('password', TextType::class)
             ->add('birthDate', BirthdayType::class, [
                 'required'=>false,
                 'format'=>'dd-MM-yyyy',

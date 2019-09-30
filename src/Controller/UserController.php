@@ -9,6 +9,7 @@ use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -47,15 +48,18 @@ class UserController extends AbstractController
         $form = $this->createForm(UserType::class, $user)
             ->add('role', ChoiceType::class, [
                 'choices' => $roles,
-                'label' => 'name'
-            ]);
-        $form->handleRequest($request);
+                'label' => 'name'])
+                ->add('plainPassword',TextType::class,[
+                    'mapped'=>false,
+                    "required"=>true
+                ]);
+            $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $role = $form['role']->getData();
             $role = $roleRepository->findBy(['name'=>$role->getName()]);
             $user->setRole($role[0]);
-            $hash = $encoder->encodePassword($user, $user->getPassword());
+            $hash = $encoder->encodePassword($user, $form['plainPassword']->getData());
             $user->setPassword($hash);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
@@ -99,15 +103,22 @@ class UserController extends AbstractController
             ->add('role', ChoiceType::class, [
                 'choices' => $roles,
                 'label' => 'name'
+            ])
+            ->add('plainPassword',TextType::class,[
+                'mapped'=>false,
+                "required"=>false
             ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $role = $form['role']->getData();
+            $plainPassword = $form['plainPassword']->getData();
+            if($plainPassword){
+                $hash = $encoder->encodePassword($user, $plainPassword);
+                $user->setPassword($hash);
+            }
             $role = $roleRepository->findBy(['name'=>$role->getName()]);
             $user->setRole($role[0]);
-            $hash = $encoder->encodePassword($user, $user->getPassword());
-            $user->setPassword($hash);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
