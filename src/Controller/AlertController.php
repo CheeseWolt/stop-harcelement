@@ -3,13 +3,14 @@
 namespace App\Controller;
 
 use DateTime;
+use App\Repository\AlertRepository;
 use App\Entity\{Alert,PrivateMessage};
 use App\Form\{AlertType,PrivateMessageType};
-use App\Repository\AlertRepository;
-use Symfony\Component\HttpFoundation\{Request,Response};
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\{Request,Response};
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/alert")
@@ -34,12 +35,14 @@ class AlertController extends AbstractController
      */
     public function new(Request $request): Response
     {
+
         $alert = new Alert();
         $alert->setAlertSender($this->getUser());
         $form = $this->createForm(AlertType::class, $alert);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $alert->setIpAddress($request->getClientIp());
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($alert);
             $entityManager->flush();

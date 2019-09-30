@@ -14,6 +14,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class AlertType extends AbstractType
@@ -26,8 +27,9 @@ class AlertType extends AbstractType
                 'widget' => 'single_text',
                 'html5'=>false,
                 'label' => 'Date de l\'événement',
-                'attr' => ['class' => 'js-datepicker',
-                           'placeholder' => 'jj/mm/aaaa',
+                'attr' => [
+                        'class' => 'js-datepicker',
+                        'placeholder' => 'jj/mm/aaaa',
                         ],
                 'format'=>'dd-MM-yyyy',
                 ])          
@@ -36,9 +38,9 @@ class AlertType extends AbstractType
                 'html5'=>true,
                 'label' => 'Heure de l\'événement',
                 ])          
-            ->add('ipAddress', TextType::class, [
-                'label' => 'Adresse Ip',
-                ])           
+            // ->add('ipAddress', TextType::class, [
+            //     'label' => 'Adresse Ip',
+            //     ])           
             ->add('content', TextareaType::class, [         //Contenu
                 'label' => 'Description de l\'événement',
                 'attr' => [
@@ -76,6 +78,16 @@ class AlertType extends AbstractType
                 'choice_label'=>'name',
                 'label' => 'Type du signalement',
             ])
+            ->add('isAnonym',ChoiceType::class,[
+                'label'=>false,
+                'choices'=>[
+                    'Oui'=>true,
+                    'Non'=>false
+                ],
+                'expanded'=>true,
+                'required'=>true
+            ]);
+
         ;
     }
 
