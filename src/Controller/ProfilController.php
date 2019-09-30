@@ -30,11 +30,13 @@ class ProfilController extends AbstractController
         $user = $this->getUser();
         if($user->getRole()->getName() == "ROLE_ELEVE")
         {
-            $alerts = $user->getAlerts();
+            // $alerts = $user->getAlerts();
+            $alerts = $this->getDoctrine()->getRepository(Alert::class)->getActivAlertByUser($user);
         }
-        if($user->getRole()->getName() == "ROLE_PROFESSEUR" || "ROLE_ADMIN")
+        if($user->getRole()->getName() == "ROLE_PROFESSEUR" || $user->getRole()->getName() == "ROLE_ADMIN")
         {
-            $alerts = $this->getDoctrine()->getRepository(Alert::class)->findBy(['alertManager'=>$user]);
+            // $alerts = $this->getDoctrine()->getRepository(Alert::class)->findBy(['alertManager'=>$user]);
+            $alerts = $this->getDoctrine()->getRepository(Alert::class)->getAlertsManaged($user);
         }
         // if($user->getRole()->getName() == "ROLE_ADMIN")
         // {
@@ -48,7 +50,7 @@ class ProfilController extends AbstractController
         return $this->render('profil/index.html.twig', [
             'controller_name' => 'ProfilController',
             'utilisateur' => $user,
-            'alerts' => $alerts,
+            'alerts' => $alerts ?? null,
         ]);
     }
 
@@ -115,16 +117,18 @@ class ProfilController extends AbstractController
         $user = $this->getUser();
         if($user->getRole()->getName() == "ROLE_ELEVE")
         {
-            $alerts = $user->getAlerts();
+            // $alerts = $user->getAlerts();
+            $alerts = $this->getDoctrine()->getRepository(Alert::class)->getClosedAlertsByUser($user);
         }
-        if($user->getRole()->getName() == "ROLE_PROFESSEUR")
+        if($user->getRole()->getName() == "ROLE_PROFESSEUR" || $user->getRole()->getName() == "ROLE_ADMIN")
         {
-            $alerts = $this->getDoctrine()->getRepository(Alert::class)->findBy(['alertManager'=>$user]);
+            // $alerts = $this->getDoctrine()->getRepository(Alert::class)->findBy(['alertManager'=>$user]);
+            $alerts = $this->getDoctrine()->getRepository(Alert::class)->getClosedAlertManagedByUser($user);
         }
-        if($user->getRole()->getName() == "ROLE_ADMIN")
-        {
-            $alerts = $this->getDoctrine()->getRepository(Alert::class)->findBy(['alertManager'=>$user]);
-        }
+        // if($user->getRole()->getName() == "ROLE_ADMIN")
+        // {
+        //     $alerts = $this->getDoctrine()->getRepository(Alert::class)->findBy(['alertManager'=>$user]);
+        // }
         return $this->render('profil/alertHistory.html.twig', [
             'alerts'=>$alerts,
         ]);
