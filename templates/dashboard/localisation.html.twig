@@ -44,20 +44,11 @@
                         name: 'Toilettes',
                         y: 11.84
                     },
-                    {
-                        name: 'Vestiaire',
-                        y: 10.85
-                    },
-                    {
-                        name: 'Salle de sport',
-                        y: 4.67
-                    }, {
-                        name: 'Cantine',
-                        y: 4.18
-                    }, {
-                        name: "Hors de l'établissement",
-                        y: 7.05
-                    }
+                    {% if places is defined %}
+                        {% for p in places %}
+                            "{{ p }}"
+                        {% endfor %}
+                    {% endif %}
                 ]
             }
         ]
