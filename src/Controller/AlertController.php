@@ -8,12 +8,12 @@ use App\Entity\{Alert,PrivateMessage};
 use App\Form\{AlertType,PrivateMessageType};
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\{Request,Response};
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/alert")
+ * @IsGranted("IS_AUTHENTICATED_FULLY")
  */
 class AlertController extends AbstractController
 {
@@ -51,7 +51,6 @@ class AlertController extends AbstractController
         }
 
         return $this->render('alert/new.html.twig', [
-            'alert' => $alert,
             'form' => $form->createView(),
         ]);
     }
@@ -125,9 +124,8 @@ class AlertController extends AbstractController
      * @Route("manage/{id}", name="alert_manage")
      * @IsGranted("ROLE_PROFESSEUR")
      */
-    public function manage(Request $request, Alert $alert): Response
+    public function manage(Alert $alert): Response
     {
-
         $alert->setAlertManager($this->getUser())->setStartSupportDate(new DateTime('now'));
         $em = $this->getDoctrine()->getManager();
         $em->persist($alert);
@@ -139,7 +137,7 @@ class AlertController extends AbstractController
      * @Route("close/{id}", name="alert_close")
      * @IsGranted("ROLE_PROFESSEUR")
      */
-    public function close(Request $request, Alert $alert): Response
+    public function close(Alert $alert): Response
     {
         $alert->setEndSupportDate(new DateTime('now'));
         $em = $this->getDoctrine()->getManager();
