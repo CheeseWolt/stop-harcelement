@@ -88,6 +88,11 @@ class Alert
      */
     private $eventTime;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isAnonym;
+
     public function __construct()
     {
         $this->alertDate = new DateTime();
@@ -286,6 +291,18 @@ class Alert
     public function setEventTime(\DateTimeInterface $eventTime): self
     {
         $this->eventTime = $eventTime;
+
+        return $this;
+    }
+
+    public function getIsAnonym(): ?bool
+    {
+        return $this->isAnonym;
+    }
+
+    public function setIsAnonym(bool $isAnonym): self
+    {
+        $this->isAnonym = $isAnonym;
 
         return $this;
     }
