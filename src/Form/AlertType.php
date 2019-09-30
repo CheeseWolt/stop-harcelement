@@ -26,8 +26,9 @@ class AlertType extends AbstractType
                 'widget' => 'single_text',
                 'html5'=>false,
                 'label' => 'Date de l\'événement',
-                'attr' => ['class' => 'js-datepicker',
-                           'placeholder' => 'jj/mm/aaaa',
+                'attr' => [
+                        'class' => 'js-datepicker',
+                        'placeholder' => 'jj/mm/aaaa',
                         ],
                 'format'=>'dd-MM-yyyy',
                 ])          
@@ -36,9 +37,9 @@ class AlertType extends AbstractType
                 'html5'=>true,
                 'label' => 'Heure de l\'événement',
                 ])          
-            ->add('ipAddress', TextType::class, [
-                'label' => 'Adresse Ip',
-                ])           
+            // ->add('ipAddress', TextType::class, [
+            //     'label' => 'Adresse Ip',
+            //     ])           
             ->add('content', TextareaType::class, [         //Contenu
                 'label' => 'Description de l\'événement',
                 'attr' => [
