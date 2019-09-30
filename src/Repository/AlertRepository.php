@@ -65,7 +65,7 @@ class AlertRepository extends ServiceEntityRepository
             $alert = $this->findBy(['id'=>$element['id']]);
             $alerts[] = $alert[0];
         }
-        return $alerts;
+        return $alerts ?? null;
     }
     
 
@@ -82,7 +82,7 @@ class AlertRepository extends ServiceEntityRepository
             $alert = $this->findBy(['id'=>$element['id']]);
             $alerts[] = $alert[0];
         }
-        return $alerts;
+        return $alerts ?? null;
     }
 
     public function getAlertToManage()
@@ -98,7 +98,7 @@ class AlertRepository extends ServiceEntityRepository
             $alert = $this->findBy(['id'=>$element['id']]);
             $alerts[] = $alert[0];
         }
-        return $alerts;
+        return $alerts ?? null;
     }
 
     public function getClosedAlertManagedByUser($user)
@@ -114,7 +114,7 @@ class AlertRepository extends ServiceEntityRepository
             $alert = $this->findBy(['id'=>$element['id']]);
             $alerts[] = $alert[0];
         }
-        return $alerts;
+        return $alerts ?? null;
     }
 
     public function getAlertsManaged($user)
@@ -130,7 +130,7 @@ class AlertRepository extends ServiceEntityRepository
             $alert = $this->findBy(['id'=>$element['id']]);
             $alerts[] = $alert[0];
         }
-        return $alerts;
+        return $alerts ?? null;
     }
 
 
