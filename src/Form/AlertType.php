@@ -14,6 +14,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class AlertType extends AbstractType
@@ -77,6 +78,16 @@ class AlertType extends AbstractType
                 'choice_label'=>'name',
                 'label' => 'Type du signalement',
             ])
+            ->add('isAnonym',ChoiceType::class,[
+                'label'=>false,
+                'choices'=>[
+                    'Oui'=>true,
+                    'Non'=>false
+                ],
+                'expanded'=>true,
+                'required'=>true
+            ]);
+
         ;
     }
 
