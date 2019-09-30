@@ -6,12 +6,14 @@ use App\Entity\Sex;
 use App\Form\SexType;
 use App\Repository\SexRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\{Request,Response};
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 
 /**
  * @Route("/sex")
+ * @IsGranted("ROLE_ADMIN")
  */
 class SexController extends AbstractController
 {
@@ -43,7 +45,6 @@ class SexController extends AbstractController
         }
 
         return $this->render('sex/new.html.twig', [
-            'sex' => $sex,
             'form' => $form->createView(),
         ]);
     }

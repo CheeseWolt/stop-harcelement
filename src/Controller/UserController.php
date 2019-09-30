@@ -6,16 +6,17 @@ use App\Form\UserType;
 use App\Entity\{User,Role};
 use App\Repository\RoleRepository;
 use App\Repository\UserRepository;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\{Request,Response};
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/user")
+ * @IsGranted("ROLE_SECRETARIAT")
  */
 class UserController extends AbstractController
 {
@@ -69,7 +70,6 @@ class UserController extends AbstractController
         }
 
         return $this->render('user/new.html.twig', [
-            'user' => $user,
             'form' => $form->createView(),
         ]);
     }

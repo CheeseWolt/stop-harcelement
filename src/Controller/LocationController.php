@@ -6,12 +6,14 @@ use App\Entity\Location;
 use App\Form\LocationType;
 use App\Repository\LocationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\{Request,Response};
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 
 /**
  * @Route("/location")
+ * @IsGranted("ROLE_ADMIN")
  */
 class LocationController extends AbstractController
 {

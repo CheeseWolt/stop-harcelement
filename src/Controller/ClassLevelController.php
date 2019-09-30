@@ -6,12 +6,14 @@ use App\Entity\ClassLevel;
 use App\Form\ClassLevelType;
 use App\Repository\ClassLevelRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\{Request,Response};
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 
 /**
  * @Route("/class/level")
+ * @IsGranted("ROLE_ADMIN")
  */
 class ClassLevelController extends AbstractController
 {
@@ -43,7 +45,6 @@ class ClassLevelController extends AbstractController
         }
 
         return $this->render('class_level/new.html.twig', [
-            'class_level' => $classLevel,
             'form' => $form->createView(),
         ]);
     }

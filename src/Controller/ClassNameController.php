@@ -6,12 +6,14 @@ use App\Entity\ClassName;
 use App\Form\ClassNameType;
 use App\Repository\ClassNameRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\{Request,Response};
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 
 /**
  * @Route("/class/name")
+ * @IsGranted("ROLE_ADMIN")
  */
 class ClassNameController extends AbstractController
 {
@@ -43,7 +45,6 @@ class ClassNameController extends AbstractController
         }
 
         return $this->render('class_name/new.html.twig', [
-            'class_name' => $className,
             'form' => $form->createView(),
         ]);
     }
