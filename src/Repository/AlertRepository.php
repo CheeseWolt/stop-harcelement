@@ -44,13 +44,94 @@ class AlertRepository extends ServiceEntityRepository
 
 
     // GRAPH 3 Victime genre / type d'aggression
-        public function getVictimGenre() {
+    public function getVictimGenre() {
 
+    }
+    public function getVictimGenreByAlertType() {
+
+    }
+
+    public function getActivAlertByUser($user)
+    {
+        $alerts = [];
+        $em = $this->getEntityManager();
+        $sql = 'SELECT * FROM `alert` WHERE `end_support_date` IS null AND alert_sender_id = ' . $user->getId();
+        $conn = $em->getConnection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $alertsBdd = $stmt->fetchAll();
+        foreach($alertsBdd as $element)
+        {
+            $alert = $this->findBy(['id'=>$element['id']]);
+            $alerts[] = $alert[0];
         }
-        public function getVictimGenreByAlertType() {
+        return $alerts;
+    }
+    
 
+    public function getClosedAlertsByUser($user)
+    {
+        $em = $this->getEntityManager();
+        $sql = "SELECT * FROM `alert` WHERE `end_support_date` IS NOT null AND alert_sender_id = " . $user->getId();
+        $conn = $em->getConnection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $alertsBdd = $stmt->fetchAll();
+        foreach($alertsBdd as $element)
+        {
+            $alert = $this->findBy(['id'=>$element['id']]);
+            $alerts[] = $alert[0];
         }
+        return $alerts;
+    }
 
+    public function getAlertToManage()
+    {
+        $em = $this->getEntityManager();
+        $sql = 'SELECT * FROM `alert` WHERE `alert_manager_id` IS null ';
+        $conn = $em->getConnection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $alertsBdd = $stmt->fetchAll();
+        foreach($alertsBdd as $element)
+        {
+            $alert = $this->findBy(['id'=>$element['id']]);
+            $alerts[] = $alert[0];
+        }
+        return $alerts;
+    }
+
+    public function getClosedAlertManagedByUser($user)
+    {
+        $em = $this->getEntityManager();
+        $sql = 'SELECT * FROM `alert` WHERE `end_support_date` IS NOT null AND `alert_manager_id`= ' . $user->getId();
+        $conn = $em->getConnection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $alertsBdd = $stmt->fetchAll();
+        foreach($alertsBdd as $element)
+        {
+            $alert = $this->findBy(['id'=>$element['id']]);
+            $alerts[] = $alert[0];
+        }
+        return $alerts;
+    }
+
+    public function getAlertsManaged($user)
+    {
+        $em = $this->getEntityManager();
+        $sql = 'SELECT * FROM `alert` WHERE `end_support_date` IS null AND alert_manager_id = ' . $user->getId();
+        $conn = $em->getConnection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $alertsBdd = $stmt->fetchAll();
+        foreach($alertsBdd as $element)
+        {
+            $alert = $this->findBy(['id'=>$element['id']]);
+            $alerts[] = $alert[0];
+        }
+        return $alerts;
+    }
 
 
 
