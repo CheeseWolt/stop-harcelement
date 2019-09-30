@@ -25,7 +25,7 @@ class AlertController extends AbstractController
     {
         $user = $this->getUser();
         return $this->render('alert/index.html.twig', [
-            'alerts' => $alertRepository->findAll(),
+            'alerts' => $alertRepository->getAlertToManage(),
             'user' => $user,
         ]);
     }

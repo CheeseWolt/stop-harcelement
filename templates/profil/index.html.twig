@@ -4,7 +4,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{asset('assets/css/monstyle.css')}}">
+    {# <link rel="stylesheet" href="{{asset('assets/css/monstyle.css')}}"> #}
 {% endblock %}
 
 {% block body %}
@@ -38,7 +38,7 @@
             {{ include('profil/secretariat.html.twig') }}
         {% endif %}
         {# DIV PROF #}
-        {% if utilisateur.role.name == "ROLE_PREFESSEUR" %}
+        {% if utilisateur.role.name == "ROLE_PROFESSEUR" %}
             {{ include('profil/professeur.html.twig') }}
         {% endif %}
         {# DIV ELEVE #}
