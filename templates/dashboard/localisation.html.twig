@@ -17,7 +17,7 @@
             text: 'Localisation des incidents'
         },
         tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            pointFormat: '<b>{point.percentage:.1f}%</b>'
         },
         plotOptions: {
             pie: {
@@ -34,19 +34,14 @@
                 name: 'Brands',
                 colorByPoint: true,
                 data: [
-                    {
-                        name: 'Salle de classe',
-                        y: 61.41,
-                        sliced: true,
-                        selected: true
-                    },
-                    {
-                        name: 'Toilettes',
-                        y: 11.84
-                    },
                     {% if places is defined %}
                         {% for p in places %}
-                            "{{ p }}"
+                            {
+                                name: '{{ p.lieu | e("js") | raw }}',
+                                y: {{ p.nbAlert }},
+                                sliced: true,
+                                selected: true
+                            },
                         {% endfor %}
                     {% endif %}
                 ]

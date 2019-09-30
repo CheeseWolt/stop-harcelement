@@ -15,7 +15,7 @@ Highcharts.chart('trancheHoraire', {
     text: 'tranches horaires des incidents'
   },
   tooltip: {
-    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    pointFormat: '{h.heure}: <b>{point.percentage:.1f}%</b>'
   },
   plotOptions: {
     pie: {
@@ -23,22 +23,23 @@ Highcharts.chart('trancheHoraire', {
       cursor: 'pointer',
       dataLabels: {
         enabled: true,
-        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+        format: '{point.name}'
       }
     }
   },
   series: [{
     name: 'Brands',
     colorByPoint: true,
-    data: [{
+    data: [
     {% if hours is defined %}
       {% for h in hours %}
-        "{{ h }}"
+      { 
+        name: "{{ h.heure }}h",
+        y: {{ h.nbAlert }}
+      },
       {% endfor %}
     {% endif %}
-      name: '24H',
-      y: 8.33
-    }, ]
+    ]
   }]
 });
 </script>

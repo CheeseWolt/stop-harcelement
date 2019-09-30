@@ -53,6 +53,13 @@ class DashboardController extends AbstractController
                 $tamMax = $style['nbAlert'];
             }
         }
+        // GRAPH 3 Victime genre / type d'aggression
+        
+        //GRAPH 4 - tranches horaires
+        $hours = $alertRepository->getHour();
+
+        //GRAPH 5 - Localistation des incidents
+        $places = $alertRepository->getPlace();
 
 
 
@@ -65,15 +72,9 @@ class DashboardController extends AbstractController
             'tam'=> $tam,
             'tamMax'=> $tamMax,
             'month'=> $month,
-        ]);
-
-
-
-
-        
-        // GRAPH 3 Victime genre / type d'aggression
-        
-        
+            'hours' => $hours,
+            'places' => $places,
+        ]);       
     }
     
 

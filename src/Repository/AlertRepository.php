@@ -27,7 +27,7 @@ class AlertRepository extends ServiceEntityRepository
                 ->groupBy('mois')
                 ->orderBy('mois', 'ASC')
                 ->getQuery();
-        return $query->execute();
+        return $query->execute() ??null;
     }
 
     public function getStatusRatioByMonth()
@@ -37,7 +37,7 @@ class AlertRepository extends ServiceEntityRepository
         $conn = $em->getConnection();
         $stmt = $conn->prepare($sql);
         $stmt->execute();
-        return $stmt->fetchAll();
+        return $stmt->fetchAll() ??null;
     }
 
     // GRAPH 2 Type d'Aggression / Mois
@@ -50,6 +50,30 @@ class AlertRepository extends ServiceEntityRepository
     public function getVictimGenreByAlertType() {
 
     }
+
+    //GRAPH 4 : Tranches horaires
+    public function getHour() 
+    {
+        $em = $this->getEntityManager();
+        $sql = 'SELECT HOUR(alert.event_time) as heure, COUNT(alert.id) as nbAlert FROM alert GROUP BY heure ';
+        $conn = $em->getConnection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll() ??null;
+    }
+
+    // GRAPH 5 : Localistation des incidents
+    public function getPlace()
+    {
+        $em = $this->getEntityManager();
+        $sql = 'SELECT location.name as lieu, COUNT(alert.id) as nbAlert FROM alert JOIN location on alert.location_id = location.id GROUP BY lieu';
+        $conn = $em->getConnection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll() ??null;
+    }
+    
+
 
     public function getActivAlertByUser($user)
     {
