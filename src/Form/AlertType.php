@@ -61,7 +61,6 @@ class AlertType extends AbstractType
             //])
             ->add('location', EntityType::class, [
                 'class'=>Location::class, 
-                'expanded'=>true,
                 'choice_label'=>'name',
                 'label' => 'Lieu de l\'événement',
             ])
@@ -79,13 +78,13 @@ class AlertType extends AbstractType
                 'label' => 'Type du signalement',
             ])
             ->add('isAnonym',ChoiceType::class,[
-                'label'=>false,
                 'choices'=>[
                     'Oui'=>true,
                     'Non'=>false
                 ],
                 'expanded'=>true,
-                'required'=>true
+                'required'=>true,
+                'label'=>'Anonymat?',
             ]);
 
         ;

@@ -3,36 +3,16 @@
 {% block title %}Nouveau signalement{% endblock %}
 
 {% block body %}
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <h1 style="text-align:center">Faites votre signalement</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 style="text-align:center">Faites votre signalement</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                {{ include('alert/_form.html.twig') }}
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12">
-            {{ include('alert/_form.html.twig') }}
-        </div>
-    </div>
-</div>
-
-<style>
-    .container {
-        width: 50%;
-    }
-
-    fieldset.form-group::after {
-        content: '';
-        border-bottom: 1px solid #CCC;
-        height: 10px;
-        display: block;
-        margin: 10px 0;
-    }
-
-    label:not(.form-check-label),
-    legend {
-        font-weight: bold;
-    }
-</style>
-
 {% endblock %}

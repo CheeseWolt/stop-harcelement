@@ -61,6 +61,11 @@
     margin-left: auto;
 }
 
+.alertStyleCheckboxDisplay{
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .capsuleAlertStyle {
     border: 1px solid;
     border-radius: 5px;
@@ -70,6 +75,12 @@
     padding-bottom: 2px;
 }
 /*  fin */
+
+/* AurelienPart */
+label:not(.form-check-label), legend {
+    font-weight: bold;
+}
+/* Fin */
 
 /* CirceStyle */
 body {

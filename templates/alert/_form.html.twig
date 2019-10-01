@@ -13,12 +13,32 @@
         </div>
     </div>
 </div>
-<div class="col-6">
-    {{form_label(form.isAnonym, 'Poster anonymement?')}}
-    {{form_row(form.isAnonym)}}
+<hr>
+<div class="row">
+    <div class="col-6">
+        {{form_row(form.isAnonym)}}
+    </div>
+    <div class="col-6">
+        {{form_row(form.status)}}
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-12">
+        {{form_row(form.content)}}
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        {{form_row(form.location)}}
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 imgcenter">
+        {{form_row(form.alertStyle, {'attr':{'class':'form-check form-check-inline alertStyleCheckboxDisplay justify-content-around'}})}}
+    </div>
 </div>
 
-{{ form_rest(form)}}
 <div class="row">
     <div class="col-6 form-group btn-container">
         <button type="submit" class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
