@@ -3,16 +3,17 @@
 namespace App\Controller;
 
 use App\Form\UserType;
-use App\Entity\{User,Role};
+use App\Entity\{User, Role};
 use App\Repository\RoleRepository;
 use App\Repository\UserRepository;
-use Symfony\Component\HttpFoundation\{Request,Response};
+use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Validator\Constraints\Length;
 
 /**
  * @Route("/user")
@@ -49,16 +50,22 @@ class UserController extends AbstractController
         $form = $this->createForm(UserType::class, $user)
             ->add('role', ChoiceType::class, [
                 'choices' => $roles,
-                'label' => 'name'])
-                ->add('plainPassword',TextType::class,[
-                    'mapped'=>false,
-                    "required"=>true
-                ]);
-            $form->handleRequest($request);
+                'label' => 'name'
+            ])
+            ->add('plainPassword', TextType::class, [
+                'mapped' => false,
+                "required" => true,
+                'constraints' => [new Length([
+                    'min' => 5, 'max' => 255,
+                    'minMessage' => "Le mot de passe doit faire plus de 5 caractères",
+                    'maxMessage' => "Le mot de passe ne doit pas dépasser 255 caractères"
+                ])]
+            ]);
+        $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $role = $form['role']->getData();
-            $role = $roleRepository->findBy(['name'=>$role->getName()]);
+            $role = $roleRepository->findBy(['name' => $role->getName()]);
             $user->setRole($role[0]);
             $hash = $encoder->encodePassword($user, $form['plainPassword']->getData());
             $user->setPassword($hash);
@@ -104,20 +111,20 @@ class UserController extends AbstractController
                 'choices' => $roles,
                 'label' => 'name'
             ])
-            ->add('plainPassword',TextType::class,[
-                'mapped'=>false,
-                "required"=>false
+            ->add('plainPassword', TextType::class, [
+                'mapped' => false,
+                "required" => false
             ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $role = $form['role']->getData();
             $plainPassword = $form['plainPassword']->getData();
-            if($plainPassword){
+            if ($plainPassword) {
                 $hash = $encoder->encodePassword($user, $plainPassword);
                 $user->setPassword($hash);
             }
-            $role = $roleRepository->findBy(['name'=>$role->getName()]);
+            $role = $roleRepository->findBy(['name' => $role->getName()]);
             $user->setRole($role[0]);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
