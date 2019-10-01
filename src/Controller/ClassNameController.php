@@ -45,7 +45,7 @@ class ClassNameController extends AbstractController
                             'choices'=>$profs,
                             'expanded' => false,
                             'choice_label' => 'lastName',
-                            'label' => 'professeur principale'
+                            'label' => 'Professeur principal'
                         ]);
         $form->handleRequest($request);
 
