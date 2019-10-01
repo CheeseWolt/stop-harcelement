@@ -2,14 +2,18 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\ClassName;
+use App\Entity\Role;
 use App\Form\ClassNameType;
 use App\Repository\ClassNameRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\{Request,Response};
+use Doctrine\ORM\Mapping\Entity;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\{Request, Response};
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/class/name")
@@ -32,8 +36,17 @@ class ClassNameController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        $role = $this->getDoctrine()->getRepository(Role::class)->findOneBy(['name'=>"ROLE_PROFESSEUR"]);
+        $profs = $this->getDoctrine()->getRepository(User::class)->findBy(['role'=>$role]);
         $className = new ClassName();
-        $form = $this->createForm(ClassNameType::class, $className);
+        $form = $this->createForm(ClassNameType::class, $className)
+                        ->add('userManager', EntityType::class, [
+                            'class' => User::class,
+                            'choices'=>$profs,
+                            'expanded' => false,
+                            'choice_label' => 'lastName',
+                            'label' => 'professeur principale'
+                        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -84,7 +97,7 @@ class ClassNameController extends AbstractController
      */
     public function delete(Request $request, ClassName $className): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$className->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $className->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($className);
             $entityManager->flush();
