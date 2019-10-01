@@ -22,25 +22,24 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=20)
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez saisir un Nom d'utilisateur")
      */
     private $userName;
 
     /**
      * @ORM\Column(type="string", length=50)
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez saisir un Nom")
      */
     private $lastName;
 
     /**
      * @ORM\Column(type="string", length=50)
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez saisir un Prénom")
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank
      */
     private $password;
 
@@ -61,7 +60,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Veuillez saisir une adresse")
      */
     private $address;
 
@@ -99,6 +98,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Email(message="L'email entré n'est pas valide")
      */
     private $email;
 

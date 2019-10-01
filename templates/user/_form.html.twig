@@ -4,10 +4,14 @@
         <h4>INFOS PERSOS:</h4>
     </div>
     <div class="col-6">
-        {{ form_row(form.lastName, {'label':'Nom :', 'attr':{'class':'form-control control-label', 'autofocus':'true'}}) }}
+        {{ form_label(form.lastName,"Nom :") }}
+        {{ form_widget(form.lastName, {'attr':{'class':'form-control control-label', 'autofocus':'true'}}) }}
+        {{form_errors(form.lastName)}}
     </div>
     <div class="col-6">
-        {{ form_row(form.firstName, {'label':'Prenom :', 'attr':{'class':'form-control control-label'}}) }}
+        {{ form_label(form.firstName,"Prénom :") }}
+        {{ form_widget(form.firstName, {'attr':{'class':'form-control control-label'}}) }}
+        {{form_errors(form.firstName, {'attr':{'class':'alert alert-danger'}})}}
     </div>
 </div>
 <div class="row">
@@ -15,7 +19,9 @@
         {{ form_row(form.birthDate, {'label':'Date de naissance :', 'attr':{'class':'form-control control-label'}}) }}
     </div>
     <div class="col-4">
-        {{ form_row(form.phone, {'label':'Numéro de téléphone :', 'attr':{'class':'form-control control-label'}}) }}
+        {{ form_label(form.phone,"Numéro de téléphone :") }}
+        {{ form_widget(form.phone, {'attr':{'class':'form-control control-label'}}) }}
+        {{form_errors(form.phone, {'attr':{'class':'alert alert-danger'}})}}
     </div>
     <div class="col-4">
         {{ form_row(form.sex, {'label':'Sexe :', 'attr':{'class':'form-control control-label'}}) }}
@@ -23,12 +29,16 @@
 </div>
 <div class="row">
     <div class="col-12">
-        {{ form_row(form.address, {'label':'Adresse :', 'attr':{'class':'form-control control-label'}}) }}
+        {{ form_label(form.address,"Adresse :") }}
+        {{ form_widget(form.address, {'attr':{'class':'form-control control-label'}}) }}
+        {{form_errors(form.address, {'attr':{'class':'alert alert-danger'}})}}
     </div>
 </div>
 <div class="row">
     <div class="col-12">
-        {{ form_row(form.email, {'label':'Email :', 'attr':{'class':'form-control control-label'}}) }}
+        {{ form_label(form.email,"Email :") }}
+        {{ form_widget(form.email, {'attr':{'class':'form-control control-label'}}) }}
+        {{form_errors(form.email, {'attr':{'class':'alert alert-danger'}})}}
     </div>
 </div>
 <br><hr>
