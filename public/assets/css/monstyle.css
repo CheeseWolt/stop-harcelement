@@ -139,6 +139,17 @@ strong {
     height: 400px; 
     margin: 10px auto;
 }
+#profs {
+    max-width: 500px;
+    margin: 10px auto;
+}
+#casClasse {
+    min-width: 310px;
+	max-width: 800px;
+	height: 400px;
+	margin: 0 auto
+}
+
 
 .footer {
     margin-top: 20px;
