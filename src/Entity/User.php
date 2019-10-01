@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -21,31 +22,38 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Assert\NotBlank
      */
     private $userName;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank
      */
     private $lastName;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $password;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\NotBlank
      */
     private $birthDate;
 
     /**
      * @ORM\Column(type="string", length=10, nullable=true)
+     * @Assert\Length(max=10,maxMessage="Le numéro de téléphone ne doit pas dépasser 10 caractères")
+     * @Assert\Type("numeric",message="Le numéro doit être composé de nombres")
      */
     private $phone;
 
@@ -53,6 +61,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank
      */
     private $address;
 
