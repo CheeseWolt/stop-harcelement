@@ -46,80 +46,21 @@
             }
         },
         series: [
-            {
-                name: 'Brimades',
-                data: [
-                    {
-                        name: 'Homme',
-                        value: 20
-                    }, {
-                        name: 'Femme',
-                        value: 30
-                    }, {
-                        name: "Autres",
-                        value: 6
-                    }
-                ]
-            },
-            {
-                name: 'Insultes',
-                data: [
-                    {
-                        name: "Homme",
-                        value: 60
-                    }, {
-                        name: "Femme",
-                        value: 45
-                    }, {
-                        name: "autre",
-                        value: 13
-                    }
-                ]
-            },
-            {
-                name: 'Agression Physiques',
-                data: [
-                    {
-                        name: "Homme",
-                        value: 30
-                    }, {
-                        name: "Femme",
-                        value: 22
-                    }, {
-                        name: "Autre",
-                        value: 19
-                    }
-                ]
-            },
-            {
-                name: 'Agression Sexuel',
-                data: [
-                    {
-                        name: "Homme",
-                        value: 7
-                    }, {
-                        name: "Femme",
-                        value: 25
-                    }, {
-                        name: "Autre",
-                        value: 20
-                    }
-                ]
-            }, {
-                name: 'Vols',
-                data: [
-                    {
-                        name: "Homme",
-                        value: 20
-                    }, {
-                        name: "Femmes",
-                        value: 40
-                    }, {
-                        name: "Autre",
-                        value: 22
-                    }
-                ]
-            }
+            {% if tag is defined %}
+                {% for typeKey, type in tag  %}
+                {
+                    name: '{{typeKey}}',
+                    data: [
+                        {% for sexKey, sex in type %}
+                        {
+                            name: '{{sexKey}}' ,
+                            value: {{sex}}
+                        },
+                        {% endfor %}
+                    ]
+                },
+                {% endfor %}
+            {% endif %}
         ]
     });
 </script>

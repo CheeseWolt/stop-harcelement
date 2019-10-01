@@ -2,20 +2,20 @@
 
 namespace App\Controller;
 
+use App\Repository\SexRepository;
 use App\Repository\AlertRepository;
 use App\Repository\AlertStyleRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class DashboardController extends AbstractController
 {
     /**
      * @Route("/dashboard", name="dashboard")
      */
-    public function index(AlertRepository $alertRepository, AlertStyleRepository $alertStyleRepository)
+    public function index(AlertRepository $alertRepository, AlertStyleRepository $alertStyleRepository, SexRepository $sexRepository)
     {
         // GRAPH 1 Victime-Témoin / Mois
-
         $dtvMax = 0;
         $alerts = $alertRepository->getStatusRatioByMonth(); // on recupére les "status" par mois
 
@@ -33,10 +33,10 @@ class DashboardController extends AbstractController
                 $dtvMax = $alert['nb'];
             }
         }
-        
+
+
         // GRAPH 2 Type d'Aggression / Mois -> abbrégé "tam"
         // on veux un tableau: tab[typeHarcelement][mois] = nombreDeCas
-
         $tamMax = 0;
         $styles = $alertStyleRepository->getStylesByMonth();
         $nbStyles = $alertStyleRepository->findAll();
@@ -53,16 +53,33 @@ class DashboardController extends AbstractController
                 $tamMax = $style['nbAlert'];
             }
         }
+
+
         // GRAPH 3 Victime genre / type d'aggression
-        
+        // on veux un tableau : tab[alertStyle][sex] = nombreDeCas
+        $alertsByTypeAndBySexes = $alertRepository->getVictimGenreByAlertType();
+        $sexs = $sexRepository->findAll();
+
+        // on initialise un tableau au format tab[alertStyle][sex] = nombreDeCas
+        foreach($nbStyles as $nb)
+        {
+            for($sex = 0; $sex < count($sexs); $sex++)
+            {
+                $tag[$nb->getName()][$sexs[$sex]->getName()] = "0";
+            }
+        }
+        foreach($alertsByTypeAndBySexes as $alertsByTypeAndBySexe)
+        {
+            $tag[$alertsByTypeAndBySexe['typeAlert']][$alertsByTypeAndBySexe['sexe']] = $alertsByTypeAndBySexe['nbAlert'];
+        }
+
+
         //GRAPH 4 - tranches horaires
         $hours = $alertRepository->getHour();
 
+
         //GRAPH 5 - Localistation des incidents
         $places = $alertRepository->getPlace();
-
-
-
 
 
         return $this->render('dashboard/index.html.twig', [
@@ -74,6 +91,7 @@ class DashboardController extends AbstractController
             'month'=> $month,
             'hours' => $hours,
             'places' => $places,
+            'tag' => $tag ?? null,
         ]);       
     }
     

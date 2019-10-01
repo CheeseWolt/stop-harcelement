@@ -47,8 +47,21 @@ class AlertRepository extends ServiceEntityRepository
     public function getVictimGenre() {
 
     }
-    public function getVictimGenreByAlertType() {
-
+    public function getVictimGenreByAlertType() 
+    {
+        $em = $this->getEntityManager();
+        $sql = 'SELECT sex.name as sexe, alert_style.name as typeAlert, count(alert.status_id) as nbAlert 
+                FROM `sex` 
+                JOIN user ON sex.id = user.sex_id 
+                JOIN alert ON user.id = alert.alert_sender_id 
+                JOIN status ON alert.status_id = status.id 
+                JOIN alert_alert_style ON alert.id = alert_alert_style.alert_id 
+                JOIN alert_style ON alert_alert_style.alert_style_id = alert_style.id 
+                Group BY sexe, typeAlert';
+        $conn = $em->getConnection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll() ??null;
     }
 
     //GRAPH 4 : Tranches horaires
