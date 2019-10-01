@@ -4,48 +4,58 @@
 {% endblock %}
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{asset('assets/css/homeStyle.css')}}">
 {% endblock %}
 {% block body %}
 
     <h1>Statistiques</h1>
     <div class="contenant">
-        <div class="row">
-            <div class="col-6">
-                <div id="nbIncident">
-                    {% include 'dashboard/nbIncident.html.twig' %}
+        <div class="listeDeroulante">
+            <div class="btn-group">
+                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Données graphiques
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" onclick="buttonOne()" value="1">Nombre de témoins-victimes / mois</a>
+                    <a class="dropdown-item" onclick="buttonTwo()" value="2">Répartition des types d'aggressions / mois</a>
+                    <a class="dropdown-item" onclick="buttonThree()" value="3">Sexe de la victime / type d'agressions</a>
+                    <a class="dropdown-item" onclick="buttonFour()" value="4">Tranches horaires des incidents</a>
+                    <a class="dropdown-item" onclick="buttonFive()" value="5">Localisation des incidents</a>
+                    <a class="dropdown-item" onclick="buttonSix()" value="6">Nombre de cas par classe</a>
+                    <a class="dropdown-item" onclick="buttonSeven()" value="7">Intervention des professeurs</a>
                 </div>
             </div>
-            <div class="col-6">
+        </div>
+        <div class="row">
+            <div id="graphList">
+                <div id="nbIncident" style="display:none">
+                    {% include 'dashboard/nbIncident.html.twig' %}
+                </div>
                 <div id="incidentType">
                     {% include 'dashboard/incidentType.html.twig' %}
                 </div>
-            </div>
-            <div class="col-12">
-                <div id="bubble">
+                <div id="bubble" style="display:none">
                     {% include 'dashboard/bubble.html.twig' %}
                 </div>
-            </div>
-            <div class="col-6">
-                <div id="trancheHoraire">
+                <div id="trancheHoraire" style="display:none">
                     {% include 'dashboard/trancheHoraires.html.twig' %}
                 </div>
-            </div>
-            <div class="col-6">
-                <div id="localisation">
+                <div id="localisation" style="display:none">
                     {% include 'dashboard/localisation.html.twig' %}
                 </div>
-            </div>
-            <div class="col-6">
-                <div id="casClasse">
+                <div id="casClasse" style="display:none">
                     {% include 'dashboard/casClasse.html.twig' %}
                 </div>
-            </div>
-            <div class="col-6">
-                <div id="profs">
+                <div id="profs" style="display:none">
                     {% include 'dashboard/profActivite.html.twig' %}
                 </div>
             </div>
         </div>
     </div>
+
+
 {% endblock %}
+        {% block javascripts %}
+            {{ parent() }}
+            <script src="{{asset('assets/js/dashboard.js')}}">
+            </script>
+        {% endblock %}
