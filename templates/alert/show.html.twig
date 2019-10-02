@@ -5,42 +5,9 @@
 {% endblock %}
 
 {% block body %}
-    <style>/* .body{
-    background-color: #C8E2E7;
-    color: #4B6489 ;
-} 
-
-.card {
-    position: relative;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #527EA7;
-    color: #C8E2E7;
-    background-clip: border-box;
-    border: 1px solid rgba(0,0,0,.125);
-    border-radius: .25rem;
-}
-
-.card li{
-    background-color: #6790B6;
-    color: #C8E2E7;
-}
-
-.btn-primary{
-    background-color: #4B6489;
-    color:#C8E2E7 ;
-}
-
-.btn-danger{
-    background-color: #FFDF86 ;
-} */</style>
-<div class="container p-5 theme">
-    <h1 class="theme">Signalement</h1>
-    <div class="card my-5 theme-dark" style="width: 100%;">
+<div class="container p-5 theme-l5">
+    <h1 class="text-theme">Signalement</h1>
+    <div class="card my-5 theme-d2" style="width: 100%;">
         <div class="card-header">Type(s) de Harcelement(s) :
             <h5 class="card-title">
                 {% for type in alert.alertStyle %}
@@ -69,7 +36,7 @@
             </div>
             {% if is_granted('ROLE_PROFESSEUR') %}
                 {% if alert.alertManager is  null %}
-                    <a href="{{ path('alert_manage',{'id':alert.id}) }}" class="btn btn-primary">
+                    <a href="{{ path('alert_manage',{'id':alert.id}) }}" class="btn theme-action">
                         Prendre en charge
                     </a>
                 {% else %}
