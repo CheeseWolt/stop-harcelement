@@ -1,10 +1,10 @@
 {{ form_start(form) }}
-<div class="card col-8 offset-4">
-    <h5 class="card-title">{{app.user.userName}}</h5>
-    <p class="card-text">
+<div class="theme-light card">
+    <h5 class="card-title">{{app.user.userName}} {{ alert.isAnonym ? '(Votre nom n\'apparaitra pas car vous avez choisit l\'anonymat)' }}</h5>
+    <p class="card-text theme-dark">
         {{ form_label(form.content,'') }}
         {{ form_row(form.content,{"attr":{'class':'form-control'}})}}
     </p>
-    <button class="btn btn-primary">{{ button_label|default('Envoyer') }}</button>
+    <button class="btn theme-action">{{ button_label|default('Envoyer') }}</button>
 </div>
 {{ form_end(form) }}

@@ -1,21 +1,27 @@
 {% block body %}
     <div class="container">
-        <h1 class="mb-3">Messages privés de {{ app.user.userName }}</h1>
-    {% if private_messages %}
-    
-        {% for private_message in private_messages %}
-            <div class="card mb-4 col-8 {% if private_message.user.userName == app.user.userName %} offset-4 {% endif %}">
-                <h5 class="card-title">{{private_message.user.userName}}</h5>
-                <p class="card-text">{{private_message.content}}
-                </p>
-                <div class="card-footer">{{ private_message.date ? private_message.date|date('d-m-Y H:i:s') : '' }}</div>
-            </div>
-        {% endfor %}
-    {% else %}
-        <h2>Auncun message.</h2>
-    {% endif %}
-    
-    {{ include('private_message/_form.html.twig') }}
-{# <a href="{{ path('private_message_new') }}">Create new</a> #}
+        <h1 class="mb-3 theme">Messages privés de
+            {{ app.user.userName }}</h1>
+        {% if private_messages %}
+            {% for private_message in private_messages %}
+                <div class="col-8{% if private_message.user.userName == app.user.userName %} offset-4 {% endif %}">
+                    <div class="card theme-light mb-4 ">
+                        <div class="card-header  theme-dark">
+                            <h5 class=" card-title">{{ alert.isAnonym ? 'Anonyme' : alert.alertSender.firstName  ~ ' ' ~  alert.alertSender.lastName }}</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{private_message.content}}</p>
+                        </div>
+                        <div class="card-footer theme-dark">{{ private_message.date ? private_message.date|date('d-m-Y H:i:s') : '' }}</div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <h2>Auncun message.</h2>
+        {% endif %}
+        <div class="col-8 offset-4">
+            {{ include('private_message/_form.html.twig') }}
+        </div>
+        {# <a href="{{ path('private_message_new') }}">Create new</a> #}
     </div>
 {% endblock %}
