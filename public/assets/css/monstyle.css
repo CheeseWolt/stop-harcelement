@@ -1,3 +1,16 @@
+/* Color Theme */
+
+.theme-light {color:#000 !important; background-color:#f6f9fd !important}
+.theme-dark {color:#fff !important; background-color:#234d80 !important}
+.theme-action {color:#fff !important; background-color:#234d80 !important}
+
+.theme {color:#fff !important; background-color:#6f9fd8 !important}
+.text-theme {color:#6f9fd8 !important}
+.border-theme {border-color:#6f9fd8 !important}
+
+.hover-theme:hover {color:#fff !important; background-color:#6f9fd8 !important}
+.hover-text-theme:hover {color:#6f9fd8 !important}
+.hover-border-theme:hover {border-color:#6f9fd8 !important}
 /* EddyPart */
 .backgroundDivRed {
     background-color: rgba(255, 0, 0, 0.3);
@@ -44,25 +57,9 @@
     margin-bottom: 5px;
     border: 2px solid;
     border-radius: 5px;
-    background-color: #5a74f4;
-    box-shadow: 4px 4px 3px rgba(9, 2, 90, 0.2);
+    background-color: rgb(220, 220, 220);
 }
-tr {
-    background-color: #5a74f4;
-    box-shadow: 2px 2px 3px rgba(9, 2, 90, 0.2);
-}
-.card {
-    background-color: #5a74f4;
-    box-shadow: 2px 2px 3px rgba(9, 2, 90, 0.2);
-}
-.form-control {
-    background-color: #f2f1f7;
-    box-shadow: 2px 2px 3px rgba(9, 2, 90, 0.2);
-}
-.list-group-item {
-    background-color: #5836c9;
-    box-shadow: 2px 2px 3px rgba(9, 2, 90, 0.2);
-}
+
 .alertCard .label {
     font-size: 0.7rem;
 }
@@ -99,27 +96,20 @@ label:not(.form-check-label), legend {
 /* Fin */
 
 /* CirceStyle */
-html {
-    position: relative;
-    min-height: 100%;
-}
 body {
-    width: 100%;
-    height: 100%;
-    min-height: 100%;
-    background-color: #46259b;
+    background-color: #274472;
     color: rgb(235, 242, 255);  
     text-align: center;
-    margin-bottom: 60px;
+
 }
 h1 {
     margin: 10px;
-    color: #00ffb2;
+    color: #FFDC7A;
 }
 .section {
     width: 100%;
     padding: 20px;
-    background-color: #5a74f4;
+    background-color: #5885AF;
     border-radius: 9px;
     box-shadow: 4px 4px 3px rgba(9, 2, 90, 0.5);
 }
@@ -128,7 +118,7 @@ h1 {
     margin: 10px auto;
     width: 90%;
     padding: 15px;
-    background-color: #5a74f4;
+    background-color: #5885AF;
     border-radius: 9px;
     box-shadow: 4px 4px 3px rgba(9, 2, 90, 0.5);
 }
@@ -137,73 +127,55 @@ h4 {
     color: white;
 }
 h2, h3 {
-    color: #00ffb2;
+    color: #FFDC7A;
 }
 strong {
     color: white;
 }
-.btn {
+.btn-light {
     margin: 10px;
-    box-shadow: 2px 2px 3px rgba(9, 2, 100, 0.2);
+    box-shadow: 5px 5px 3px rgba(9, 2, 100, 0.5);
 }
 
 /* GRAPHS */
-#graphList {
-    margin: 10px;
-    width: 100%;
-}
-#incidentType {
-    height: 450px; 
-    margin: 10px auto;
-    text-align: center;
-    box-shadow: 3px 3px 3px rgba(9, 2, 100, 0.5);
-}
 #nbIncident {
-    max-height: 450px;
+    max-width: 500px;
     margin: 10px auto;
-    text-align: center;
-    box-shadow: 3px 3px 3px rgba(9, 2, 100, 0.5);
 }
 #bubble {
     max-width: 600px;
     margin: 10px auto;
-    text-align: center;
-    box-shadow: 3px 3px 3px rgba(9, 2, 100, 0.5);
 }
 #age {
-    width: 1600px;
+    /* max-width: 500px; */
     margin: 10px auto;
-    text-align: center;
-    box-shadow: 3px 3px 3px rgba(9, 2, 100, 0.5);
-}
-#trancheHoraire {
-    max-width: 500px;
-    margin: 10px auto;
-    text-align: center;
-    box-shadow: 3px 3px 3px rgba(9, 2, 100, 0.5);
 }
 #localisation {
     max-width: 500px;
     margin:  auto;
-    text-align: center;
-    box-shadow: 3px 3px 3px rgba(9, 2, 100, 0.5);
 }
-#casClasse {
-	height: 450px;
-    margin: 0 auto;
-    text-align: center;
-    box-shadow: 3px 3px 3px rgba(9, 2, 100, 0.5);
+#column {
+    max-width: 500px;
+    margin: 10px auto;
+}
+#incidentType {
+    min-width: 310px; 
+    height: 400px; 
+    margin: 10px auto;
 }
 #profs {
-    height: 500px;
+    max-width: 500px;
     margin: 10px auto;
-    text-align: center;
-    box-shadow: 3px 3px 3px rgba(9, 2, 100, 0.5);
 }
+#casClasse {
+    min-width: 310px;
+	max-width: 800px;
+	height: 400px;
+	margin: 0 auto
+}
+
+
 .footer {
-    width: 100%;
-    bottom: 0px;
-    margin: -10px 0;
-    padding-bottom: 0px;
-    position: absolute;
+    margin-top: 20px;
+    margin-bottom: 0;
 }
