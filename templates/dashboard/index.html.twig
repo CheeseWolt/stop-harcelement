@@ -15,8 +15,8 @@
                     Données graphiques
                 </button>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" onclick="buttonOne()" value="1">Nombre de témoins-victimes / mois</a>
                     <a class="dropdown-item" onclick="buttonTwo()" value="2">Répartition des types d'aggressions / mois</a>
+                    <a class="dropdown-item" onclick="buttonOne()" value="1">Nombre de témoins-victimes / mois</a>
                     <a class="dropdown-item" onclick="buttonThree()" value="3">Sexe de la victime / type d'agressions</a>
                     <a class="dropdown-item" onclick="buttonFour()" value="4">Tranches horaires des incidents</a>
                     <a class="dropdown-item" onclick="buttonFive()" value="5">Localisation des incidents</a>
@@ -27,11 +27,11 @@
         </div>
         <div class="row">
             <div id="graphList">
-                <div id="nbIncident" style="display:none">
-                    {% include 'dashboard/nbIncident.html.twig' %}
-                </div>
                 <div id="incidentType">
                     {% include 'dashboard/incidentType.html.twig' %}
+                </div>
+                <div id="nbIncident" style="display:none">
+                    {% include 'dashboard/nbIncident.html.twig' %}
                 </div>
                 <div id="bubble" style="display:none">
                     {% include 'dashboard/bubble.html.twig' %}
