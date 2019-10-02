@@ -125,40 +125,52 @@ strong {
 }
 
 /* GRAPHS */
+#graphList {
+    margin: 10px;
+    width: 100%;
+}
 #nbIncident {
     max-width: 500px;
     margin: 10px auto;
+    text-align: center;
 }
 #bubble {
     max-width: 600px;
     margin: 10px auto;
+    text-align: center;
 }
 #age {
     /* max-width: 500px; */
     margin: 10px auto;
+    text-align: center;
 }
 #localisation {
     max-width: 500px;
     margin:  auto;
+    text-align: center;
 }
 #column {
     max-width: 500px;
     margin: 10px auto;
+    text-align: center;
 }
 #incidentType {
     min-width: 310px; 
     height: 400px; 
     margin: 10px auto;
+    text-align: center;
 }
 #profs {
     max-width: 500px;
     margin: 10px auto;
+    text-align: center;
 }
 #casClasse {
     min-width: 310px;
 	max-width: 800px;
 	height: 400px;
-	margin: 0 auto
+    margin: 0 auto;
+    text-align: center;
 }
 
 
