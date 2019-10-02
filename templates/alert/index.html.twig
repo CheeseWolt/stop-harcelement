@@ -10,7 +10,7 @@
                 <h1>Liste des signalements</h1>
             </div>
             <div class="col-12">
-                <table class="table">
+                <table class="table table-borderless table-dark">
                     <thead>
                         <tr>
                             <th>Type de harcelement</th>
@@ -34,7 +34,7 @@
                                     {{ alert.location.name }}
                                 </td>
                                 <td>
-                                    <a href="{{ path('alert_show', {'id': alert.id}) }}" class="btn btn-primary">Afficher</a>
+                                    <a href="{{ path('alert_show', {'id': alert.id}) }}" class="btn btn-light">Afficher</a>
                                     {# <a href="{{ path('alert_edit', {'id': alert.id}) }}" class="btn btn-success">Editer</a> #}
                                 </td>
                             </tr>
