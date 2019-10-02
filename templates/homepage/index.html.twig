@@ -11,28 +11,20 @@
     <br>
     <div class="row">
         <div class="col-12">
-            <div class="marginRight0">
-                <div class="row text-center">
-                    <div class="section">
-                        <div class="col-12">
-                            <h2>Témoin ou victime, ne restez pas silencieux</h2>
-                        </div>
-                        <div class="col-12">
-                            <h4>Le harcèlement est un enchaînement d'agissements hostiles répétés visant à affaiblir
-    psychologiquement la personne qui en est la victime.</h4>
-    {% if app.user is null %}
-        <a href="{{ path ("app_login")}}" class="btn btn-light">Connexion</a>
-    {% endif %}
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        {# <a href="{{path('connexion')}}"><button class="btn btn-primary">S'identifier</button></a> #}
-                    </div>
-                    <div class="col-6">
-                        {# <a href="{{path('infos_utiles')}}"><button class="btn btn-primary">Infos utiles</button></a> #}
-                    </div>
-                </div>
+            <div class="section">
+                <h2>Témoin ou victime, ne restez pas silencieux</h2>
+                <h4>Le harcèlement est un enchaînement d'agissements hostiles répétés visant à affaiblir
+                psychologiquement la personne qui en est la victime.</h4>
+                {% if app.user is null %}
+                    <a href="{{ path ("app_login")}}" class="btn btn-light">Connexion</a>
+                {% endif %}
             </div>
+        </div>
+        <div class="col-6">
+            {# <a href="{{path('connexion')}}"><button class="btn btn-primary">S'identifier</button></a> #}
+        </div>
+        <div class="col-6">
+            {# <a href="{{path('infos_utiles')}}"><button class="btn btn-primary">Infos utiles</button></a> #}
         </div>
     </div>
     <br>
