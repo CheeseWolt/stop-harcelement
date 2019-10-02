@@ -47,7 +47,22 @@
     background-color: #5a74f4;
     box-shadow: 4px 4px 3px rgba(9, 2, 90, 0.2);
 }
-
+tr {
+    background-color: #5a74f4;
+    box-shadow: 2px 2px 3px rgba(9, 2, 90, 0.2);
+}
+.card {
+    background-color: #5a74f4;
+    box-shadow: 2px 2px 3px rgba(9, 2, 90, 0.2);
+}
+.form-control {
+    background-color: #f2f1f7;
+    box-shadow: 2px 2px 3px rgba(9, 2, 90, 0.2);
+}
+.list-group-item {
+    background-color: #5836c9;
+    box-shadow: 2px 2px 3px rgba(9, 2, 90, 0.2);
+}
 .alertCard .label {
     font-size: 0.7rem;
 }
