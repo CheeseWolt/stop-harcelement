@@ -36,16 +36,16 @@
             </div>
             {% if is_granted('ROLE_PROFESSEUR') %}
                 {% if alert.alertManager is  null %}
-                    <a href="{{ path('alert_manage',{'id':alert.id}) }}" class="btn theme-action">
+                    <a href="{{ path('alert_manage',{'id':alert.id}) }}" class="p-2 theme-action">
                         Prendre en charge
                     </a>
                 {% else %}
                     <li class="list-group-item theme-light">Pris en charge par :
-                        {{ alert.alertManager.userName ?? '' }}</li>
+                        {{ alert.alertManager.firstName ~' '~ alert.alertManager.lastName ?? '' }}</li>
                     <li class="list-group-item theme-light">Début de prise en charge :
                         {{ alert.startSupportDate ? alert.startSupportDate|date('d/m/Y à H:i:s') : ''  }}</li>
                     {% if alert.endSupportDate is null %}
-                        <a href="{{ path('alert_close',{'id':alert.id}) }}" class="btn btn-danger">
+                        <a href="{{ path('alert_close',{'id':alert.id}) }}" class="btn-danger p-2">
                             Fin de prise en charge
                         </a>
                     {% else %}
