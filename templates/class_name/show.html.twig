@@ -3,11 +3,11 @@
 {% block title %}Classe{% endblock %}
 
 {% block body %}
-<div class="container">
+<div class="container theme-container">
     <br>
     <div class="row">
         <div class="col-12 text-center">
-            <h1>Classe</h1>
+            <h1 class="text-theme">Classe</h1>
             <br>
         </div>
     </div>
@@ -16,19 +16,19 @@
             <table class="table">
                 <tbody>
                     <tr>
-                        <th>Id</th>
+                        <th class="theme-d2">Id</th>
                         <td>{{ class_name.id }}</td>
                     </tr>
                     <tr>
-                        <th>Niveau scolaire</th>
+                        <th class="theme-d2">Niveau scolaire</th>
                         <td>{{ class_name.classLevel.name }}</td>
                     </tr>
                     <tr>
-                        <th>Nom</th>
+                        <th class="theme-d2">Nom</th>
                         <td>{{ class_name.name }}</td>
                     </tr>
                     <tr>
-                        <th>Professeur principale</th>
+                        <th class="theme-d2">Professeur principale</th>
                         <td>
                         {% if class_name.userManager.sex.name == 'Masculin' %}
                             Mr 
@@ -40,7 +40,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>Eleves</th>
+                        <th class="theme-d2">Eleves</th>
                         <td>
                             {% for eleve in class_name.userStudent %}
                                 {{ eleve.lastname }} {{ eleve.firstName }}, 
@@ -53,11 +53,11 @@
     </div>
     <div class="row">
         <div class="col-12 text-right">
-            <a href="{{ path('class_name_edit', {'id': class_name.id}) }}"><button class="btn btn-success">Editer</button></a>
+            <a href="{{ path('class_name_edit', {'id': class_name.id}) }}" class="btn theme-action">Editer</a>
         </div>
         <div class="col-12"><hr></div>
         <div class="col-6">
-            <a href="{{ path('class_name_index') }}"><button class="btn btn-primary">retour aux classes</button></a>
+            <a href="{{ path('class_name_index') }}" class="btn theme-action">retour aux classes</a>
         </div>
         <div class="col-6 text-right">
             {{ include('class_name/_delete_form.html.twig') }}
