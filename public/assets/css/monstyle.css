@@ -129,6 +129,7 @@ html {
 body {
     background-color: #23b5d3;
     text-align: center;
+    margin-bottom: 60px;
 }
 
 .container {
