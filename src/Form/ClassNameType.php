@@ -23,14 +23,6 @@ class ClassNameType extends AbstractType
                 'choice_label'=>'name',
                 'label'=>'Niveau scolaire'
             ])
-            // ->add('userStudent', EntityType::class, [
-            //     'class'=>User::class,
-            //     'expanded'=>true,
-            //     'multiple'=>true,
-            //     'required'=>false,
-            //     'choice_label'=>'lastname',
-            //     'label'=>'Eleves'
-            // ])
         ;
     }
 

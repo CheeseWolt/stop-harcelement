@@ -3,7 +3,7 @@
 {% block title %}Niveau scolaire{% endblock %}
 
 {% block body %}
-<div class="container">
+<div class="container theme-container text-theme">
     <br>
     <div class="row">
         <div class="col-12 text-center">
@@ -16,11 +16,11 @@
             <table class="table">
                 <tbody>
                     <tr>
-                        <th>Id</th>
+                        <th class="theme-d3">Id</th>
                         <td>{{ class_level.id }}</td>
                     </tr>
                     <tr>
-                        <th>Niveau scolaire</th>
+                        <th class="theme-d3">Niveau scolaire</th>
                         <td>{{ class_level.name }}</td>
                     </tr>
                 </tbody>
@@ -29,11 +29,11 @@
     </div>
     <div class="row">
         <div class="col-12 text-right">
-            <a href="{{ path('class_level_edit', {'id': class_level.id}) }}"><button class="btn btn-success">Editer</button></a>
+            <a href="{{ path('class_level_edit', {'id': class_level.id}) }}" class="btn theme-action">Editer</a>
         </div>
         <div class="col-12"><hr></div>
         <div class="col-6">
-            <a href="{{ path('class_level_index') }}"><button class="btn btn-primary">retour aux niveaux scolaires</button></a>
+            <a href="{{ path('class_level_index') }}" class="btn theme-action">retour aux niveaux scolaires</a>
         </div>
         <div class="col-6 text-right">
             {{ include('class_level/_delete_form.html.twig') }}

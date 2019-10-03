@@ -7,10 +7,8 @@ use App\Entity\ClassName;
 use App\Entity\Role;
 use App\Form\ClassNameType;
 use App\Repository\ClassNameRepository;
-use Doctrine\ORM\Mapping\Entity;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\{Request, Response};
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -36,17 +34,17 @@ class ClassNameController extends AbstractController
      */
     public function new(Request $request): Response
     {
-        $role = $this->getDoctrine()->getRepository(Role::class)->findOneBy(['name'=>"ROLE_PROFESSEUR"]);
-        $profs = $this->getDoctrine()->getRepository(User::class)->findBy(['role'=>$role]);
+        $role = $this->getDoctrine()->getRepository(Role::class)->findOneBy(['name' => "ROLE_PROFESSEUR"]);
+        $profs = $this->getDoctrine()->getRepository(User::class)->findBy(['role' => $role]);
         $className = new ClassName();
         $form = $this->createForm(ClassNameType::class, $className)
-                        ->add('userManager', EntityType::class, [
-                            'class' => User::class,
-                            'choices'=>$profs,
-                            'expanded' => false,
-                            'choice_label' => 'lastName',
-                            'label' => 'Professeur principal'
-                        ]);
+            ->add('userManager', EntityType::class, [
+                'class' => User::class,
+                'choices' => $profs,
+                'choice_label' => 'lastName',
+                'label' => 'Professeur principal'
+            ]);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -77,8 +75,17 @@ class ClassNameController extends AbstractController
      */
     public function edit(Request $request, ClassName $className): Response
     {
+        $role = $this->getDoctrine()->getRepository(Role::class)->findOneBy(['name' => "ROLE_PROFESSEUR"]);
+        $profs = $this->getDoctrine()->getRepository(User::class)->findBy(['role' => $role]);
         $form = $this->createForm(ClassNameType::class, $className);
-        $form->handleRequest($request);
+        $form->handleRequest($request)
+        ->add('userManager', EntityType::class, [
+            'class' => User::class,
+            'choices' => $profs,
+            'choice_label' => 'lastName',
+            'label' => 'Professeur principal'
+        ]);
+
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();

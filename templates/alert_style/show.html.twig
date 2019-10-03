@@ -3,11 +3,11 @@
 {% block title %}Type d'alerte{% endblock %}
 
 {% block body %}
-<div class="container">
+<div class="container theme-container ">
     <br>
     <div class="row">
         <div class="col-12 text-center">
-            <h1>Type d'alerte</h1>
+            <h1 class="text-theme">Type d'alerte</h1>
             <br>
         </div>
     </div>
@@ -16,11 +16,11 @@
             <table class="table">
                 <tbody>
                     <tr>
-                        <th>Id</th>
+                        <th class="theme-d3">Id</th>
                         <td>{{ alert_style.id }}</td>
                     </tr>
                     <tr>
-                        <th>Type d'alerte</th>
+                        <th class="theme-d3">Type d'alerte</th>
                         <td>{{ alert_style.name }}</td>
                     </tr>
                 </tbody>
@@ -29,11 +29,11 @@
     </div>
     <div class="row">
         <div class="col-12 text-right">
-            <a href="{{ path('alert_style_edit', {'id': alert_style.id}) }}"><button class="btn btn-success">Editer</button></a>
+            <a href="{{ path('alert_style_edit', {'id': alert_style.id}) }}" class="btn theme-action">Editer</a>
         </div>
         <div class="col-12"><hr></div>
         <div class="col-6">
-            <a href="{{ path('alert_style_index') }}"><button class="btn btn-primary">retour aux types d'alerte</button></a>
+            <a href="{{ path('alert_style_index') }}" class="btn theme-action">retour aux types d'alerte</a>
         </div>
         <div class="col-6 text-right">
             {{ include('alert_style/_delete_form.html.twig') }}
