@@ -15,7 +15,7 @@
             </li>
         </ul>
         {% if app.user %}
-            <div class="btn-group btnAdmin">
+            <div class="btn-group btnNav">
                 {% if app.user.role.name == "ROLE_ADMIN" %}
                     <button type="button" class="btn theme-action dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mes actions possibles</button>
                     <div class="dropdown-menu theme-action dropdown-shadow">
@@ -30,6 +30,9 @@
                         <a class="dropdown-item" href="/user">gerer utilisateurs</a>
                     </div>
                 {% endif %}
+            </div>
+            <div class="btn-group btnNav">
+                <a href="{{path('infospersos')}}"><button class="btn theme-action">Mes infos persos</button></a>
             </div>
         <a href="{{path('app_logout')}}"><button class="btn theme-action">Deconnexion</button></a>
         {% else %}

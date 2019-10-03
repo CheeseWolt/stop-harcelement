@@ -45,16 +45,14 @@
 }
 
 /* css btn admin exclusivement */
-.btnAdmin{
+.btnNav{
     margin-right: 10px;
     padding-left: 4px;
     padding-right: 4px;
 }
-
 .dropdown-shadow{
     box-shadow: 2px 2px 3px rgba(9, 2, 90, 0.2);
 }
-
 /* fin */
 
 .width100 {
@@ -84,15 +82,13 @@
     box-shadow: 4px 4px 3px rgba(9, 2, 90, 0.2);
 }
 tr {
-    background-color: #5a74f4;
     box-shadow: 2px 2px 3px rgba(9, 2, 90, 0.2);
 }
 .card {
-    background-color: #5a74f4;
     box-shadow: 2px 2px 3px rgba(9, 2, 90, 0.2);
 }
 .form-control {
-    background-color: #f2f1f7;
+    background-color: #d1f1f8;
     box-shadow: 2px 2px 3px rgba(9, 2, 90, 0.2);
 }
 .list-group-item {
