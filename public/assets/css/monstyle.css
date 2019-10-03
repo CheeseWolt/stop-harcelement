@@ -118,6 +118,13 @@ tr {
 label:not(.form-check-label), legend {
     font-weight: bold;
 }
+
+.footerTitle {
+    font-weight: bold;
+    padding-top: 5px;
+    font-family: sans-serif;
+    color: white;
+}
 /* Fin */
 
 /* CirceStyle */
@@ -129,7 +136,7 @@ body {
     width: 100%;
     height: 100%;
     min-height: 100%;
-    background-color: #46259b;
+    background-color: #23b5d3;
     color: rgb(235, 242, 255);  
     text-align: center;
     margin-bottom: 60px;
@@ -223,8 +230,11 @@ strong {
 }
 .footer {
     width: 100%;
-    bottom: 0px;
-    margin: -10px 0;
-    padding-bottom: 0px;
+    padding-bottom: 10px;
+    bottom: 0;
     position: absolute;
+}
+
+.theme-d3 a {
+    color: #fff;
 }
