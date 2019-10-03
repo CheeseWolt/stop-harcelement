@@ -2,45 +2,43 @@
 
 {% block title %}Accueil{% endblock %}
 
-{% block stylesheets %}
-    {{ parent() }}
-{% endblock %}
-
 {% block body %}
-<div class="container">
-    <br>
-    <div class="row">
-        <div class="col-12">
-            <div class="section">
-                <h2>Témoin ou victime, ne restez pas silencieux</h2>
+    <div class="container theme-container">
+        <br>
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-theme">Témoin ou victime, ne restez pas silencieux</h1>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-12 text-theme">
                 <h4>Le harcèlement est un enchaînement d'agissements hostiles répétés visant à affaiblir
                 psychologiquement la personne qui en est la victime.</h4>
+                <br>
                 {% if app.user is null %}
-                    <a href="{{ path ("app_login")}}" class="btn btn-light">Connexion</a>
+                    <a href="{{ path ("app_login")}}" class="btn theme-action">Connexion</a>
                 {% endif %}
             </div>
         </div>
-        <div class="col-6">
-            {# <a href="{{path('connexion')}}"><button class="btn btn-primary">S'identifier</button></a> #}
+        <br>
+        <hr>
+        <br>
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-theme">Pourquoi utiliser StopHarcelement ?</h1>
+            </div>
         </div>
-        <div class="col-6">
-            {# <a href="{{path('infos_utiles')}}"><button class="btn btn-primary">Infos utiles</button></a> #}
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-12">
-            <div class="section">
-                <h3>Pourquoi utiliser StopHarcelement ?</h3>
-                <br>
-                <p>La confidentialité est le mot clé de notre application, permettant aux victimes de s'ouvrir sincèrement, sans risque de représailles.</p>
-				<p>Avec notre interface numérique, accèdez facilement a nos différentes fonctionnalitées.</p>
-                <p> Accèdez aux nouveaux rapports et à vos discussions privées en 1 click.</p>
-                <p>Consultez facilement les statistiques de votre établissement afin de mettre en place une stratégie adaptée au(x) problème(s).</p>
-                <p></p>
-                <p></p>
+        <br>
+        <div class="row">
+            <div class="col-12 text-theme">
+                <ul>
+                    <li>La confidentialité est le mot clé de notre application, permettant aux victimes de s'ouvrir sincèrement, sans risque de représailles.</li>
+                    <li>Consultez facilement les statistiques de votre établissement afin de mettre en place une stratégie adaptée au(x) problème(s).</li>
+                    <li>Avec notre interface numérique, accèdez facilement a nos différentes fonctionnalitées.</li>
+                    <li>Accèdez aux nouveaux rapports et à vos discussions privées en quelques clics.</li>
+                </ul>
             </div>
         </div>
     </div>
-</div>
 {% endblock %}
