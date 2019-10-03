@@ -6,6 +6,7 @@ use App\Repository\SexRepository;
 use App\Repository\AlertRepository;
 use App\Repository\AlertStyleRepository;
 use App\Repository\ClassLevelRepository;
+use App\Repository\UserRepository;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -14,7 +15,7 @@ class DashboardController extends AbstractController
     /**
      * @Route("/dashboard", name="dashboard")
      */
-    public function index(AlertRepository $alertRepository, AlertStyleRepository $alertStyleRepository, SexRepository $sexRepository, ClassLevelRepository $classLevelRepository)
+    public function index(AlertRepository $alertRepository, AlertStyleRepository $alertStyleRepository, SexRepository $sexRepository, ClassLevelRepository $classLevelRepository, UserRepository $userRepository)
     {
         // GRAPH 1 Victime-Témoin / Mois
         $dtvMax = 0;
@@ -92,6 +93,14 @@ class DashboardController extends AbstractController
             $nac[$classe['niveauScolaire']] = (int)$classe['nbAlert'];
         }
 
+        //GRAPH 7 - Activité des professeurs sur le mois en cours
+        $profActivities = $userRepository->getRatioProfResponse();
+        foreach ($profActivities as $prof)
+        {
+            $pa[$prof['Nom']] = (int)$prof['nbAlert'];
+        }
+
+
 
         return $this->render('dashboard/index.html.twig', [
             'controller_name' => 'DashboardController',
@@ -103,6 +112,7 @@ class DashboardController extends AbstractController
             'hours' => $hours,
             'places' => $places,
             'nac' => $nac,
+            'pa' => $pa,
             'tag' => $tag ?? null,
         ]);  
         

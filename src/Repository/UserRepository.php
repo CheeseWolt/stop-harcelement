@@ -19,6 +19,19 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
+//GRAPH 7 : Activité des profs sur le mois en cours
+public function getRatioProfResponse()
+{
+    $em = $this->getEntityManager();
+    $sql = 'SELECT user.user_name as Nom, substring(alert.event_date, 6, 2) as Mois, 
+    COUNT(alert.id) as nbAlert FROM user JOIN alert ON user.id = alert.alert_manager_id 
+    WHERE MONTH(alert.event_date) = MONTH(NOW()) GROUP BY Nom, Mois';
+    $conn = $em->getConnection();
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll() ??null;
+}
+
     // /**
     //  * @return User[] Returns an array of User objects
     //  */
