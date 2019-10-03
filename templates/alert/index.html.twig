@@ -1,17 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des signalements
-{% endblock %}
+{% block title %}Liste des signalements{% endblock %}
 
 {% block body %}
-    <div class="container">
+    <div class="container theme-container">
+        <br>
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 text-center">
                 <h1 class="text-theme">Liste des signalements</h1>
             </div>
-            <div class="col-12">
-                <table class="table table-dark">
-                    <thead>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-12 text-center">
+                <table class="table table-striped">
+                    <thead class="theme-d2">
                         <tr>
                             <th>Type de harcelement</th>
                             <th>Dates des signalements</th>
@@ -34,8 +37,7 @@
                                     {{ alert.location.name }}
                                 </td>
                                 <td>
-                                    <a href="{{ path('alert_show', {'id': alert.id}) }}" class="btn btn-light">Afficher</a>
-                                    {# <a href="{{ path('alert_edit', {'id': alert.id}) }}" class="btn btn-success">Editer</a> #}
+                                    <a href="{{ path('alert_show', {'id': alert.id}) }}" class="btn theme-action">Afficher</a>
                                 </td>
                             </tr>
                         {% else %}
