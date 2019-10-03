@@ -1,10 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des signalements
-{% endblock %}
+{% block title %}Liste des signalements{% endblock %}
 
 {% block body %}
-    <div class="container">
+    <div class="container theme-l5 container-alert">
         <div class="row">
             <div class="col-12">
                 <h1 class="text-theme">Liste des signalements</h1>
@@ -28,8 +27,8 @@
                                         {{ type.name }}
                                     {% endfor %}
                                 </td>
-                                <td>{{ alert.alertDate ? alert.alertDate|date('Y-m-d H:i:s') : '' }}</td>
-                                <td>{{ alert.eventDate ? alert.eventDate|date('d-m-Y') : '' }} {{ alert.eventTime ? alert.eventTime|date('H:i:s') : '' }}</td>
+                                <td>{{ alert.alertDate ? alert.alertDate|date('Y-m-d H:i') : '' }}</td>
+                                <td>{{ alert.eventDate ? alert.eventDate|date('d-m-Y') : '' }} {{ alert.eventTime ? alert.eventTime|date('H:i') : '' }}</td>
                                 <td>
                                     {{ alert.location.name }}
                                 </td>
