@@ -1,3 +1,4 @@
+/* COLOR THEME */
 .theme-l5 {color:#000 !important; background-color:#f1fbfd !important}
 .theme-l4 {color:#000 !important; background-color:#d1f1f8 !important}
 .theme-l3 {color:#000 !important; background-color:#a4e3f0 !important}
@@ -16,24 +17,14 @@
 .theme {color:#fff !important; background-color:#23b5d3 !important}
 .text-theme {color:#219fb8 !important}
 .border-theme {border-color:#23b5d3 !important}
-.theme-container{background-color: #F0F0F0}
+.theme-container{background-color: #F0F0F0 !important}
 
 .hover-theme:hover {color:#fff !important; background-color:#23b5d3 !important}
 .hover-text-theme:hover {color:#23b5d3 !important}
 .hover-border-theme:hover {border-color:#23b5d3 !important}
+/* Fin */
+
 /* EddyPart */
-.backgroundDivRed {
-    background-color: rgba(255, 0, 0, 0.3);
-}
-
-.backgroundDivBlue {
-    background-color: rgba(0, 0, 255, 0.3);
-}
-
-.backgroundDivGreen {
-    background-color: rgba(0, 128, 0, 0.3);
-}
-
 .marginRight0 {
     max-width: 330px;
     margin-right: auto;
@@ -42,6 +33,16 @@
     margin-bottom: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+.width100 {
+    min-width: 100%;
+}
+.width50 {
+    min-width: 50%;
+}
+.content-center {
+    margin-right: auto;
+    margin-left: auto;
 }
 
 /* css btn admin exclusivement */
@@ -55,19 +56,6 @@
 }
 /* fin */
 
-.width100 {
-    min-width: 100%;
-}
-
-.width50 {
-    min-width: 50%;
-}
-
-.content-center {
-    margin-right: auto;
-    margin-left: auto;
-}
-
 /* Pour la liste alerte profil eleve */
 .alertCard{
     width: 350px;
@@ -78,42 +66,25 @@
     margin-bottom: 5px;
     border: 2px solid;
     border-radius: 5px;
-    background-color: #5a74f4;
-    box-shadow: 4px 4px 3px rgba(9, 2, 90, 0.2);
-}
-tr {
-    box-shadow: 2px 2px 3px rgba(9, 2, 90, 0.2);
-}
-.card {
-    box-shadow: 2px 2px 3px rgba(9, 2, 90, 0.2);
-}
-.form-control {
     background-color: #d1f1f8;
-    box-shadow: 2px 2px 3px rgba(9, 2, 90, 0.2);
-}
-.list-group-item {
-    background-color: #5836c9;
-    box-shadow: 2px 2px 3px rgba(9, 2, 90, 0.2);
+    color: #115b69;
+    box-shadow: 4px 4px 3px rgba(9, 2, 90, 0.2);
 }
 .alertCard .label {
     font-size: 0.7rem;
 }
-
 .alertCard .value {
     font-size: 0.8rem;
     font-weight: bold;
 }
-
 .imgcenter {
     margin-right: auto;
     margin-left: auto;
 }
-
 .alertStyleCheckboxDisplay{
     display: flex;
     flex-wrap: wrap;
 }
-
 .capsuleAlertStyle {
     border: 1px solid;
     border-radius: 5px;
@@ -148,13 +119,6 @@ label:not(.form-check-label), legend {
 .container-alert hr{
     box-shadow: 2px 1px 2px rgba(9, 2, 90, 0.2);
 }
-
-.footerTitle {
-    font-weight: bold;
-    padding-top: 5px;
-    font-family: sans-serif;
-    color: white;
-}
 /* Fin */
 
 /* CirceStyle */
@@ -171,9 +135,6 @@ body {
     text-align: center;
     margin-bottom: 60px;
 }
-h1 {
-    margin: 10px;
-}
 .section {
     width: 100%;
     padding: 20px;
@@ -182,26 +143,26 @@ h1 {
     box-shadow: 4px 4px 3px rgba(9, 2, 90, 0.5);
 }
 
-.contenant {
-    margin: 10px auto;
-    width: 90%;
-    padding: 15px;
-    background-color: #5a74f4;
-    border-radius: 9px;
-    box-shadow: 4px 4px 3px rgba(9, 2, 90, 0.5);
+.container {
+    min-height: 86vh;
+    box-shadow: 0px 4px 3px 5px rgba(9, 2, 90, 0.102);
 }
 
-h4 {
-    color: white;
-}
-h2, h3 {
-    color: #00ffb2;
-}
-strong {
-    color: white;
-}
 .btn {
     box-shadow: 2px 2px 3px rgba(9, 2, 100, 0.2);
+}
+table {
+    box-shadow: 4px 4px 3px rgba(9, 2, 90, 0.2);
+}
+.card {
+    box-shadow: 2px 2px 3px rgba(9, 2, 90, 0.2);
+}
+.form-control {
+    background-color: #d1f1f8;
+    box-shadow: 2px 2px 3px rgba(9, 2, 90, 0.2);
+}
+.list-group-item {
+    box-shadow: 2px 2px 3px rgba(9, 2, 90, 0.2);
 }
 
 /* GRAPHS */
@@ -257,13 +218,22 @@ strong {
     text-align: center;
     box-shadow: 3px 3px 3px rgba(9, 2, 100, 0.5);
 }
+/* fin */
+
+/* CSS Footer */
 .footer {
     width: 100%;
     padding-bottom: 10px;
     bottom: 0;
     position: absolute;
 }
-
+.footerTitle {
+    font-weight: bold;
+    padding-top: 5px;
+    font-family: sans-serif;
+    color: white;
+}
 .theme-d3 a {
     color: #fff;
 }
+/* fin */
