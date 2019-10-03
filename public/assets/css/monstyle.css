@@ -44,6 +44,19 @@
     padding-bottom: 10px;
 }
 
+/* css btn admin exclusivement */
+.btnAdmin{
+    margin-right: 10px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.dropdown-shadow{
+    box-shadow: 2px 2px 3px rgba(9, 2, 90, 0.2);
+}
+
+/* fin */
+
 .width100 {
     min-width: 100%;
 }
@@ -172,7 +185,6 @@ strong {
     color: white;
 }
 .btn {
-    margin: 10px;
     box-shadow: 2px 2px 3px rgba(9, 2, 100, 0.2);
 }
 

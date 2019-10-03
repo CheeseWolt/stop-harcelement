@@ -15,15 +15,15 @@
             </li>
         </ul>
         {% if app.user %}
-            <div class="btn-group">
+            <div class="btn-group btnAdmin">
                 {% if app.user.role.name == "ROLE_ADMIN" %}
                     <button type="button" class="btn theme-action dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mes actions possibles</button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/sex">gerer Sexes</a>
-                        <a class="dropdown-item" href="/role">gerer Roles</a>
+                    <div class="dropdown-menu theme-action dropdown-shadow">
+                        {# <a class="dropdown-item" href="/sex">gerer Sexes</a> #}
+                        {# <a class="dropdown-item" href="/role">gerer Roles</a> #}
+                        {# <a class="dropdown-item" href="/status">gerer status</a> #}
                         <a class="dropdown-item" href="/class/level">gerer rangs de classe</a>
                         <a class="dropdown-item" href="/location">gerer lieux</a>
-                        <a class="dropdown-item" href="/status">gerer status</a>
                         <a class="dropdown-item" href="/alertstyle">gerer types d'alerte</a>
                         <a class="dropdown-item" href="/class/name">gerer les classes</a>
                         <div class="dropdown-divider"></div>
