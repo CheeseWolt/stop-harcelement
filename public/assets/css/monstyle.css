@@ -129,22 +129,18 @@ label:not(.form-check-label), legend {
     font-weight: bold;
 }
 
-.titlealert {
-    color: #23b5d3;
-    padding-top: 15px; 
-}
 .form-alert {
-    padding: 30px;
+    padding: 3%;
     width: 80%;
     margin: auto;
     box-sizing: border-box;
-    margin-bottom: 20px;
+    margin-bottom: 2%;
 
 }
 .container-alert {
     border: 1px solid grey;
     border-radius: 4px;
-    margin: 20px auto 80px;
+    margin: 1% auto 5%;
     padding: 0;
     font-family: sans-serif;
 }
