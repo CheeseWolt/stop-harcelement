@@ -14,8 +14,9 @@
 .theme-action {color:#fff !important; background-color:#115b69 !important}
 
 .theme {color:#fff !important; background-color:#23b5d3 !important}
-.text-theme {color:#23b5d3 !important}
+.text-theme {color:#219fb8 !important}
 .border-theme {border-color:#23b5d3 !important}
+.theme-container{background-color: #F0F0F0}
 
 .hover-theme:hover {color:#fff !important; background-color:#23b5d3 !important}
 .hover-text-theme:hover {color:#23b5d3 !important}
