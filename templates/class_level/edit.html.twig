@@ -3,7 +3,7 @@
 {% block title %}Modifier un niveau scolaire{% endblock %}
 
 {% block body %}
-    <div class="container">
+    <div class="container theme-container text-theme">
         <br>
         <div class="row">
             <div class="col-12 text-center">
@@ -19,7 +19,7 @@
         <hr>
         <div class="row">
             <div class="col-6">
-                <a href="{{ path('class_level_index') }}"><button class="btn btn-primary">retour aux niveaux scolaires</button></a>
+                <a href="{{ path('class_level_index') }}" class="btn theme-action">retour aux niveaux scolaires</a>
             </div>
             <div class="col-6 text-right">
                 {{ include('class_level/_delete_form.html.twig') }}
