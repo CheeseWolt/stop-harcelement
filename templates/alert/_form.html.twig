@@ -42,10 +42,10 @@
 
 <div class="row">
     <div class="col-6 form-group btn-container text-left">
-        <button type="submit" class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+        <button type="submit" class="btn btn-alert">{{ button_label|default('Enregistrer') }}</button>
     </div>
     <div class="col-6 form-group btn-container text-right">
-        <a class="btn btn-primary" href="{{ path('profil_index') }}">retour au profil</a>
+        <a class="btn btn-alert" href="{{ path('profil_index') }}">retour au profil</a>
     </div>
 </div>
 {{ form_end(form) }}
