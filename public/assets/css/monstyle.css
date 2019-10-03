@@ -14,8 +14,9 @@
 .theme-action {color:#fff !important; background-color:#115b69 !important}
 
 .theme {color:#fff !important; background-color:#23b5d3 !important}
-.text-theme {color:#23b5d3 !important}
+.text-theme {color:#219fb8 !important}
 .border-theme {border-color:#23b5d3 !important}
+.theme-container{background-color: #F0F0F0}
 
 .hover-theme:hover {color:#fff !important; background-color:#23b5d3 !important}
 .hover-text-theme:hover {color:#23b5d3 !important}
@@ -42,6 +43,19 @@
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
+/* css btn admin exclusivement */
+.btnAdmin{
+    margin-right: 10px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.dropdown-shadow{
+    box-shadow: 2px 2px 3px rgba(9, 2, 90, 0.2);
+}
+
+/* fin */
 
 .width100 {
     min-width: 100%;
@@ -171,7 +185,6 @@ strong {
     color: white;
 }
 .btn {
-    margin: 10px;
     box-shadow: 2px 2px 3px rgba(9, 2, 100, 0.2);
 }
 
