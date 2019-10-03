@@ -3,16 +3,19 @@
 {% block title %}Nouveau signalement{% endblock %}
 
 {% block body %}
-    <div class="container theme-l5">
+<div class="container theme-l5 container-alert">
         <div class="row">
-            <div class="col-12 theme">
-                <h1 style="text-align:center ">Faites votre signalement</h1>
+            <div class="col-12 titlealert">
+                <h1 class="text-theme">Faites votre signalement :</h1>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12">
-                {{ include('alert/_form.html.twig') }}
+        <div class="form-alert">
+            <div class="row">
+                <div class="col-12">
+                    {{ include('alert/_form.html.twig') }}
+                </div>
             </div>
         </div>
-    </div>
+</div>
+
 {% endblock %}
