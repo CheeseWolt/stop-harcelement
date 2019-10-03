@@ -2,13 +2,13 @@
 
 namespace App\Controller;
 
-use App\Entity\ClassLevel;
+use App\Entity\{Role,User,ClassLevel};
 use App\Form\ClassLevelType;
 use App\Repository\ClassLevelRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\{Request,Response};
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\{Request, Response};
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
 /**
@@ -64,6 +64,8 @@ class ClassLevelController extends AbstractController
      */
     public function edit(Request $request, ClassLevel $classLevel): Response
     {
+        $role = $this->getDoctrine()->getRepository(Role::class)->findOneBy(['name' => "ROLE_PROFESSEUR"]);
+        $profs = $this->getDoctrine()->getRepository(User::class)->findBy(['role' => $role]);
         $form = $this->createForm(ClassLevelType::class, $classLevel);
         $form->handleRequest($request);
 
@@ -84,7 +86,7 @@ class ClassLevelController extends AbstractController
      */
     public function delete(Request $request, ClassLevel $classLevel): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$classLevel->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $classLevel->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($classLevel);
             $entityManager->flush();
