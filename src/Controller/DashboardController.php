@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Repository\SexRepository;
 use App\Repository\AlertRepository;
 use App\Repository\AlertStyleRepository;
+use App\Repository\ClassLevelRepository;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -13,7 +14,7 @@ class DashboardController extends AbstractController
     /**
      * @Route("/dashboard", name="dashboard")
      */
-    public function index(AlertRepository $alertRepository, AlertStyleRepository $alertStyleRepository, SexRepository $sexRepository)
+    public function index(AlertRepository $alertRepository, AlertStyleRepository $alertStyleRepository, SexRepository $sexRepository, ClassLevelRepository $classLevelRepository)
     {
         // GRAPH 1 Victime-Témoin / Mois
         $dtvMax = 0;
@@ -81,6 +82,16 @@ class DashboardController extends AbstractController
         //GRAPH 5 - Localistation des incidents
         $places = $alertRepository->getPlace();
 
+        //GRAPH 6 : Nombre de cas / classe
+        // on veux un tableau : tab[alertStyle][sex] = nombreDeCas
+        $classes = $classLevelRepository->getRatioByClassLevel();
+
+        // on initialise un tableau au format tab[classLevel] = nombreDeCas
+        foreach($classes as $classe)
+        {
+            $nac[$classe['niveauScolaire']] = (int)$classe['nbAlert'];
+        }
+
 
         return $this->render('dashboard/index.html.twig', [
             'controller_name' => 'DashboardController',
@@ -91,8 +102,12 @@ class DashboardController extends AbstractController
             'month'=> $month,
             'hours' => $hours,
             'places' => $places,
+            'nac' => $nac,
             'tag' => $tag ?? null,
-        ]);       
+        ]);  
+        
+
+
     }
     
 

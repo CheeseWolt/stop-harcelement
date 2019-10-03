@@ -19,21 +19,12 @@ class AlertRepository extends ServiceEntityRepository
         parent::__construct($registry, Alert::class);
     }
 
-    public function getStatusRatio()
-    {
-        //GRAPH 1 Victime-Témoin / Mois
-        $query = $this->createQueryBuilder('a')
-                ->select('count(a) as nb , count(a.status) , SUBSTRING(a.eventDate,6,2) as mois')
-                ->groupBy('mois')
-                ->orderBy('mois', 'ASC')
-                ->getQuery();
-        return $query->execute() ??null;
-    }
-
     public function getStatusRatioByMonth()
     {
         $em = $this->getEntityManager();
-        $sql = 'SELECT alert.status_id as idAlert, count(alert.status_id) as nb, Substring(alert.event_date, 6, 2) as mois FROM `alert` Group BY mois, idAlert ';
+        $sql = 'SELECT alert.status_id as idAlert, count(alert.status_id) as nb, 
+        Substring(alert.event_date, 6, 2) as mois FROM `alert` 
+        Group BY mois, idAlert ';
         $conn = $em->getConnection();
         $stmt = $conn->prepare($sql);
         $stmt->execute();
@@ -44,9 +35,6 @@ class AlertRepository extends ServiceEntityRepository
 
 
     // GRAPH 3 Victime genre / type d'aggression
-    public function getVictimGenre() {
-
-    }
     public function getVictimGenreByAlertType() 
     {
         $em = $this->getEntityManager();
