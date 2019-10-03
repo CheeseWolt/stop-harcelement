@@ -43,14 +43,14 @@
                     <li class="list-group-item theme-light">Pris en charge par :
                         {{ alert.alertManager.firstName ~' '~ alert.alertManager.lastName ?? '' }}</li>
                     <li class="list-group-item theme-light">Début de prise en charge :
-                        {{ alert.startSupportDate ? alert.startSupportDate|date('d/m/Y à H:i:s') : ''  }}</li>
+                        {{ alert.startSupportDate ? alert.startSupportDate|date('d/m/Y à H:i:s') : '' }}</li>
                     {% if alert.endSupportDate is null %}
                         <a href="{{ path('alert_close',{'id':alert.id}) }}" class="btn-danger p-2">
                             Fin de prise en charge
                         </a>
                     {% else %}
                         <li class="list-group-item theme-light">Fin de prise en charge :
-                            {{ alert.endSupportDate ? alert.endSupportDate|date('d/m/Y à H:i:s') : ''  }}</li>
+                            {{ alert.endSupportDate ? alert.endSupportDate|date('d/m/Y à H:i:s') : '' }}</li>
                     {% endif %}
                 {% endif %}
 
@@ -66,7 +66,7 @@
             </div>
         {% endif %}
         <div class="justify-content-between">
-            <a href="{{ path('profil_index') }}" class="btn  theme-action">
+            <a href="{{ path('profil_index') }}" class="btn theme-action">
                 Retour au profil
             </a>
         </div>
