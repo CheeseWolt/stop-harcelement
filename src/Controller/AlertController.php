@@ -4,10 +4,10 @@ namespace App\Controller;
 
 use DateTime;
 use App\Repository\AlertRepository;
-use App\Entity\{Alert,PrivateMessage};
-use App\Form\{AlertType,PrivateMessageType};
+use App\Entity\{Alert, PrivateMessage};
+use App\Form\{AlertType, PrivateMessageType};
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\{Request,Response};
+use Symfony\Component\HttpFoundation\{Request, Response};
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -60,26 +60,33 @@ class AlertController extends AbstractController
      */
     public function show(Alert $alert, Request $request): Response
     {
+        if ($this->getUser() != $alert->getAlertSender()) {
+            $this->denyAccessUnlessGranted("ROLE_PROFESSEUR");
+        }
+
         $pms = $alert->getPrivateMessages();
         $pm = new PrivateMessage();
         $pm->setAlert($alert)->setUser($this->getUser());
 
-        $form = $this->createForm(PrivateMessageType::class,$pm);
+        $form = $this->createForm(PrivateMessageType::class, $pm);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($pm);
+            if (($this->getUser()->getRole()->getName() === "ROLE_PROFESSEUR" || $this->getUser()->getRole()->getName() === "ROLE_ADMIN") && ($alert->getAlertManager() == null)) {
+                $this->manage($alert);
+            }
             $entityManager->flush();
 
-            return $this->redirectToRoute('alert_show',['id'=>$alert->getId()]);
+            return $this->redirectToRoute('alert_show', ['id' => $alert->getId()]);
         }
 
         return $this->render('alert/show.html.twig', [
             'alert' => $alert,
             'private_messages' => $pms,
-            'form'=>$form->createView(),
+            'form' => $form->createView(),
         ]);
     }
 
@@ -110,7 +117,7 @@ class AlertController extends AbstractController
      */
     public function delete(Request $request, Alert $alert): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$alert->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $alert->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($alert);
             $entityManager->flush();
@@ -130,7 +137,7 @@ class AlertController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->persist($alert);
         $em->flush();
-        return $this->redirectToRoute('alert_show',['id'=>$alert->getId()]);
+        return $this->redirectToRoute('alert_show', ['id' => $alert->getId()]);
     }
 
     /**
@@ -143,8 +150,6 @@ class AlertController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->persist($alert);
         $em->flush();
-        return $this->redirectToRoute('alert_show',['id'=>$alert->getId()]);
+        return $this->redirectToRoute('alert_show', ['id' => $alert->getId()]);
     }
-
-
 }
