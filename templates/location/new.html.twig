@@ -3,13 +3,14 @@
 {% block title %}Ajouter un lieu{% endblock %}
 
 {% block body %}
-<div class="container">
+<div class="container theme-container text-theme">
     <br>
     <div class="row">
         <div class="col-12 text-center">
             <h1>Ajouter un lieu</h1>
         </div>
     </div>
+    <br>
     <div class="row">
         <div class="col-12">
             {{ include('location/_form.html.twig') }}
@@ -17,7 +18,7 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <a href="{{ path('location_index') }}"><button class="btn btn-primary">retour aux lieux</button></a>
+            <a href="{{ path('location_index') }}"><button class="btn theme-action">retour aux lieux</button></a>
         </div>
     </div>
 </div>
