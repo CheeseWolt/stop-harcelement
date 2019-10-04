@@ -105,14 +105,14 @@ class DashboardController extends AbstractController
         return $this->render('dashboard/index.html.twig', [
             'controller_name' => 'DashboardController',
             'dtv' => $dtv ?? null,
-            'dtvMax' => $dtvMax,
-            'tam'=> $tam,
-            'tamMax'=> $tamMax,
+            'dtvMax' => $dtvMax ?? null,
+            'tam'=> $tam ?? null,
+            'tamMax'=> $tamMax ?? null,
             'month'=> $month,
-            'hours' => $hours,
-            'places' => $places,
-            'nac' => $nac,
-            'pa' => $pa,
+            'hours' => $hours ?? null,
+            'places' => $places ?? null,
+            'nac' => $nac ?? null,
+            'pa' => $pa ?? null,
             'tag' => $tag ?? null,
         ]);  
         
