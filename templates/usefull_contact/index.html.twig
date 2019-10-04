@@ -3,6 +3,21 @@
 {% block title %}Contacts Utiles{% endblock %}
 
 {% block body %}
+<style>
+    .contactCard{
+        width: 210px;
+        height: 190px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 5px;
+        margin-bottom: 50px;
+        border: 2px solid;
+        border-radius: 5px;
+        background-color: #d1f1f8;
+        color: #115b69;
+        box-shadow: 4px 4px 3px rgba(9, 2, 90, 0.2);
+    }
+</style>
     <div class="container theme-container">
         <br>
         <div class="row">
@@ -14,28 +29,43 @@
         <div class="row text-theme">
             <div class="col-12">
                 <h4>Harcèlement scolaire</h4>
-                <p>numéro de téléphone : <strong>3020</strong>
+                <p>numéro de téléphone : <strong style="color: #115b69; font-size: 22px;">3020</strong>
                 <br>Ce numéro gratuit est ouvert du lundi au vendredi de 9h à 20h et le samedi de 9h à 18h (sauf les jours fériés).</p>
             </div>
-            <div class="col-3">
-                <h4>Non au harcèlement</h4>
-                <p>Site officiel : <br>
-                    <a href="https://www.nonauharcelement.education.gouv.fr/" target="_blank" class="btn theme-action">Consulter</a></p>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-3 text-theme">
+                <div class="contactCard">
+                    <h4>Non au harcèlement</h4>
+                    <p>Site officiel : <br>
+                    <br>
+                        <a href="https://www.nonauharcelement.education.gouv.fr/" target="_blank" class="btn theme-action">Consulter</a></p>
+                </div>
             </div>
-            <div class="col-3">
-                <h4>Guide de prévention</h4>
-                <p>Guide en ligne : <br>
-                    <a href="https://www.fonction-publique.gouv.fr/files/files/publications/politiques_emploi_public/guide-prevention-situations-violences.pdf" target="_blank" class="btn theme-action">Consulter</a></p>
+            <div class="col-md-3 text-theme">
+                <div class="contactCard">
+                    <h4>Guide de prévention</h4>
+                    <p>Guide en ligne : <br>
+                    <br>
+                        <a href="https://www.fonction-publique.gouv.fr/files/files/publications/politiques_emploi_public/guide-prevention-situations-violences.pdf" target="_blank" class="btn theme-action">Consulter</a></p>
+                </div>
             </div>
-            <div class="col-3">
-                <h4>Association Le Cap</h4>
-                <p>Site officiel : <br>
-                    <a href="https://harcelement-france.com/contact/" target="_blank" class="btn theme-action">Consulter</a></p>
+            <div class="col-md-3 text-theme">
+                <div class="contactCard">
+                    <h4>Association Le Cap</h4>
+                    <p>Site officiel : <br>
+                    <br>
+                        <a href="https://harcelement-france.com/contact/" target="_blank" class="btn theme-action">Consulter</a></p>
+                </div>
             </div>
-            <div class="col-3">
-                <h4>Service publique</h4>
-                <p>Site officiel : <br>
-                    <a href="https://www.service-public.fr/particuliers/vosdroits/F32247" target="_blank" class="btn theme-action">Consulter</a></p>
+            <div class="col-md-3 text-theme">
+                <div class="contactCard">
+                    <h4>Service publique</h4>
+                    <p>Site officiel : <br>
+                    <br>
+                        <a href="https://www.service-public.fr/particuliers/vosdroits/F32247" target="_blank" class="btn theme-action">Consulter</a></p>
+                </div>
             </div>
         </div>
     </div>

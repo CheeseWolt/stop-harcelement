@@ -11,17 +11,17 @@
             </div>
         </div>
         <br>
+        <br>
         <div class="row">
             <div class="col-12 text-theme">
-                <h4>Le harcèlement est un enchaînement d'agissements hostiles répétés visant à affaiblir
-                psychologiquement la personne qui en est la victime.</h4>
+                <h4 style="color: #115b69; font-style: italic;">"Le harcèlement est un enchaînement d'agissements hostiles répétés visant à <br> 
+                affaiblir psychologiquement la personne qui en est la victime."</h4>
                 <br>
                 {% if app.user is null %}
                     <a href="{{ path ("app_login")}}" class="btn theme-action">Connexion</a>
                 {% endif %}
             </div>
         </div>
-        <br>
         <hr>
         <br>
         <div class="row">
@@ -30,15 +30,26 @@
             </div>
         </div>
         <br>
+        <br>
         <div class="row">
             <div class="col-12 text-theme">
-                <ul>
-                    <li>La confidentialité est le mot clé de notre application, permettant aux victimes de s'ouvrir sincèrement, sans risque de représailles.</li>
-                    <li>Consultez facilement les statistiques de votre établissement afin de mettre en place une stratégie adaptée au(x) problème(s).</li>
-                    <li>Avec notre interface numérique, accèdez facilement a nos différentes fonctionnalitées.</li>
-                    <li>Accèdez aux nouveaux rapports et à vos discussions privées en quelques clics.</li>
+                <ul style="list-style: none; font-size: 18px;">
+                    <li>La confidentialité est le mot clé de notre application, permettant aux victimes de s'ouvrir sincèrement, sans risque de représailles.</li><br>
+                    <li>Consultez facilement les statistiques de votre établissement afin de mettre en place une stratégie adaptée au(x) problème(s).</li><br>
+                    <li>Avec notre interface numérique, accèdez facilement a nos différentes fonctionnalitées.</li><br>
+                    <li>Accèdez aux nouveaux rapports et à vos discussions privées en quelques clics.</li><br>
                 </ul>
             </div>
         </div>
+        <div class="row text-theme" style="background-color: #d1f1f8;">
+            <div class="col-12">
+                <h4>Vous souhaitez nous contacter ?</h4>
+                <p>Un problème, une remarque, une proposition, des questions ?
+                <br><strong style="color: #115b69; font-size: 22px;">03 20 00 00 00</strong>
+                <br>Ce numéro est disponible du lundi au vendredi de 9h à 20h et le samedi de 9h à 18h (sauf les jours fériés).</p>
+            </div>
+        </div>
+        <br>
+        <br>
     </div>
 {% endblock %}
