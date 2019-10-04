@@ -3,62 +3,64 @@
 {% block title %}Gestion des utilisateurs{% endblock %}
 
 {% block body %}
-<div class="container">
-    <br>
-    <div class="row">
-        <div class="col-12 text-center">
-            <h1>Gestion des utilisateurs</h1>
-            <br>
+    <div class="container theme-container">
+        <br>
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="text-theme">Gestion des utilisateurs</h1>
+            </div>
         </div>
-        <div class="col-12 text-center">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Identité</th>
-                        <th>Classe fréquentée</th>
-                        <th>Classe managée</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for user in users %}
-                    <tr>
-                        <td>{{ user.lastName }} {{ user.firstName }}</td>
-                        <td>
-                            {% if user.studentClassName %}
-                                {{ user.studentClassName.classLevel.name }} {{ user.studentClassName.name }}
-                            {% else %}
-                                /
-                            {% endif %}
-                        </td>
-                        <td>
-                            {% if user.teacherClassName %}
-                                {% for classe in user.teacherClassName %}
-                                    {{ classe.classLevel.name }} {{ classe.name }}, 
-                                {% endfor %}
-                            {% endif %}
-                            {% if user.role.name != 'ROLE_PROFESSEUR' %}
-                                /
-                            {% endif %}
-                        </td>
-                        <td>
-                            <a href="{{ path('user_show', {'id': user.id}) }}"><button class="btn btn-primary">Afficher</button></a>
-                            <a href="{{ path('user_edit', {'id': user.id}) }}"><button class="btn btn-success">Editer</button></a>
-                        </td>
-                    </tr>
-                {% else %}
-                    <tr>
-                        <td colspan="10">no records found</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+        <br>
+        <div class="row">
+            <div class="col-12 text-center">
+                <table class="table table-striped">
+                    <thead class="theme-d2">
+                        <tr>
+                            <th>Identité</th>
+                            <th>Classe fréquentée</th>
+                            <th>Classe managée</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                            <tr>
+                                <td>{{ user.lastName }} {{ user.firstName }}</td>
+                                <td>
+                                    {% if user.studentClassName %}
+                                        {{ user.studentClassName.classLevel.name }} {{ user.studentClassName.name }}
+                                    {% else %}
+                                        /
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if user.teacherClassName %}
+                                        {% for classe in user.teacherClassName %}
+                                            {{ classe.classLevel.name }} {{ classe.name }}, 
+                                        {% endfor %}
+                                    {% endif %}
+                                    {% if user.role.name != 'ROLE_PROFESSEUR' %}
+                                        /
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a href="{{ path('user_show', {'id': user.id}) }}"><button class="btn theme-action">Afficher</button></a>
+                                    <a href="{{ path('user_edit', {'id': user.id}) }}"><button class="btn theme-action">Editer</button></a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="10">no records found</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <a href="{{ path('user_new') }}"><button class="btn theme-action">Ajouter un utilisateur</button></a>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12">
-            <a href="{{ path('user_new') }}"><button class="btn btn-success">Ajouter un utilisateur</button></a>
-        </div>
-    </div>
-</div>
 {% endblock %}

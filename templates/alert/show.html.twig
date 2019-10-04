@@ -1,8 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Signalement
-    {{ alert.isAnonym ? 'Anonyme' : 'de ' ~ alert.alertSender.firstName  ~ ' ' ~  alert.alertSender.lastName }}
-{% endblock %}
+{% block title %}Signalement {{ alert.isAnonym ? 'Anonyme' : 'de ' ~ alert.alertSender.firstName  ~ ' ' ~  alert.alertSender.lastName }}{% endblock %}
 
 {% block body %}
 <div class="container p-5 theme-l5">

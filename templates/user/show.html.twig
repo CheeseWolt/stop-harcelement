@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User{% endblock %}
+{% block title %}Utilisateur{% endblock %}
 
 {% block body %}
-<div class="container">
+<div class="container theme-container text-theme">
     <br>
     <div class="row">
         <div class="col-12 text-center">
-            <h1>User</h1>
+            <h1>Utilisateur</h1>
         </div>
     </div>
     <br>
@@ -16,35 +16,35 @@
             <table class="table">
                 <tbody>
                     <tr>
-                        <th>Id</th>
+                        <th class="theme-d3">Id</th>
                         <td>{{ user.id }}</td>
                     </tr>
                     <tr>
-                        <th>Pseudo</th>
+                        <th class="theme-d3">Pseudo</th>
                         <td>{{ user.userName }}</td>
                     </tr>
                     <tr>
-                        <th>Nom</th>
+                        <th class="theme-d3">Nom</th>
                         <td>{{ user.lastName }}</td>
                     </tr>
                     <tr>
-                        <th>Prenom</th>
+                        <th class="theme-d3">Prenom</th>
                         <td>{{ user.firstName }}</td>
                     </tr>
                     <tr>
-                        <th>Date de naissance</th>
+                        <th class="theme-d3">Date de naissance</th>
                         <td>{{ user.birthDate ? user.birthDate|date('Y-m-d') : '' }}</td>
                     </tr>
                     <tr>
-                        <th>Téléphone</th>
+                        <th class="theme-d3">Téléphone</th>
                         <td>{{ user.phone }}</td>
                     </tr>
                     <tr>
-                        <th>Adresse</th>
+                        <th class="theme-d3">Adresse</th>
                         <td>{{ user.address }}</td>
                     </tr>
                     <tr>
-                        <th>Email</th>
+                        <th class="theme-d3">Email</th>
                         <td>{{ user.email }}</td>
                     </tr>
                 </tbody>
@@ -53,11 +53,11 @@
     </div>
     <div class="row">
         <div class="col-12 text-right">
-            <a href="{{ path('user_edit', {'id': user.id}) }}"><button class="btn btn-success">Editer</button></a>
+            <a href="{{ path('user_edit', {'id': user.id}) }}"><button class="btn theme-action">Editer</button></a>
         </div>
         <div class="col-12"><hr></div>
         <div class="col-6">
-            <a href="{{ path('user_index') }}"><button class="btn btn-primary">retour aux utilisateurs</button></a>
+            <a href="{{ path('user_index') }}"><button class="btn theme-action">retour aux utilisateurs</button></a>
         </div>
         <div class="col-6 text-right">
             {{ include('user/_delete_form.html.twig') }}
