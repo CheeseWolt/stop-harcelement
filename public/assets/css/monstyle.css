@@ -109,11 +109,24 @@ label:not(.form-check-label), legend {
 
 }
 .container-alert {
+    box-sizing: border-box;
+    padding: 15px 20px 0 20px;
     border: 1px solid grey;
     border-radius: 4px;
     margin: 1% auto 5%;
-    padding: 0;
     font-family: sans-serif;
+}
+
+.table-alert {
+    border: 1px solid #1b91a8;
+    border-radius: 5px;
+    padding: 0;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.container-alert button {
+    margin-bottom: 15px;
 }
 
 .container-alert hr{
