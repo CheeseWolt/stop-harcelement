@@ -3,16 +3,16 @@
 {% block title %}Gestion des lieux{% endblock %}
 
 {% block body %}
-<div class="container">
+<div class="container theme-container">
     <br>
     <div class="row">
         <div class="col-12 text-center">
-            <h1>Gestion des lieux</h1>
+            <h1 class="text-theme">Gestion des lieux</h1>
             <br>
         </div>
         <div class="col-12 text-center">
             <table class="table table-striped">
-                <thead>
+                <thead class="theme-d2">
                     <tr>
                         <th>Lieu</th>
                         <th>Actions</th>
@@ -23,8 +23,8 @@
                     <tr>
                         <td>{{ location.name }}</td>
                         <td>
-                            <a href="{{ path('location_show', {'id': location.id}) }}"><button class="btn btn-primary">Afficher</button></a>
-                            <a href="{{ path('location_edit', {'id': location.id}) }}"><button class="btn btn-success">Editer</button></a>
+                            <a href="{{ path('location_show', {'id': location.id}) }}"><button class="btn theme-action">Afficher</button></a>
+                            <a href="{{ path('location_edit', {'id': location.id}) }}"><button class="btn theme-action">Editer</button></a>
                         </td>
                     </tr>
                 {% else %}
@@ -38,7 +38,7 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <a href="{{ path('location_new') }}"><button class="btn btn-success">Ajouter un lieu</button></a>
+            <a href="{{ path('location_new') }}"><button class="btn theme-action">Ajouter un lieu</button></a>
         </div>
     </div>
 </div>

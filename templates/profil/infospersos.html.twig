@@ -1,19 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfilController!{% endblock %}
+{% block title %}Mes informations personnelles{% endblock %}
 
 {% block body %}
 
-<div class="container">
+<div class="container theme-container">
     <br>
     <div class="row">
         <div class="col-12">
             {{ include('profil/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
         </div>
     </div>
+    <br>
     <div class="row">
-        <div class="col-12">
-            <a href="{{ path('profil_index') }}"><button class="btn btn-primary">retour au profil</button></a>
+        <div class="col-12 text-left">
+            <a href="{{ path('profil_index') }}"><button class="btn theme-action">retour au profil</button></a>
         </div>
     </div>
 </div>

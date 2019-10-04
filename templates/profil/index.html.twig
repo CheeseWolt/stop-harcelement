@@ -2,14 +2,9 @@
 
 {% block title %}Hello ProfilController!{% endblock %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    {# <link rel="stylesheet" href="{{asset('assets/css/monstyle.css')}}"> #}
-{% endblock %}
-
 {% block body %}
     <div class="container theme-container">
-    <br>
+        <br>
         <div class="row">
             <div class="col-12 text-center">
                 <h1 class="text-theme">Bienvenue sur votre espace personnel, {{ utilisateur.userName }}</h1>
@@ -50,5 +45,6 @@
                 <a href="{{path('connection')}}"><button class="btn btn-danger">Se deconnecter</button></a>
             </div>
         </div> #}
+        <br>
     </div>
 {% endblock %}

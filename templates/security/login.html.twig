@@ -1,10 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!
-{% endblock %}
+{% block title %}Log in!{% endblock %}
 
 {% block body %}
-    <div class="container p-5">
+    <div class="container theme-container p-5">
         <form method="post">
             {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -13,17 +12,18 @@
             {% if app.user %}
                 <div class="py-auto text-center">
                     <h2>Tu es déjà connecté.</h2>
-                    <a href="{{ path('homepage') }}" class="btn btn-lg btn-primary">Retour à l'accueil</a>
+                    <a href="{{ path('homepage') }}" class="btn btn-lg theme-action">Retour à l'accueil</a>
                 </div>
             {% else %}
 
 
-                <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
-                <div class="form-group row">
+                <h1 class="text-theme">Connexion</h1>
+                <br>
+                <div class="form-group row text-theme">
                     <label for="inputUsername" class="col-form-label col-sm-2">Nom d'utilisateur</label>
                     <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control col-sm-10" placeholder="Nom d'utilisateur" required autofocus>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row text-theme">
                     <label for="inputPassword" class="col-form-label col-sm-2">Mot de passe</label>
                     <input type="password" name="password" id="inputPassword" class="form-control col-sm-10" placeholder="Mot de passe" required>
                 </div>
@@ -41,8 +41,8 @@
                                     </label>
                                 </div>
                             #}
-
-                <button class="btn btn-lg btn-primary" type="submit">
+                            
+                <button class="btn btn-lg theme-action" type="submit">
                     Connexion
                 </button>
             {% endif %}

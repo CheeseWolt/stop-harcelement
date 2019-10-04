@@ -1,8 +1,11 @@
 {{ form_start(formProfilUpdate) }}
-    <div class="row">
+    <div class="row text-theme">
         <div class="col-12 text-center">
-            <h4>INFOS PERSOS:</h4>
+            <h1>Mes informations personnelles:</h1>
         </div>
+    </div>
+    <br>
+    <div class="row text-theme">
         <div class="col-6">
             <label for="lastname">Nom</label>
             <input class="form-control" type="text" id="lastname" readonly value="{{ user.lastName }}">
@@ -12,7 +15,7 @@
             <input class="form-control" type="text" id="firstname" readonly value="{{ user.firstName }}">
         </div>
     </div>
-    <div class="row">
+    <div class="row text-theme">
         <div class="col-4">
             <label for="birthdate">Date de naissance</label>
             <input class="form-control" type="text" id="birthdate" readonly value="{{ user.birthDate ? user.birthDate|date('Y-m-d') : '' }}">
@@ -25,43 +28,49 @@
             <input class="form-control" type="text" id="sex" readonly value="{{ user.sex.name }}">
         </div>
     </div>
-    <div class="row">
+    <div class="row text-theme">
         <div class="col-12">
             {{ form_row(formProfilUpdate.address, {'label':'Adresse :', 'attr':{'class':'form-control control-label'}}) }}
         </div>
     </div>
-    <div class="row">
+    <div class="row text-theme">
         <div class="col-12">
             {{ form_row(formProfilUpdate.email, {'label':'Email :', 'attr':{'class':'form-control control-label'}}) }}
         </div>
     </div>
     <br><hr>
-    <div class="row">
+    <div class="row text-theme">
         <div class="col-12 text-center">
-            <h4>IDENTIFIANTS:</h4>
+            <h1>Mon profil:</h1>
         </div>
-        <div class="col-6">
-            {{ form_row(formProfilUpdate.userName, {'label':'Pseudo :', 'attr':{'class':'form-control control-label'}}) }}
-        </div>
-        <div class="col-6">
-            <label for="updatePassword">Mot de passe</label>
-            <a href="/profil/newpassword" id="updatePassword" class="btn btn-secondary form-control control-label">Changer mon mot de passe</a>
-        </div>
-    </div>
-    <br><hr>
-    <div class="row">
         <div class="col-6">
             <label for="lastname">Role</label>
             <input class="form-control" type="text" id="lastname" readonly value="{{ user.role.name }}">
         </div>
-        {% if user.studentClassName %}
         <div class="col-6">
-            <label for="lastname">Classe</label>
-            <input class="form-control" type="text" id="lastname" readonly value="{{ user.studentClassName.classLevel.name ? user.studentClassName.classLevel.name : '' }} {{ user.studentClassName.name ? user.studentClassName.name : '' }}">
+            {{ form_row(formProfilUpdate.userName, {'label':'Pseudo :', 'attr':{'class':'form-control control-label'}}) }}
         </div>
-        {% endif %}
     </div>
     <br><hr>
-    {# {{ form_widget(formProfilUpdate) }} #}
-    <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+    <div class="row text-theme">
+        {% if user.studentClassName %}
+            <div class="col-6">
+                <label for="lastname">Classe</label>
+                <input class="form-control" type="text" id="lastname" readonly value="{{ user.studentClassName.classLevel.name ? user.studentClassName.classLevel.name : '' }} {{ user.studentClassName.name ? user.studentClassName.name : '' }}">
+            </div>
+        {% else %}
+            <div class="col-6"></div>
+        {% endif %}
+        <div class="col-6">
+            <div class="row" style="padding-top:2rem">
+                <div class="col-6">
+                    <a href="/profil/newpassword" id="updatePassword" class="btn theme-action form-control control-label">Changer mon mot de passe</a>
+                </div>
+                <div class="col-6 text-right">
+                    <button class="btn theme-action">{{ button_label|default('Enregistrer') }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
 {{ form_end(formProfilUpdate) }}

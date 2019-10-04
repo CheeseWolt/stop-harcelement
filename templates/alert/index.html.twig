@@ -3,74 +3,74 @@
 {% block title %}Liste des signalements{% endblock %}
 
 {% block body %}
-    <div class="container theme-l5 container-alert">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="text-theme">Liste des signalements :</h1>
-            </div>
-            <div class="col-12 table-alert">
-                <table class="table">
-                    <thead class="theme-d2">
-                        <tr>
-                            <th>Type de harcelement</th>
-                            <th>Dates des signalements</th>
-                            <th>Dates des événements</th>
-                            <th>Lieu des faits</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for alert in alerts %}
-                            <tr>
-                                <td>
-                                    {% for type in alert.alertStyle %}
-                                        {{ type.name }}
-                                    {% endfor %}
-                                </td>
-                                <td>{{ alert.alertDate ? alert.alertDate|date('Y-m-d H:i') : '' }}</td>
-                                <td>{{ alert.eventDate ? alert.eventDate|date('d-m-Y') : '' }} {{ alert.eventTime ? alert.eventTime|date('H:i') : '' }}</td>
-                                <td>
-                                    {{ alert.location.name }}
-                                </td>
-                                <td>
-                                    <a href="{{ path('alert_show', {'id': alert.id}) }}" class="btn btn-light">Afficher</a>
-                                    {# <a href="{{ path('alert_edit', {'id': alert.id}) }}" class="btn btn-success">Editer</a> #}
-                                </td>
-                            </tr>
-                        {% else %}
-                            <tr>
-                                <td colspan="8">Pas d'enregistrement trouvé</td>
-                            </tr>
+<div class="container theme-l5 container-alert">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-theme">Liste des signalements :</h1>
+        </div>
+        <div class="col-12 table-alert">
+            <table class="table table-striped">
+                <thead class="theme-d2">
+                    <tr>
+                        <th>Type de harcelement</th>
+                        <th>Dates des signalements</th>
+                        <th>Dates des événements</th>
+                        <th>Lieu des faits</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                {% for alert in alerts %}
+                <tr>
+                    <td>
+                        {% for type in alert.alertStyle %}
+                        {{ type.name }}
                         {% endfor %}
-                    </tbody>
-                </table>
-            </div>
+                    </td>
+                    <td>{{ alert.alertDate ? alert.alertDate|date('Y-m-d H:i') : '' }}</td>
+                    <td>{{ alert.eventDate ? alert.eventDate|date('d-m-Y') : '' }}
+                        {{ alert.eventTime ? alert.eventTime|date('H:i') : '' }}</td>
+                    <td>
+                        {{ alert.location.name }}
+                    </td>
+                    <td>
+                        <a href="{{ path('alert_show', {'id': alert.id}) }}" class="btn theme-action">Afficher</a>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="8">Pas d'enregistrement trouvé</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </div>
-        {% if is_granted('ROLE_ADMIN') %}
-        <div class="row">
-            <div class="col-12">
-                <a href="{{ path('alert_new') }}">
-                    <button class="btn theme-action">Ajouter une alerte</button>
-                </a>
-            </div>
-        </div>
-        {% endif %}
     </div>
-    <style>
-    .container-alert{
+    {% if is_granted('ROLE_ADMIN') %}
+    <div class="row">
+        <div class="col-12">
+            <a href="{{ path('alert_new') }}">
+                <button class="btn theme-action">Ajouter une alerte</button>
+            </a>
+        </div>
+    </div>
+    {% endif %}
+</div>
+<style>
+    .container-alert {
         box-sizing: border-box;
         padding: 0 20px 0 20px;
     }
 
-    .table-alert{ 
+    .table-alert {
         border: 1px solid #1b91a8;
         border-radius: 5px;
         padding: 0;
         margin-bottom: 15px;
+        text-align: center;
     }
 
     .container-alert button {
         margin-bottom: 15px;
     }
-    </style>
+</style>
 {% endblock %}

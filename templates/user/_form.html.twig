@@ -1,67 +1,74 @@
 {{ form_start(form) }}
-<div class="row">
-    <div class="col-12 text-center">
-        <h4>INFOS PERSOS:</h4>
+    <div class="row text-theme">
+        <div class="col-12 text-center">
+            <h1>Les informations personnelles:</h1>
+        </div>
     </div>
-    <div class="col-6">
-        {{ form_label(form.lastName,"Nom :") }}
-        {{ form_widget(form.lastName, {'attr':{'class':'form-control control-label', 'autofocus':'true'}}) }}
-        {{form_errors(form.lastName)}}
+    <br>
+    <div class="row text-theme">
+        <div class="col-6">
+            {{ form_label(form.lastName,"Nom :") }}
+            {{ form_widget(form.lastName, {'attr':{'class':'form-control control-label', 'autofocus':'true'}}) }}
+            {{form_errors(form.lastName)}}
+        </div>
+        <div class="col-6">
+            {{ form_label(form.firstName,"Prénom :") }}
+            {{ form_widget(form.firstName, {'attr':{'class':'form-control control-label'}}) }}
+            {{form_errors(form.firstName, {'attr':{'class':'alert alert-danger'}})}}
+        </div>
     </div>
-    <div class="col-6">
-        {{ form_label(form.firstName,"Prénom :") }}
-        {{ form_widget(form.firstName, {'attr':{'class':'form-control control-label'}}) }}
-        {{form_errors(form.firstName, {'attr':{'class':'alert alert-danger'}})}}
+    <div class="row text-theme">
+        <div class="col-4">
+            {{ form_row(form.birthDate, {'label':'Date de naissance :', 'attr':{'class':'form-control control-label'}}) }}
+        </div>
+        <div class="col-4">
+            {{ form_label(form.phone,"Numéro de téléphone :") }}
+            {{ form_widget(form.phone, {'attr':{'class':'form-control control-label'}}) }}
+            {{form_errors(form.phone, {'attr':{'class':'alert alert-danger'}})}}
+        </div>
+        <div class="col-4">
+            {{ form_row(form.sex, {'label':'Sexe :', 'attr':{'class':'form-control control-label'}}) }}
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-4">
-        {{ form_row(form.birthDate, {'label':'Date de naissance :', 'attr':{'class':'form-control control-label'}}) }}
+    <div class="row text-theme">
+        <div class="col-12">
+            {{ form_label(form.address,"Adresse :") }}
+            {{ form_widget(form.address, {'attr':{'class':'form-control control-label'}}) }}
+            {{form_errors(form.address, {'attr':{'class':'alert alert-danger'}})}}
+        </div>
     </div>
-    <div class="col-4">
-        {{ form_label(form.phone,"Numéro de téléphone :") }}
-        {{ form_widget(form.phone, {'attr':{'class':'form-control control-label'}}) }}
-        {{form_errors(form.phone, {'attr':{'class':'alert alert-danger'}})}}
+    <div class="row text-theme">
+        <div class="col-12">
+            {{ form_label(form.email,"Email :") }}
+            {{ form_widget(form.email, {'attr':{'class':'form-control control-label'}}) }}
+            {{form_errors(form.email, {'attr':{'class':'alert alert-danger'}})}}
+        </div>
     </div>
-    <div class="col-4">
-        {{ form_row(form.sex, {'label':'Sexe :', 'attr':{'class':'form-control control-label'}}) }}
+    <br><hr>
+    <div class="row text-theme">
+        <div class="col-12 text-center">
+            <h1>Son profil:</h1>
+        </div>
+        <div class="col-6">
+            {{ form_row(form.role, {'label':'Role :', 'attr':{'class':'form-control control-label'}}) }}
+        </div>
+        <div class="col-6">
+            {{ form_row(form.userName, {'label':'Pseudo :', 'attr':{'class':'form-control control-label'}}) }}
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-12">
-        {{ form_label(form.address,"Adresse :") }}
-        {{ form_widget(form.address, {'attr':{'class':'form-control control-label'}}) }}
-        {{form_errors(form.address, {'attr':{'class':'alert alert-danger'}})}}
+    <br><hr>
+    <div class="row text-theme">
+        <div class="col-6">
+            {{ form_row(form.studentClassName, {'label':'Classe fréquentée :', 'attr':{'class':'form-control control-label'}}) }}
+        </div>
+        <div class="col-6">
+            {{ form_row(form.plainPassword, {'label':'Password :', 'attr':{'class':'form-control control-label'}}) }}
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-12">
-        {{ form_label(form.email,"Email :") }}
-        {{ form_widget(form.email, {'attr':{'class':'form-control control-label'}}) }}
-        {{form_errors(form.email, {'attr':{'class':'alert alert-danger'}})}}
+    <br><hr>
+    <div class="row">
+        <div class="col-12 text-right">
+            <button class="btn theme-action text-right">{{ button_label|default('Enregistrer') }}</button>
+        </div>
     </div>
-</div>
-<br><hr>
-<div class="row">
-    <div class="col-12 text-center">
-        <h4>IDENTIFIANTS:</h4>
-    </div>
-    <div class="col-6">
-        {{ form_row(form.userName, {'label':'Pseudo :', 'attr':{'class':'form-control control-label'}}) }}
-    </div>
-    <div class="col-6">
-        {{ form_row(form.plainPassword, {'label':'Password :', 'attr':{'class':'form-control control-label'}}) }}
-    </div>
-</div>
-<br><hr>
-<div class="row">
-    <div class="col-6">
-        {{ form_row(form.role, {'label':'Role :', 'attr':{'class':'form-control control-label'}}) }}
-    </div>
-    <div class="col-6">
-        {{ form_row(form.studentClassName, {'label':'Classe fréquentée :', 'attr':{'class':'form-control control-label'}}) }}
-    </div>
-</div>
-<br><hr>
-<button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}
