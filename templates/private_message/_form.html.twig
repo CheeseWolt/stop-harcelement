@@ -1,7 +1,7 @@
 {{ form_start(form) }}
 <div class="theme-light card">
 <div class="card-header theme-d2">
-    <h5 class="card-title ">{{app.user.userName}} {{ alert.isAnonym ? '(Votre nom n\'apparaitra pas car vous avez choisit l\'anonymat)' }}</h5>
+    <h5 class="card-title ">Saisir un message privé {{ app.user == alert.alertSender and  alert.isAnonym ? "( Vous garderez l'anonymat )" }}</h5>
 </div>
     <p class="card-text text-theme">
         {{ form_label(form.content,'') }}

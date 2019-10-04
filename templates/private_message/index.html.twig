@@ -7,7 +7,14 @@
                 <div class="col-8{% if private_message.user.userName == app.user.userName %} offset-4 {% endif %}">
                     <div class="card theme-light mb-4 ">
                         <div class="card-header  theme-d2">
-                            <h5 class=" card-title">{{ alert.isAnonym ? 'Anonyme' : alert.alertSender.firstName  ~ ' ' ~  alert.alertSender.lastName }}</h5>
+                            <h5 class=" card-title">
+                                {% if private_message.user == alert.alertManager %}
+                                    {{ private_message.user.userName }}
+                                {% else %}
+                                    {{ alert.isAnonym ? "Anonyme" : alert.alertSender }}
+                                {% endif %}
+                            </h5>
+                            {# {{ app.user == alert.alertSender ? app.userName : alert.isAnonym ? 'Anonyme' : private_message.user.userName }} #}
                         </div>
                         <div class="card-body">
                             <p class="card-text">{{private_message.content}}</p>
