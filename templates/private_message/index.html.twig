@@ -11,10 +11,9 @@
                                 {% if private_message.user == alert.alertManager %}
                                     {{ private_message.user.userName }}
                                 {% else %}
-                                    {{ alert.isAnonym ? "Anonyme" : alert.alertSender }}
+                                    {{ alert.isAnonym ? "Anonyme" : alert.alertSender.userName }}
                                 {% endif %}
                             </h5>
-                            {# {{ app.user == alert.alertSender ? app.userName : alert.isAnonym ? 'Anonyme' : private_message.user.userName }} #}
                         </div>
                         <div class="card-body">
                             <p class="card-text">{{private_message.content}}</p>
@@ -29,6 +28,5 @@
         <div class="col-8 offset-4">
             {{ include('private_message/_form.html.twig') }}
         </div>
-        {# <a href="{{ path('private_message_new') }}">Create new</a> #}
     </div>
 {% endblock %}
