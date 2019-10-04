@@ -16,29 +16,11 @@ class ProfilUpdateType extends AbstractType
     {
         $builder
             ->add('userName', TextType::class)
-            // ->add('lastName')
-            // ->add('firstName')
-            // ->add('password')
-            // ->add('birthDate', DateType::class, [
-            //     'required'=>false,
-            //     'format'=>'dd-MM-yyyy',
-            //     'empty_data'=> ''
-            // ])
             ->add('phone', TelType::class)
             ->add('address', TextType::class)
-            ->add('email', EmailType::class)
-            // ->add('role', EntityType::class, [
-            //     'class'=>Role::class,
-            //     'choice_label'=>'name'
-            // ])
-            // ->add('sex', EntityType::class, [
-            //     'class'=>Sex::class,
-            //     'choice_label'=>'name'
-            // ])
-            // ->add('studentClassName', EntityType::class, [
-            //     'class'=>ClassName::class,
-            //     'choice_label'=>'name'
-            // ])
+            ->add('email', EmailType::class,[
+                'required'=>false
+            ])
         ;
     }
 
