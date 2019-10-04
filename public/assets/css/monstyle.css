@@ -166,6 +166,20 @@ table {
 .list-group-item {
     box-shadow: 2px 2px 3px rgba(9, 2, 90, 0.2);
 }
+/* Contacts utiles */
+.contactCard{
+    width: 210px;
+    height: 190px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 5px;
+    margin-bottom: 50px;
+    border: 2px solid;
+    border-radius: 5px;
+    background-color: #d1f1f8;
+    color: #115b69;
+    box-shadow: 4px 4px 3px rgba(9, 2, 90, 0.2);
+}
 
 /* GRAPHS */
 #graphList {
@@ -176,49 +190,51 @@ table {
     height: 450px; 
     margin: 10px auto;
     text-align: center;
-    box-shadow: 3px 3px 3px rgba(9, 2, 100, 0.5);
+    box-shadow: 2px 2px 3px rgba(9, 2, 100, 0.3);
 }
 #nbIncident {
     max-height: 450px;
     margin: 10px auto;
     text-align: center;
-    box-shadow: 3px 3px 3px rgba(9, 2, 100, 0.5);
+    box-shadow: 2px 2px 3px rgba(9, 2, 100, 0.3);
 }
 #bubble {
     max-width: 600px;
     margin: 10px auto;
     text-align: center;
-    box-shadow: 3px 3px 3px rgba(9, 2, 100, 0.5);
+    box-shadow: 2px 2px 3px rgba(9, 2, 100, 0.3);
 }
 #age {
-    width: 1600px;
+    max-width: 800px;
     margin: 10px auto;
     text-align: center;
-    box-shadow: 3px 3px 3px rgba(9, 2, 100, 0.5);
+    box-shadow: 2px 2px 3px rgba(9, 2, 100, 0.3);
 }
 #trancheHoraire {
-    max-width: 500px;
+    max-width: 800px;
+    max-width: 800px;
     margin: 10px auto;
     text-align: center;
-    box-shadow: 3px 3px 3px rgba(9, 2, 100, 0.5);
+    box-shadow: 2px 2px 3px rgba(9, 2, 100, 0.3);
 }
 #localisation {
-    max-width: 500px;
+    max-width: 800px;
+    max-width: 800px;
     margin:  auto;
     text-align: center;
-    box-shadow: 3px 3px 3px rgba(9, 2, 100, 0.5);
+    box-shadow: 2px 2px 3px rgba(9, 2, 100, 0.3);
 }
 #casClasse {
-	height: 450px;
+	height: 800px;
     margin: 0 auto;
     text-align: center;
-    box-shadow: 3px 3px 3px rgba(9, 2, 100, 0.5);
+    box-shadow: 2px 2px 3px rgba(9, 2, 100, 0.3);
 }
 #profs {
     height: 500px;
     margin: 10px auto;
     text-align: center;
-    box-shadow: 3px 3px 3px rgba(9, 2, 100, 0.5);
+    box-shadow: 2px 2px 3px rgba(9, 2, 100, 0.3);
 }
 /* fin */
 
