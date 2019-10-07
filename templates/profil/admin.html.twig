@@ -4,24 +4,27 @@
     {% endfor %}
 </div>
 <br>
+<br>
 <div class="row">
-    <div class="col-12 text-center">
-        Pour consulter la liste des cas signalés par les élèves, c'est ici :
+    <div class="col-lg-6">
+        <div class="row">
+            <div class="col-md-6">
+                <a href="{{path('alert_index')}}"><button class="btn theme-action" style="min-width:220px; margin-bottom: 10px;">Consulter les signalements</button></a>
+            </div>
+            <div class="col-md-6">
+                <a href="{{path('alerthistory')}}"><button class="btn theme-action" style="min-width:220px; margin-bottom: 10px;">Historique</button></a>
+            </div>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-12"><br></div>
-    <div class="col-3">
-        <a href="{{path('alert_index')}}"><button class="btn theme-action">Consulter les signalements</button></a>
-    </div>
-    <div class="col-3 text-center">
-        <a href="{{path('alerthistory')}}"><button class="btn theme-action">Historique</button></a>
-    </div>
-    <div class="col-3 text-center">
-        <a href="{{path('user_new')}}"><button class="btn theme-action">Inscrire un membre</button></a>
-    </div>
-    <div class="col-3 text-right">
-        <a href="{{path('dashboard')}}"><button class="btn theme-action">Consulter les stats</button></a>
+    <div class="col-lg-6">
+        <div class="row">
+            <div class="col-md-6">
+                <a href="{{path('user_new')}}"><button class="btn theme-action" style="min-width:220px; margin-bottom: 10px;">Inscrire un membre</button></a>
+            </div>
+            <div class="col-md-6">
+                <a href="{{path('dashboard')}}"><button class="btn theme-action" style="min-width:220px; margin-bottom: 10px;">Consulter les stats</button></a>
+            </div>
+        </div>
     </div>
 </div>
 <br>

@@ -6,24 +6,24 @@
     </div>
     <br>
     <div class="row text-theme">
-        <div class="col-6">
+        <div class="col-md-6">
             <label for="lastname">Nom</label>
             <input class="form-control" type="text" id="lastname" readonly value="{{ user.lastName }}">
         </div>
-        <div class="col-6">
+        <div class="col-md-6">
             <label for="firstname">Prenom</label>
             <input class="form-control" type="text" id="firstname" readonly value="{{ user.firstName }}">
         </div>
     </div>
     <div class="row text-theme">
-        <div class="col-4">
-            <label for="birthdate">Date de naissance</label>
+        <div class="col-md-4">
+            <label for="birthdate">Anniversaire</label>
             <input class="form-control" type="text" id="birthdate" readonly value="{{ user.birthDate ? user.birthDate|date('Y-m-d') : '' }}">
         </div>
-        <div class="col-4">
-            {{ form_row(formProfilUpdate.phone, {'label':'Numéro de téléphone :', 'attr':{'class':'form-control control-label'}}) }}
+        <div class="col-md-4">
+            {{ form_row(formProfilUpdate.phone, {'label':'Mobile :', 'attr':{'class':'form-control control-label'}}) }}
         </div>
-        <div class="col-4">
+        <div class="col-md-4">
             <label for="sex">Sexe</label>
             <input class="form-control" type="text" id="sex" readonly value="{{ user.sex.name }}">
         </div>
@@ -43,31 +43,31 @@
         <div class="col-12 text-center">
             <h1>Mon profil:</h1>
         </div>
-        <div class="col-6">
+        <div class="col-md-6">
             <label for="lastname">Role</label>
             <input class="form-control" type="text" id="lastname" readonly value="{{ user.role.name }}">
         </div>
-        <div class="col-6">
+        <div class="col-md-6">
             {{ form_row(formProfilUpdate.userName, {'label':'Pseudo :', 'attr':{'class':'form-control control-label'}}) }}
         </div>
     </div>
     <br><hr>
     <div class="row text-theme">
         {% if user.studentClassName %}
-            <div class="col-6">
+            <div class="col-md-6">
                 <label for="lastname">Classe</label>
                 <input class="form-control" type="text" id="lastname" readonly value="{{ user.studentClassName.classLevel.name ? user.studentClassName.classLevel.name : '' }} {{ user.studentClassName.name ? user.studentClassName.name : '' }}">
             </div>
         {% else %}
-            <div class="col-6"></div>
+            <div class="col-md-6"></div>
         {% endif %}
-        <div class="col-6">
+        <div class="col-md-6">
             <div class="row" style="padding-top:2rem">
                 <div class="col-6">
-                    <a href="/profil/newpassword" id="updatePassword" class="btn theme-action form-control control-label">Changer mon mot de passe</a>
+                    <a href="/profil/newpassword" id="updatePassword" class="btn theme-action" style="min-width:150px">Mot de passe</a>
                 </div>
-                <div class="col-6 text-right">
-                    <button class="btn theme-action">{{ button_label|default('Enregistrer') }}</button>
+                <div class="col-6">
+                    <button class="btn theme-action" style="min-width:150px">{{ button_label|default('Enregistrer') }}</button>
                 </div>
             </div>
         </div>

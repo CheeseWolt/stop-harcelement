@@ -4,21 +4,13 @@
     {% endfor %}
 </div>
 <br>
-<div class="row">
-    <div class="col-6">
-        Pour consulter la liste des cas signalés par les élèves, c'est ici :
-    </div>
-    <div class="col-6 text-right">
-        Pour consulter l'historique d'alerte traitées:
-    </div>
-</div>
 <br>
 <div class="row">
-    <div class="col-6">
-        <a href="{{path('alert_index')}}"><button class="btn theme-action">Consulter les signalements</button></a>
+    <div class="col-md-6">
+        <a href="{{path('alert_index')}}"><button class="btn theme-action" style="min-width:220px; margin-bottom: 10px;">Consulter les signalements</button></a>
     </div>
-    <div class="col-6 text-right">
-        <a href="{{path('alerthistory')}}"><button class="btn theme-action">Historique</button></a>
+    <div class="col-md-6">
+        <a href="{{path('alerthistory')}}"><button class="btn theme-action" style="min-width:220px; margin-bottom: 10px;">Historique</button></a>
     </div>
 </div>
 <br>
