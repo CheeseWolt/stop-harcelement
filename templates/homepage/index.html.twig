@@ -14,25 +14,28 @@
                     <br>
                     affaiblir psychologiquement la personne qui en est la victime."</h4>
                 <br>
-                <div class="row mx-auto col-sm-8">
-                    {% if app.user is null %}
-                        <a href="{{ path ("app_login")}}" class="btn theme-action mx-auto">Connexion</a>
-                    {% else %}
-                        {% if app.user.role.name == "ROLE_ELEVE" %}
-                            <a href="{{path('alert_new')}}" class="btn theme-action col-sm mx-2">Signaler un harcelement</a>
-                            <a href="{{path('profil_index')}}" class="btn theme-action col-sm mx-2">Acceder à mon compte</a>
-                            <a href="{{path('alerthistory')}}" class="btn theme-action col-sm mx-2">Acceder à mes alertes traitées</a>
+                <div class="row mx-auto">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        {% if app.user is null %}
+                            <a href="{{ path ("app_login")}}" class="btn theme-action mx-auto">Connexion</a>
+                        {% else %}
+                            {% if app.user.role.name == "ROLE_ELEVE" %}
+                                <a href="{{path('alert_new')}}" class="btn theme-action col-sm m-2" style="max-width:180px">Signaler un harcelement</a>
+                                <a href="{{path('profil_index')}}" class="btn theme-action col-sm m-2" style="max-width:180px">Acceder à mon compte</a>
+                                <a href="{{path('alerthistory')}}" class="btn theme-action col-sm m-2" style="max-width:180px">Acceder à mes alertes traitées</a>
+                            {% endif %}
+                            {% if app.user.role.name == "ROLE_PROFESSEUR" or app.user.role.name == "ROLE_ADMIN" %}
+                                <a href="{{path('alert_index')}}" class="btn theme-action col-sm m-2" style="max-width:180px">Consulter les signalements</a>
+                                <a href="{{path('profil_index')}}" class="btn theme-action col-sm m-2" style="max-width:180px">Acceder à mon compte</a>
+                                <a href="{{path('alerthistory')}}" class="btn theme-action col-sm m-2" style="max-width:180px">Acceder à mes alertes traitées</a>
+                            {% endif %}
+                            {% if app.user.role.name == "ROLE_SECRETARIAT" %}
+                                <a href="{{path('user_new')}}" class="btn theme-action mx-auto">Inscrire un élève</a>
+                            {% endif %}
                         {% endif %}
-                        {% if app.user.role.name == "ROLE_PROFESSEUR" or app.user.role.name == "ROLE_ADMIN" %}
-                            <a href="{{path('alert_index')}}" class="btn theme-action col-sm mx-2">Consulter les signalements</a>
-                            <a href="{{path('profil_index')}}" class="btn theme-action col-sm mx-2">Acceder à mon compte</a>
-                            <a href="{{path('alerthistory')}}" class="btn theme-action col-sm mx-2">Acceder à mes alertes traitées</a>
-                        {% endif %}
-                        {% if app.user.role.name == "ROLE_SECRETARIAT" %}
-                            <a href="{{path('user_new')}}" class="btn theme-action mx-auto">Inscrire un élève</a>
-                        {% endif %}
-
-                    {% endif %}
+                    </div>
+                    <div class="col-2"></div>
                 </div>
             </div>
         </div>
