@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark theme-d3">
+<nav class="navbar navbar-expand-lg navbar-dark theme-d3">
     <a class="navbar-brand" href="/">Stop-Harcelement</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -15,28 +15,36 @@
             </li>
         </ul>
         {% if app.user %}
-            <div class="btn-group btnNav">
-                {% if app.user.role.name == "ROLE_ADMIN" %}
-                    <button type="button" class="btn theme-action dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mes actions possibles</button>
-                    <div class="dropdown-menu theme-action dropdown-shadow">
-                        {# <a class="dropdown-item" href="/sex">gerer Sexes</a> #}
-                        {# <a class="dropdown-item" href="/role">gerer Roles</a> #}
-                        {# <a class="dropdown-item" href="/status">gerer status</a> #}
-                        <a class="dropdown-item" href="/class/level">gerer rangs de classe</a>
-                        <a class="dropdown-item" href="/location">gerer lieux</a>
-                        <a class="dropdown-item" href="/alertstyle">gerer types d'alerte</a>
-                        <a class="dropdown-item" href="/class/name">gerer les classes</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/user">gerer utilisateurs</a>
-                    </div>
-                {% endif %}
+            <div class="row navbar-nav">
+                <div class="btn-group btnNav imgcenter">
+                    {% if app.user.role.name == "ROLE_ADMIN" %}
+                        <button type="button" class="btn theme-action dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mes actions possibles</button>
+                        <div class="dropdown-menu theme-action dropdown-shadow">
+                            {# <a class="dropdown-item" href="/sex">gerer Sexes</a> #}
+                            {# <a class="dropdown-item" href="/role">gerer Roles</a> #}
+                            {# <a class="dropdown-item" href="/status">gerer status</a> #}
+                            <a class="dropdown-item" href="/class/level">gerer rangs de classe</a>
+                            <a class="dropdown-item" href="/location">gerer lieux</a>
+                            <a class="dropdown-item" href="/alertstyle">gerer types d'alerte</a>
+                            <a class="dropdown-item" href="/class/name">gerer les classes</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/user">gerer utilisateurs</a>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="btn-group btnNav imgcenter">
+                    <a href="{{path('infospersos')}}"><button class="btn theme-action">Mes infos persos</button></a>
+                </div>
+                <div class="btn-group btnNav imgcenter">
+                    <a href="{{path('app_logout')}}"><button class="btn theme-action">Deconnexion</button></a>
+                </div>
             </div>
-            <div class="btn-group btnNav">
-                <a href="{{path('infospersos')}}"><button class="btn theme-action">Mes infos persos</button></a>
-            </div>
-        <a href="{{path('app_logout')}}"><button class="btn theme-action">Deconnexion</button></a>
         {% else %}
-            <a href="{{path('app_login')}}"><button class="btn theme-action">Se connecter</button></a>
+        <div class="row">
+            <div class="btn-group btnNav col-12">
+                <a href="{{path('app_login')}}"><button class="btn theme-action">Se connecter</button></a>
+            </div>
+        </div>
         {% endif %}
     </div>
 </nav>

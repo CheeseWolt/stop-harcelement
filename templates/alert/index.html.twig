@@ -1,53 +1,58 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des signalements{% endblock %}
+{% block title %}Liste des signalements
+{% endblock %}
 
 {% block body %}
-<div class="container theme-l5 theme-container">
-    <div class="row">
+<div class="container theme-container">
+    <div class="row p-4">
         <div class="col-12">
             <h1 class="text-theme">Liste des signalements :</h1>
         </div>
-        <div class="col-12">
-            <table class="table table-striped">
-                <thead class="theme-d3">
-                    <tr>
-                        <th>Type de harcelement</th>
-                        <th>Dates des signalements</th>
-                        <th>Dates des événements</th>
-                        <th>Lieu des faits</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                {% for alert in alerts %}
-                <tr>
-                    <td>
+    </div>
+
+    <div class="row">
+        {% for alert in alerts %}
+
+        <div class="col-md-4 col-xs-12">
+            <div class="card mb-3 overflow-hidden" style="border:1px solid #187f93;">
+                <div class="card-header theme-d3">
+                    Date du signalement :
+                    {{ alert.alertDate ? alert.alertDate|date('Y-m-d H:i') : '' }}
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Type de harcelement :</h5>
+                    <p>
                         {% for type in alert.alertStyle %}
                         {{ type.name }}
                         {% endfor %}
-                    </td>
-                    <td>{{ alert.alertDate ? alert.alertDate|date('Y-m-d H:i') : '' }}</td>
-                    <td>{{ alert.eventDate ? alert.eventDate|date('d-m-Y') : '' }}
-                        {{ alert.eventTime ? alert.eventTime|date('H:i') : '' }}</td>
-                    <td>
-                        {{ alert.location.name }}
-                    </td>
-                    <td>
-                        <a href="{{ path('alert_show', {'id': alert.id}) }}" class="btn theme-action">Afficher</a>
-                    </td>
-                </tr>
-                {% else %}
-                <tr>
-                    <td colspan="8">Pas d'enregistrement trouvé</td>
-                </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
+                    </p>
+                </div>
+                <div class="card-body theme-container">
+                    <h5 class="card-title">Dates des événements :</h5>
+                    <p>
+                        {{ alert.eventDate ? alert.eventDate|date('d-m-Y') : '' }}
+                        {{ alert.eventTime ? alert.eventTime|date('H:i') : '' }}
+                    </p>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Lieu des faits :</h5>
+                    <p>{{ alert.location.name }}</p>
+                </div>
+                <div class="card-body theme-container">
+                    <a href="{{ path('alert_show', {'id': alert.id}) }}" class="btn theme-action">Afficher details</a>
+                </div>
+
+            </div>
+        </div>{% else %}
+        <p colspan="8">Pas d'enregistrement trouvé</p>
+        {% endfor %}
     </div>
+
+
     {% if is_granted('ROLE_ADMIN') %}
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 mb-3">
             <a href="{{ path('alert_new') }}">
                 <button class="btn theme-action">Ajouter une alerte</button>
             </a>
@@ -55,6 +60,6 @@
     </div>
     {% endif %}
     <br>
-</div>
 
+</div>
 {% endblock %}
