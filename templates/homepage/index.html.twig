@@ -9,25 +9,29 @@
             <h1 class="text-theme">Témoin ou victime, ne restez pas silencieux</h1>
         </div>
         <div class="row">
-            <div class="col-12 text-theme">
+            <div class="col-12 text-center text-theme">
                 <h4 style="color: #115b69; font-style: italic;">"Le harcèlement est un enchaînement d'agissements hostiles répétés visant à
                     <br>
                     affaiblir psychologiquement la personne qui en est la victime."</h4>
                 <br>
-                <div class="row col-sm-10 offset-1">
+                <div class="row mx-auto col-sm-8">
                     {% if app.user is null %}
-                        <a href="{{ path ("app_login")}}" class="btn theme-action">Connexion</a>
+                        <a href="{{ path ("app_login")}}" class="btn theme-action mx-auto">Connexion</a>
                     {% else %}
                         {% if app.user.role.name == "ROLE_ELEVE" %}
                             <a href="{{path('alert_new')}}" class="btn theme-action col-sm mx-2">Signaler un harcelement</a>
-                            <a href="{{path('profil_index')}}" class="btn theme-action col-sm mx-2">Acceder à mes signalements en cours</a>
+                            <a href="{{path('profil_index')}}" class="btn theme-action col-sm mx-2">Acceder à mon compte</a>
                             <a href="{{path('alerthistory')}}" class="btn theme-action col-sm mx-2">Acceder à mes alertes traitées</a>
                         {% endif %}
                         {% if app.user.role.name == "ROLE_PROFESSEUR" or app.user.role.name == "ROLE_ADMIN" %}
                             <a href="{{path('alert_index')}}" class="btn theme-action col-sm mx-2">Consulter les signalements</a>
-                            <a href="{{path('profil_index')}}" class="btn theme-action col-sm mx-2">Acceder à mes signalements en cours</a>
+                            <a href="{{path('profil_index')}}" class="btn theme-action col-sm mx-2">Acceder à mon compte</a>
                             <a href="{{path('alerthistory')}}" class="btn theme-action col-sm mx-2">Acceder à mes alertes traitées</a>
                         {% endif %}
+                        {% if app.user.role.name == "ROLE_SECRETARIAT" %}
+                            <a href="{{path('user_new')}}" class="btn theme-action mx-auto">Inscrire un élève</a>
+                        {% endif %}
+
                     {% endif %}
                 </div>
             </div>
@@ -42,13 +46,11 @@
         <br>
         <br>
         <div class="row">
-            <div class="col-12 text-theme">
-                <ul style="list-style: none; font-size: 2em;">
-                    <li>La confidentialité est le mot clé de notre application, permettant aux victimes de s'ouvrir sincèrement, sans risque de représailles.</li><br>
-                    <li>Consultez facilement les statistiques de votre établissement afin de mettre en place une stratégie adaptée au(x) problème(s).</li><br>
-                    <li>Avec notre interface numérique, accèdez facilement a nos différentes fonctionnalitées.</li><br>
-                    <li>Accèdez aux nouveaux rapports et à vos discussions privées en quelques clics.</li><br>
-                </ul>
+            <div class="col-12 text-theme" style="font-size: 1.8em">
+                <p>La confidentialité est le mot clé de notre application, permettant aux victimes de s'ouvrir sincèrement, sans risque de représailles.</p>
+                <p>Consultez facilement les statistiques de votre établissement afin de mettre en place une stratégie adaptée au(x) problème(s).</p>
+                <p>Avec notre interface numérique, accédez facilement à nos différentes fonctionnalités.</p>
+                <p>Accèdez aux nouveaux rapports et à vos discussions privées en quelques clics.</p>
             </div>
         </div>
         <div class="row text-theme" style="background-color: #d1f1f8;">
