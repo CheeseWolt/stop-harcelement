@@ -2,29 +2,32 @@
     <h1 class="mb-3 text-theme">Messages privés de
         {{ app.user.userName }}</h1>
     {% if private_messages %}
-        {% for private_message in private_messages %}
-            <div class="col-8{% if private_message.user.userName == app.user.userName %} offset-4 {% endif %}">
-                <div class="card theme-light mb-4 ">
-                    <div class="card-header  theme-d2">
-                        <h5 class=" card-title">
-                            {% if private_message.user == alert.alertManager %}
-                                {{ private_message.user.userName }}
-                            {% else %}
-                                {{ alert.isAnonym ? "Anonyme" : alert.alertSender.userName }}
-                            {% endif %}
-                        </h5>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text">{{private_message.content}}</p>
-                    </div>
-                    <div class="card-footer theme-d2">{{ private_message.date ? private_message.date|date('d-m-Y H:i:s') : '' }}</div>
-                </div>
+    {% for private_message in private_messages %}
+    <div class="col-md-8 col-xs-12{% if private_message.user.userName == app.user.userName %} offset-md-4{% endif %}">
+        <div class="card theme-light mb-4 ">
+            <div class="card-header  theme-d2">
+                <h5 class="card-title">
+                    {% if private_message.user == alert.alertManager %}
+                    {{ private_message.user.userName }}
+                    {% else %}
+                    {{ alert.isAnonym ? "Anonyme" : alert.alertSender.userName }}
+                    {% endif %}
+                </h5>
             </div>
-        {% endfor %}
+            <div class="card-body">
+                <p class="card-text">{{private_message.content}}</p>
+            </div>
+            <div class="card-footer theme-d2">{{ private_message.date ? private_message.date|date('d-m-Y H:i:s') : '' }}
+            </div>
+        </div>
+    {% endfor %}
     {% else %}
-        <h2>Auncun message.</h2>
+    <h2>Auncun message.</h2>
     {% endif %}
-    <div class="col-8 offset-4">
+</div>
+<div class="row">
+    <div class="col-md-8 offset-md-4 col-xs-12">
         {{ include('private_message/_form.html.twig') }}
     </div>
+</div>
 {% endblock %}

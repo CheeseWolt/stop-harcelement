@@ -1,12 +1,13 @@
 {{ form_start(form) }}
 <div class="theme-light card">
-<div class="card-header theme-d2">
-    <h5 class="card-title ">Saisir un message privé {{ app.user == alert.alertSender and  alert.isAnonym ? "( Vous garderez l'anonymat )" }}</h5>
-</div>
+    <div class="card-header theme-d2">
+        <h5 class="card-title ">Saisir un message privé
+            {{ app.user == alert.alertSender and  alert.isAnonym ? "( Anonyme )" }}</h5>
+    </div>
     <p class="card-text text-theme">
         {{ form_label(form.content,'') }}
         {{ form_row(form.content,{"attr":{'class':'form-control'}})}}
     </p>
-    <button class="btn theme-action">{{ button_label|default('Envoyer') }}</button>
+    <button class="btn theme-action mb-5">{{ button_label|default('Envoyer') }}</button>
 </div>
 {{ form_end(form) }}
