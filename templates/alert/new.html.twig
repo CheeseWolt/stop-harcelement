@@ -1,21 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nouveau signalement{% endblock %}
+{% block title %}Nouveau signalement
+{% endblock %}
 
 {% block body %}
-<div class="container theme-l5 container-alert">
+    <div class="container theme-container">
         <div class="row">
             <div class="col-12">
                 <h1 class="text-theme">Faites votre signalement :</h1>
             </div>
         </div>
-        <div class="form-alert">
-            <div class="row">
-                <div class="col-12">
-                    {{ include('alert/_form.html.twig') }}
-                </div>
+        <div class="row">
+            <div class="col-12">
+                {{ include('alert/_form.html.twig') }}
             </div>
         </div>
-</div>
+    </div>
 
 {% endblock %}
