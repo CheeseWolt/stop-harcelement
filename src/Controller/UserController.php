@@ -4,14 +4,12 @@ namespace App\Controller;
 
 use App\Form\UserType;
 use App\Entity\{User, Role};
-use App\Repository\RoleRepository;
-use App\Repository\UserRepository;
+use App\Repository\{RoleRepository,UserRepository};
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\{TextType,ChoiceType};
 use Symfony\Component\HttpFoundation\{Request, Response};
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
