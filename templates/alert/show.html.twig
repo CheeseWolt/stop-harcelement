@@ -34,11 +34,7 @@
                 <p class="card-text">{{ alert.content }}</p>
             </div>
             {% if is_granted('ROLE_PROFESSEUR') %}
-            {% if alert.alertManager is  null %}
-            <a href="{{ path('alert_manage',{'id':alert.id}) }}" class="p-2 theme-action">
-                Prendre en charge
-            </a>
-            {% else %}
+            {% if alert.alertManager %}
             <li class="list-group-item theme-light">Pris en charge par :
                 {{ alert.alertManager.firstName ~' '~ alert.alertManager.lastName ?? '' }}</li>
             <li class="list-group-item theme-light">Début de prise en charge :
