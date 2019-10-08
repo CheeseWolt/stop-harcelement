@@ -15,10 +15,11 @@ class UpdatePasswordType extends AbstractType
     {
         $builder
         ->add('password',PasswordType::class,[
+            "mapped"=>false
         ])
         ->add('newpassword', RepeatedType::class, [
             'type' => PasswordType::class,
-            'invalid_message' => 'The password fields must match.',
+            'invalid_message' => 'Les mots de passes ne correspondent pas',
             'options' => ['attr' => ['class' => 'password-field']],
             'required' => true,
             'mapped'=>false
@@ -28,7 +29,6 @@ class UpdatePasswordType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => User::class,
         ]);
     }
 }
