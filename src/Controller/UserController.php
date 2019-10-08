@@ -6,14 +6,15 @@ use App\Form\UserType;
 use App\Entity\{User, Role};
 use App\Repository\RoleRepository;
 use App\Repository\UserRepository;
-use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Component\Validator\Constraints\Length;
 
 /**
  * @Route("/user")
@@ -96,21 +97,26 @@ class UserController extends AbstractController
      */
     public function edit(Request $request, User $user,  UserPasswordEncoderInterface $encoder, RoleRepository $roleRepository): Response
     {
-        $Admin = new Role();
-        $Prof = new Role();
-        $Eleve = new Role();
-        $Secretariat = new Role();
-        $roles['Professeur'] = $Prof->setName('ROLE_PROFESSEUR');
-        $roles['Élève'] = $Eleve->setName('ROLE_ELEVE');
-        if ($this->getUser()->getRoles()[0] == 'ROLE_ADMIN') {
-            $roles['Admin'] = $Admin->setName('ROLE_ADMIN');
-            $roles['Secrétariat'] = $Secretariat->setName('ROLE_SECRETARIAT');
-        }
+        // $Admin = new Role();
+        // $Prof = new Role();
+        // $Eleve = new Role();
+        // $Secretariat = new Role();
+        // $roles['Professeur'] = $Prof->setName('ROLE_PROFESSEUR');
+        // $roles['Élève'] = $Eleve->setName('ROLE_ELEVE');
+        // if ($this->getUser()->getRoles()[0] == 'ROLE_ADMIN') {
+        //     $roles['Admin'] = $Admin->setName('ROLE_ADMIN');
+        //     $roles['Secrétariat'] = $Secretariat->setName('ROLE_SECRETARIAT');
+        // }
         $form = $this->createForm(UserType::class, $user)
-            ->add('role', ChoiceType::class, [
-                'choices' => $roles,
-                'label' => 'name'
+            ->add('role', EntityType::class, [
+                'class' => Role::class,
+                'choice_label' => 'name',
             ])
+
+            // ->add('role', ChoiceType::class, [
+            //     'choices' => $roles,
+            //     'label' => 'name'
+            // ])
             ->add('plainPassword', TextType::class, [
                 'mapped' => false,
                 "required" => false
