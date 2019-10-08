@@ -1,6 +1,6 @@
 {{ form_start(form) }}
-<div class="theme-light card">
-    <div class="card-header theme-d2">
+<div class="theme-light card mb-5">
+    <div class="card-header theme-d2" style="height:50px;">
         <h5 class="card-title ">Saisir un message privé
             {{ app.user == alert.alertSender and  alert.isAnonym ? "( Anonyme )" }}</h5>
     </div>
@@ -8,6 +8,6 @@
         {{ form_label(form.content,'') }}
         {{ form_row(form.content,{"attr":{'class':'form-control'}})}}
     </p>
-    <button class="btn theme-action mb-4">{{ button_label|default('Envoyer') }}</button>
+    <button class="btn theme-action">{{ button_label|default('Envoyer') }}</button>
 </div>
 {{ form_end(form) }}

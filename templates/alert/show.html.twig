@@ -1,71 +1,73 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Signalement
-{{ alert.isAnonym ? 'Anonyme' : 'de ' ~ alert.alertSender.firstName  ~ ' ' ~  alert.alertSender.lastName }}{% endblock %}
+
+{% block title %}
+Signalement{{ alert.isAnonym ? 'Anonyme' : 'de ' ~ alert.alertSender.firstName  ~ ' ' ~  alert.alertSender.lastName }}
+{% endblock %}
 
 {% block body %}
-<div class="container theme-container">
-    <h1 class="text-theme">Signalement</h1>
-    <div class="card my-5 theme-d2" style="width: 100%;">
-        <div class="card-header">Type(s) de Harcelement(s) :
-            <h5 class="card-title">
-                {% for type in alert.alertStyle %}
-                {{  type.name  }}
-                {% endfor %}
-            </h5>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item d-flex flex-row justify-content-around theme-light">
-                <span>
-                    Utilisateur :
-                    {{ alert.isAnonym ? 'Anonyme' : alert.alertSender.firstName  ~ ' ' ~  alert.alertSender.lastName }}</span>
-                <span>Role :
-                    {{ alert.status.name }}</span>
-            </li>
-            <li class="list-group-item d-flex flex-row justify-content-around theme-light">
-                <span>Date du signalement :
-                    {{ alert.alertDate ?  alert.alertDate|date('d/m/Y H:i:s') : '' }}</span>
-                <span>Date des faits :
-                    {{ alert.eventDate ? alert.eventDate|date('d/m/Y') : '' }}
-                    {{ alert.eventTime ? alert.eventTime|date('H:i:s') : '' }}</span>
-            </li>
-            <div class="card-body theme-light">
-                <h5 class="card-title ">Description :</h5>
-                <p class="card-text">{{ alert.content }}</p>
+    <div class="container theme-container">
+        <h1 class="text-theme pt-4">Signalement</h1>
+        <div class="card my-5 theme-d2" style="width: 100%;">
+            <div class="card-header">Type(s) de Harcelement(s) :
+                <h5 class="card-title">
+                    {% for type in alert.alertStyle %}
+                        {{  type.name  }}
+                    {% endfor %}
+                </h5>
             </div>
-            {% if is_granted('ROLE_PROFESSEUR') %}
-            {% if alert.alertManager %}
-            <li class="list-group-item theme-light">Pris en charge par :
-                {{ alert.alertManager.firstName ~' '~ alert.alertManager.lastName ?? '' }}</li>
-            <li class="list-group-item theme-light">Début de prise en charge :
-                {{ alert.startSupportDate ? alert.startSupportDate|date('d/m/Y à H:i:s') : '' }}</li>
-            {% if alert.endSupportDate is null %}
-            <a href="{{ path('alert_close',{'id':alert.id}) }}" class="btn-danger p-2">
-                Fin de prise en charge
-            </a>
-            {% else %}
-            <li class="list-group-item theme-light">Fin de prise en charge :
-                {{ alert.endSupportDate ? alert.endSupportDate|date('d/m/Y à H:i:s') : '' }}</li>
-            {% endif %}
-            {% endif %}
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex flex-row justify-content-around theme-light">
+                    <span>
+                        Utilisateur :
+                        {{ alert.isAnonym ? 'Anonyme' : alert.alertSender.firstName  ~ ' ' ~  alert.alertSender.lastName }}</span>
+                    <span>Role :
+                        {{ alert.status.name }}</span>
+                </li>
+                <li class="list-group-item d-flex flex-row justify-content-around theme-light">
+                    <span>Date du signalement :
+                        {{ alert.alertDate ?  alert.alertDate|date('d/m/Y H:i:s') : '' }}</span>
+                    <span>Date des faits :
+                        {{ alert.eventDate ? alert.eventDate|date('d/m/Y') : '' }}
+                        {{ alert.eventTime ? alert.eventTime|date('H:i:s') : '' }}</span>
+                </li>
+                <div class="card-body theme-light">
+                    <h5 class="card-title ">Description :</h5>
+                    <p class="card-text">{{ alert.content }}</p>
+                </div>
+                {% if is_granted('ROLE_PROFESSEUR') %}
+                    {% if alert.alertManager %}
+                        <li class="list-group-item theme-light">Pris en charge par :
+                            {{ alert.alertManager.firstName ~' '~ alert.alertManager.lastName ?? '' }}</li>
+                        <li class="list-group-item theme-light">Début de prise en charge :
+                            {{ alert.startSupportDate ? alert.startSupportDate|date('d/m/Y à H:i:s') : '' }}</li>
+                        {% if alert.endSupportDate is null %}
+                            <a href="{{ path('alert_close',{'id':alert.id}) }}" class="btn-danger p-2">
+                                Fin de prise en charge
+                            </a>
+                        {% else %}
+                            <li class="list-group-item theme-light">Fin de prise en charge :
+                                {{ alert.endSupportDate ? alert.endSupportDate|date('d/m/Y à H:i:s') : '' }}</li>
+                        {% endif %}
+                    {% endif %}
 
+                {% endif %}
+            </ul>
+        </div>
+        <div class="d-flex flex-row justify-content-between mb-5">
+            {% if is_granted('ROLE_PROFESSEUR') %}
+                <div class="justify-content-between">
+                    <a href="{{ path('alert_index') }}" class="btn  theme-action">
+                        Retour aux alertes
+                    </a>
+                </div>
             {% endif %}
-        </ul>
-    </div>
-    <div class="d-flex flex-row justify-content-between mb-5">
-        {% if is_granted('ROLE_PROFESSEUR') %}
-        <div class="justify-content-between">
-            <a href="{{ path('alert_index') }}" class="btn  theme-action">
-                Retour aux alertes
-            </a>
+            <div class="justify-content-between ml-3">
+                <a href="{{ path('profil_index') }}" class="btn theme-action">
+                    Retour au profil
+                </a>
+            </div>
         </div>
-        {% endif %}
-        <div class="justify-content-between ml-3">
-            <a href="{{ path('profil_index') }}" class="btn theme-action">
-                Retour au profil
-            </a>
-        </div>
+        {% include "private_message/index.html.twig" %}
     </div>
-    {% include "private_message/index.html.twig" %}
-</div>
 {% endblock %}
