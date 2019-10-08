@@ -10,7 +10,12 @@
             <h1 class="text-theme">Liste des signalements :</h1>
         </div>
     </div>
-
+    <div class="row">
+        <div class="col-12 text-theme">
+            Alerte(s) postée(s) en attente: <strong>{{ alerts|length }}</strong>
+        </div>
+    </div>
+    <br>
     <div class="row">
         {% for alert in alerts %}
 
