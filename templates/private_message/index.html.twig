@@ -7,7 +7,7 @@
     </div>
     {% if private_messages %}
     {% for private_message in private_messages %}
-    <div class="col-md-8 col-xs-12{% if private_message.user.userName == app.user.userName %} offset-md-4{% endif %}">
+    <div class="col-md-8 col-sm-12{% if private_message.user.userName == app.user.userName %} offset-md-4{% endif %}">
         <div class="card theme-light mb-4 ">
             <div class="card-header  theme-d2">
                 <h5 class="card-title">
@@ -32,7 +32,7 @@
     {% endif %}
 </div>
 <div class="row">
-    <div class="col-md-8 offset-md-4 col-xs-12">
+    <div class="col-md-8 offset-md-4 col-sm-12">
         {{ include('private_message/_form.html.twig') }}
     </div>
 </div>
