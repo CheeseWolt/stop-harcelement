@@ -16,10 +16,10 @@
 </div>
 <hr>
 <div class="row">
-    <div class="col-sm-6 col-xs-12">
+    <div class="col-md-6">
         {{form_row(form.isAnonym, {'attr':{'class':'form-check-inline'}})}}
     </div>
-    <div class="col-sm-6 col-xs-12">
+    <div class="col-md-6">
         {{form_row(form.status, {'attr':{'class':'form-check-inline'}})}}
     </div>
 </div>
@@ -41,10 +41,10 @@
 </div>
 
 <div class="row">
-    <div class="col-sm-6 col-xs-12 form-group btn-container text-sm-left text-xs-center">
+    <div class="col-md-6 col-sm-12 form-group btn-container text-sm-left text-xs-center">
         <a class="btn theme-action" href="{{ path('profil_index') }}">retour au profil</a>
     </div>
-    <div class="col-sm-6 col-xs-12 form-group btn-container text-sm-right text-xs-center">
+    <div class="col-md-6 col-sm-12 form-group btn-container text-sm-right text-xs-center">
         <button type="submit" class="btn theme-action">{{ button_label|default('Enregistrer') }}</button>
     </div>
 </div>
