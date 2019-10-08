@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark theme-d3">
-    <a class="navbar-brand" href="/"><img src="{{ asset("assets/images/logo-75.png") }}" width="10%"/> Stop-Harcelement</a>
+    <a class="navbar-brand" href="/"><img src="{{ asset("assets/images/logo-75.png") }}" width="10%"/>
+        Stop-Harcelement</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -22,8 +23,7 @@
                         <div class="dropdown-menu theme-action dropdown-shadow">
                             {# <a class="dropdown-item" href="/sex">gerer Sexes</a> #}
                             {# <a class="dropdown-item" href="/role">gerer Roles</a> #}
-                            {# <a class="dropdown-item" href="/status">gerer status</a> #}
-                            <a class="dropdown-item" href="/class/level">gerer rangs de classe</a>
+                            {# <a class="dropdown-item" href="/status">gerer status</a> #}<a class="dropdown-item" href="/class/level"> gerer rangs de classe</a>
                             <a class="dropdown-item" href="/location">gerer lieux</a>
                             <a class="dropdown-item" href="/alertstyle">gerer types d'alerte</a>
                             <a class="dropdown-item" href="/class/name">gerer les classes</a>
@@ -33,18 +33,24 @@
                     {% endif %}
                 </div>
                 <div class="btn-group btnNav imgcenter">
-                    <a href="{{path('infospersos')}}"><button class="btn theme-action">Mes infos persos</button></a>
+                    <a href="{{path('infospersos')}}">
+                        <button class="btn theme-action">Mes infos persos</button>
+                    </a>
                 </div>
                 <div class="btn-group btnNav imgcenter">
-                    <a href="{{path('app_logout')}}"><button class="btn theme-action">Deconnexion</button></a>
+                    <a href="{{path('app_logout')}}">
+                        <button class="btn theme-action">Deconnexion</button>
+                    </a>
                 </div>
             </div>
         {% else %}
-        <div class="row">
-            <div class="btn-group btnNav col-12">
-                <a href="{{path('app_login')}}"><button class="btn theme-action">Se connecter</button></a>
+            <div class="row">
+                <div class="btn-group btnNav col-12">
+                    <a href="{{path('app_login')}}">
+                        <button class="btn theme-action">Se connecter</button>
+                    </a>
+                </div>
             </div>
-        </div>
         {% endif %}
     </div>
 </nav>
