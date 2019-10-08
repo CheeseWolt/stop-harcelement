@@ -28,13 +28,11 @@ class ProfilController extends AbstractController
     public function index()
     {
         $user = $this->getUser();
-        if($user->getRole()->getName() == "ROLE_ELEVE")
-        {
+        if ($user->getRole()->getName() == "ROLE_ELEVE") {
             // $alerts = $user->getAlerts();
             $alerts = $this->getDoctrine()->getRepository(Alert::class)->getActivAlertByUser($user);
         }
-        if($user->getRole()->getName() == "ROLE_PROFESSEUR" || $user->getRole()->getName() == "ROLE_ADMIN")
-        {
+        if ($user->getRole()->getName() == "ROLE_PROFESSEUR" || $user->getRole()->getName() == "ROLE_ADMIN") {
             // $alerts = $this->getDoctrine()->getRepository(Alert::class)->findBy(['alertManager'=>$user]);
             $alerts = $this->getDoctrine()->getRepository(Alert::class)->getAlertsManaged($user);
         }
@@ -73,39 +71,39 @@ class ProfilController extends AbstractController
         }
 
         return $this->render('profil/infospersos.html.twig', [
-            'user'=>$user,
-            'formProfilUpdate'=>$form->createView(),
+            'user' => $user,
+            'formProfilUpdate' => $form->createView(),
         ]);
     }
 
     /**
      * @Route("/newpassword", name="new_password", methods={"GET","POST"})
      */
-    public function newPassword(Request $request,UserPasswordEncoderInterface $encoder)
+    public function newPassword(Request $request, UserPasswordEncoderInterface $encoder)
     {
         $user = $this->getUser();
-        $form = $this->createForm(UpdatePasswordType::class);
+        $form = $this->createForm(UpdatePasswordType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
             if ($encoder->isPasswordValid($user, $form["password"]->getData())) {
                 $newEncodedPassword = $encoder->encodePassword($user, $form['newpassword']->getData());
-                $user->setPassword($newEncodedPassword);
-                
+                $user = $this->getUser()->setPassword($newEncodedPassword);
+
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($user);
                 $entityManager->flush();
                 $this->addFlash('notice', 'Votre mot de passe à bien été changé !');
                 return $this->redirectToRoute('profil_index');
-            }else{
+            } else {
                 $form->addError(new FormError('L\'ancien mot de passe est incorrect'));
             }
         }
 
         return $this->render('profil/updatepassword.html.twig', [
-            'user'=>$user,
-            'form'=>$form->createView(),
+            'user' => $user,
+            'form' => $form->createView(),
         ]);
     }
 
@@ -115,13 +113,11 @@ class ProfilController extends AbstractController
     public function getAlertsHistoryByRole()
     {
         $user = $this->getUser();
-        if($user->getRole()->getName() == "ROLE_ELEVE")
-        {
+        if ($user->getRole()->getName() == "ROLE_ELEVE") {
             // $alerts = $user->getAlerts();
             $alerts = $this->getDoctrine()->getRepository(Alert::class)->getClosedAlertsByUser($user);
         }
-        if($user->getRole()->getName() == "ROLE_PROFESSEUR" || $user->getRole()->getName() == "ROLE_ADMIN")
-        {
+        if ($user->getRole()->getName() == "ROLE_PROFESSEUR" || $user->getRole()->getName() == "ROLE_ADMIN") {
             // $alerts = $this->getDoctrine()->getRepository(Alert::class)->findBy(['alertManager'=>$user]);
             $alerts = $this->getDoctrine()->getRepository(Alert::class)->getClosedAlertManagedByUser($user);
         }
@@ -130,8 +126,7 @@ class ProfilController extends AbstractController
         //     $alerts = $this->getDoctrine()->getRepository(Alert::class)->findBy(['alertManager'=>$user]);
         // }
         return $this->render('profil/alertHistory.html.twig', [
-            'alerts'=>$alerts,
+            'alerts' => $alerts,
         ]);
     }
-
 }
