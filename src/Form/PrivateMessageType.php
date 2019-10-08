@@ -14,8 +14,9 @@ class PrivateMessageType extends AbstractType
     {
         $builder
             ->add('content',TextareaType::class,[
-                'label'=>false])
-        ;
+                'label'=>false,
+                'attr' => ['rows' => 4]                  
+                ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
