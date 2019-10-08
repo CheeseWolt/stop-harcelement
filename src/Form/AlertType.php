@@ -30,6 +30,7 @@ class AlertType extends AbstractType
                 'attr' => [
                         'class' => 'js-datepicker',
                         'placeholder' => 'jj/mm/aaaa',
+                        'autocomplete'=>"off"
                         ],
                 'format'=>'dd-MM-yyyy',
                 ])          
