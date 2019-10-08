@@ -14,12 +14,13 @@
         <div class="row">
             <div class="col-12">
                 <div class="row">
-                    <div class="col-4 text-theme">{{ utilisateur.lastName }}</div>
-                    <div class="col-4 text-theme">{{ utilisateur.firstName }}</div>
-                    <div class="col-4 text-theme">vous êtes {{ utilisateur.role.name }}</div>
-                    {# <div class="col-3 text-right">
-                        <a href="{{path('infospersos')}}"><button class="btn btn-secondary">Mes infos persos</button></a>
-                    </div> #}
+                    <div class="col-12 text-theme">
+                        {% if utilisateur.role.name == "ROLE_ELEVE" %}
+                            Alerte(s) postée(s) en cours: <strong>{{ alerts|length }}</strong>
+                        {% else %}
+                            Alerte(s) prise(s) en charge: <strong>{{ alerts|length }}</strong>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>
