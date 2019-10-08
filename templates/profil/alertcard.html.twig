@@ -1,14 +1,13 @@
 <div class="alertCard">
-    <div class="col-12 theme-d3">
+    <div class="col-12 theme-d3" style="border-bottom:2px solid #115b69;height:5rem">
         <div class="row">
             <div class="col-12 text-center">
-                <h3>Événement du </h3>
-                <h3>{{ alert.eventDate|date('d-m-Y') }} à {{ alert.eventTime|date('H:i') }}</h3>
+                <h3>{{ alert.status.name }}</h3>
+                <h3>le {{ alert.eventDate|date('d-m-Y') }} à {{ alert.eventTime|date('H:i') }}</h3>
             </div>
         </div>
     </div>
-    <hr>
-    <div class="col-12">
+    <div class="col-12" style="border-bottom:1px solid #115b69;height:2rem">
         <div class="row">
             <div class="col-6 text-left">
                 <label class="label">posté le</label>
@@ -20,8 +19,8 @@
             </div>
         </div>
     </div>
-    <hr>
-    <div class="col-12">
+    <div class="col-12" style="height:4rem">
+        <br>
         <div class="row">
             {% for alertStyle in alert.alertStyle %}
                 <div class="capsuleAlertStyle imgcenter theme-container">
@@ -31,28 +30,28 @@
         </div>
     </div>
     <hr>
-    <div class="col-12">
+    <div class="col-12" style="height:2rem">
         <div class="row">
-            <div class="col-6 text-left">
+            <div class="col-12">
                 <label class="label">Lieu: </label>
-                <label class="value">{{ alert.location.name }}</label>
+                <label class="value">{{ alert.location.name|length > 35 ? alert.location.name|slice(0,35) ~ '...' : alert.location.name }}</label>
             </div>
-            <div class="col-6 text-right">
+            {# <div class="col-5 text-right">
                 <label class="label">status: </label>
                 <label class="value">{{ alert.status.name }}</label>
-            </div>
+            </div> #}
         </div>
     </div>
     <hr>
-    <div class="col-12">
+    <div class="col-12" style="height:7rem">
         <div class="row imgcenter">
             {{ alert.content|length > 170 ? alert.content|slice(0, 170) ~ '...' : alert.content }}
         </div>
     </div>
     <hr>
-    <div class="col-12">
+    <div class="col-12" style="height:4rem">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12" style="my:auto">
                 <a href="/alert/{{ alert.id }}" class="btn theme-action w-75">Detail</a>
             </div>
         </div>
