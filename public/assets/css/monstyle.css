@@ -100,6 +100,14 @@
 label:not(.form-check-label), legend {
     font-weight: bold;
 }
+
+.bgcontainer{
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("/assets/images/jumbotron-bg.jpg");
+    background-size: cover;
+}
 /* Fin */
 
 /* CirceStyle */
@@ -108,7 +116,6 @@ html {
     min-height: 100%;
 }
 body {
-    background-color: #23b5d3;
     text-align: center;
     margin-bottom: 60px;
 }
