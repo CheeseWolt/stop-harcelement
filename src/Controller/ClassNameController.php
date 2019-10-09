@@ -77,15 +77,15 @@ class ClassNameController extends AbstractController
     {
         $role = $this->getDoctrine()->getRepository(Role::class)->findOneBy(['name' => "ROLE_PROFESSEUR"]);
         $profs = $this->getDoctrine()->getRepository(User::class)->findBy(['role' => $role]);
-        $form = $this->createForm(ClassNameType::class, $className);
-        $form->handleRequest($request)
+        $form = $this->createForm(ClassNameType::class, $className)
         ->add('userManager', EntityType::class, [
             'class' => User::class,
             'choices' => $profs,
             'choice_label' => 'lastName',
             'label' => 'Professeur principal'
-        ]);
-
+            ]);
+            
+        $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
