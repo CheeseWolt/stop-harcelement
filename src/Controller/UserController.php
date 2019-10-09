@@ -41,8 +41,8 @@ class UserController extends AbstractController
         $Prof = new Role();
         $Eleve = new Role();
         $Secretariat = new Role();
-        $roles['Professeur'] = $Prof->setName('ROLE_PROFESSEUR');
         $roles['Élève'] = $Eleve->setName('ROLE_ELEVE');
+        $roles['Professeur'] = $Prof->setName('ROLE_PROFESSEUR');
         if ($this->getUser()->getRoles()[0] == 'ROLE_ADMIN') {
             $roles['Admin'] = $Admin->setName('ROLE_ADMIN');
             $roles['Secrétariat'] = $Secretariat->setName('ROLE_SECRETARIAT');
@@ -73,7 +73,7 @@ class UserController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('user_index');
+            return $this->redirectToRoute('user_new');
         }
 
         return $this->render('user/new.html.twig', [
