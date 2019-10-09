@@ -53,9 +53,12 @@
         <p colspan="8">Aucun enregistrement trouvé</p>
         {% endfor %}
     </div>
-
-
-    {% if is_granted('ROLE_ADMIN') %}
+    <div class="row">
+        <div class="col-12">
+            <a href="{{ path('profil_index') }}"><button class="btn theme-action">retour au profil</button></a>
+        </div>
+    </div>
+    {# {% if is_granted('ROLE_ADMIN') %}
     <div class="row">
         <div class="col-12 mb-3">
             <a href="{{ path('alert_new') }}">
@@ -63,7 +66,7 @@
             </a>
         </div>
     </div>
-    {% endif %}
+    {% endif %} #}
     <br>
 
 </div>
