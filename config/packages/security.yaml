@@ -42,7 +42,7 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         # décommenter ça pour activer l'authentification
-        # - { path: ^/dashboard, roles: ROLE_ADMIN }
+        - { path: ^/dashboard, roles: ROLE_ADMIN }
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     role_hierarchy:
