@@ -18,7 +18,7 @@
     <div class="row text-theme">
         <div class="col-md-4">
             <label for="birthdate">Date de naissance</label>
-            <input class="form-control" type="text" id="birthdate" readonly value="{{ user.birthDate ? user.birthDate|date('Y-m-d') : '' }}">
+            <input class="form-control" type="text" id="birthdate" readonly value="{{ user.birthDate ? user.birthDate|date('d-m-Y') : '' }}">
         </div>
         <div class="col-md-4">
             {{ form_row(formProfilUpdate.phone, {'label':'Mobile :', 'attr':{'class':'form-control control-label'}}) }}
