@@ -95,7 +95,7 @@ class ProfilController extends AbstractController
                 $entityManager->persist($user);
                 $entityManager->flush();
                 $this->addFlash('notice', 'Votre mot de passe à bien été changé !');
-                return $this->redirectToRoute('profil_index');
+                return $this->redirectToRoute('app_logout');
             } else {
                 $form->addError(new FormError('L\'ancien mot de passe est incorrect'));
             }
