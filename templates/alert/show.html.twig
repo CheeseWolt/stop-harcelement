@@ -2,7 +2,7 @@
 
 
 {% block title %}
-Signalement{{ alert.isAnonym ? 'Anonyme' : 'de ' ~ alert.alertSender.firstName  ~ ' ' ~  alert.alertSender.lastName }}
+    Signalement{{ alert.isAnonym ? 'Anonyme' : 'de ' ~ alert.alertSender.firstName  ~ ' ' ~  alert.alertSender.lastName }}
 {% endblock %}
 
 {% block body %}
@@ -54,20 +54,19 @@ Signalement{{ alert.isAnonym ? 'Anonyme' : 'de ' ~ alert.alertSender.firstName  
                 {% endif %}
             </ul>
         </div>
-        <div class="d-flex flex-row justify-content-between mb-5">
+
+        {% include "private_message/index.html.twig" %}
+
+        <div class="d-flex flex-row justify-content-between">
             {% if is_granted('ROLE_PROFESSEUR') %}
-                <div class="justify-content-between">
-                    <a href="{{ path('alert_index') }}" class="btn  theme-action">
-                        Retour aux alertes
-                    </a>
-                </div>
-            {% endif %}
-            <div class="justify-content-between ml-3">
-                <a href="{{ path('profil_index') }}" class="btn theme-action">
+                <a href="{{ path('alert_index') }}" class="btn  theme-action mb-5">
+                    Retour aux alertes
+                </a>
+                <a href="{{ path('profil_index') }}" class="btn theme-action mb-5">
                     Retour au profil
                 </a>
-            </div>
+            {% endif %}
         </div>
-        {% include "private_message/index.html.twig" %}
+
     </div>
 {% endblock %}
