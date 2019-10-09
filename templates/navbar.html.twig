@@ -6,13 +6,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-            {% if app.user %}
-                <li class="nav-item">
-                    <a class="nav-link" href="/profil">Mon compte</a>
-                </li>
-            {% endif %}
             <li class="nav-item">
-                <a class="nav-link" href="/usefull/contact">Liens utiles</a>
+                <a class="nav-link active" href="/usefull/contact">Liens utiles</a>
             </li>
         </ul>
         {% if app.user %}
@@ -20,10 +15,8 @@
                 <div class="btn-group btnNav imgcenter">
                     {% if app.user.role.name == "ROLE_ADMIN" %}
                         <button type="button" class="btn theme-action dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mes actions possibles</button>
-                        <div class="dropdown-menu theme-action dropdown-shadow">
-                            {# <a class="dropdown-item" href="/sex">gerer Sexes</a> #}
-                            {# <a class="dropdown-item" href="/role">gerer Roles</a> #}
-                            {# <a class="dropdown-item" href="/status">gerer status</a> #}<a class="dropdown-item" href="/class/level">gérer niveaux scolaires</a>
+                        <div class="dropdown-menu dropdown-menu-right theme-action dropdown-shadow">
+                            <a class="dropdown-item" href="/class/level">gérer niveaux scolaires</a>
                             <a class="dropdown-item" href="/class/name">gérer les classes</a>
                             <a class="dropdown-item" href="/location">gérer lieux</a>
                             <a class="dropdown-item" href="/alertstyle">gérer types d'alerte</a>
@@ -33,6 +26,15 @@
                     {% endif %}
                 </div>
                 <div class="btn-group btnNav imgcenter">
+                    <button type="button" class="btn theme-action dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{app.user.userName}}</button>
+                    <div class="dropdown-menu dropdown-menu-right theme-action dropdown-shadow">
+                        <a class="dropdown-item" href="/profil">Mon compte</a>
+                        <a class="dropdown-item" href="{{path('infospersos')}}">Mes infos persos</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{path('app_logout')}}">Deconnexion</a>
+                    </div>
+                </div>
+                {# <div class="btn-group btnNav imgcenter">
                     <a href="{{path('infospersos')}}">
                         <button class="btn theme-action">Mes infos persos</button>
                     </a>
@@ -41,7 +43,7 @@
                     <a href="{{path('app_logout')}}">
                         <button class="btn theme-action">Deconnexion</button>
                     </a>
-                </div>
+                </div> #}
             </div>
         {% else %}
             <div class="row">
