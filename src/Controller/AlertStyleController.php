@@ -41,7 +41,7 @@ class AlertStyleController extends AbstractController
             $entityManager->persist($alertStyle);
             $entityManager->flush();
 
-            return $this->redirectToRoute('alert_style_index');
+            return $this->redirectToRoute('alert_style_new');
         }
 
         return $this->render('alert_style/new.html.twig', [

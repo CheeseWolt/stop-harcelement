@@ -52,7 +52,7 @@ class ClassNameController extends AbstractController
             $entityManager->persist($className);
             $entityManager->flush();
 
-            return $this->redirectToRoute('class_name_index');
+            return $this->redirectToRoute('class_name_new');
         }
 
         return $this->render('class_name/new.html.twig', [

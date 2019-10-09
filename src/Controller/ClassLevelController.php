@@ -41,7 +41,7 @@ class ClassLevelController extends AbstractController
             $entityManager->persist($classLevel);
             $entityManager->flush();
 
-            return $this->redirectToRoute('class_level_index');
+            return $this->redirectToRoute('class_level_new');
         }
 
         return $this->render('class_level/new.html.twig', [
