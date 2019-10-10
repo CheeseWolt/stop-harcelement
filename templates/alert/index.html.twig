@@ -20,7 +20,7 @@
         {% for alert in alerts %}
 
         <div class="col-md-4 col-sm-12">
-            <div class="card mb-3 overflow-hidden" style="border:1px solid #187f93;">
+            <div class="card mb-3 overflow-hidden" style="border:2px solid #187f93;">
                 <div class="card-header theme-d3">
                     Date du signalement :
                     {{ alert.alertDate ? alert.alertDate|date('Y-m-d H:i') : '' }}
