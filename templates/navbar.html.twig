@@ -12,9 +12,9 @@
         </ul>
         {% if app.user %}
             <div class="row navbar-nav">
-                <div class="btn-group btnNav imgcenter">
+                <div class="btn-group-vertical btnNav imgcenter">
                     {% if app.user.role.name == "ROLE_ADMIN" %}
-                        <button type="button" class="btn theme-action dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mes actions possibles</button>
+                        <button type="button" class="btn theme-action dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mes actions possibles</button>
                         <div class="dropdown-menu dropdown-menu-right theme-action dropdown-shadow">
                             <a class="dropdown-item" href="/class/level">gérer niveaux scolaires</a>
                             <a class="dropdown-item" href="/class/name">gérer les classes</a>
@@ -25,7 +25,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="btn-group btnNav imgcenter">
+                <div class="btn-group-vertical btnNav imgcenter">
                     <button type="button" class="btn theme-action dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{app.user.userName}}</button>
                     <div class="dropdown-menu dropdown-menu-right theme-action dropdown-shadow">
                         <a class="dropdown-item" href="/profil">Mon compte</a>
