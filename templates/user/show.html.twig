@@ -1,69 +1,90 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Utilisateur{% endblock %}
+{% block title %}Utilisateur
+{% endblock %}
 
 {% block body %}
-<div class="container theme-container text-theme">
-    <br>
-    <div class="row">
-        <div class="col-12 text-center">
-            <h1>Utilisateur</h1>
+    <div class="container theme-container text-theme">
+        <br>
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1>Utilisateur</h1>
+            </div>
         </div>
+        <br>
+        <div class="row">
+            <div class="col-12 text-center">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th class="theme-d3">Pseudo</th>
+                            <td>{{ user.userName }}</td>
+                        </tr>
+                        <tr>
+                            <th class="theme-d3">Nom</th>
+                            <td>{{ user.lastName }}</td>
+                        </tr>
+                        <tr>
+                            <th class="theme-d3">Prenom</th>
+                            <td>{{ user.firstName }}</td>
+                        </tr>
+                        <tr>
+                            <th class="theme-d3">Date de naissance</th>
+                            <td>{{ user.birthDate ? user.birthDate|date('Y-m-d') : '' }}</td>
+                        </tr>
+                        <tr>
+                            <th class="theme-d3">Sexe</th>
+                            <td>{{ user.sex.name }}</td>
+                        </tr>
+                        {% if user.role.name != "ROLE_ADMIN" and user.role.name != "ROLE_SECRETARIAT" %}
+                        <tr>
+                            <th class="theme-d3">
+                                Classe
+                                {% if user.role.name == "ROLE_ELEVE" %}
+                                    fréquentée
+                                {% endif %}
+                                {% if user.role.name == "ROLE_PROFESSEUR" %}
+                                    managée
+                                {% endif %}
+                            </th>
+                            <td>{{ user.studentClassName ? user.studentClassName.classLevel.name : '' }}</td>
+                        </tr>  
+                        {% endif %}
+                        <tr>
+                            <th class="theme-d3">Téléphone</th>
+                            <td>{{ user.phone }}</td>
+                        </tr>
+                        <tr>
+                            <th class="theme-d3">Adresse</th>
+                            <td>{{ user.address }}</td>
+                        </tr>
+                        <tr>
+                            <th class="theme-d3">Email</th>
+                            <td>{{ user.email }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-right">
+                <a href="{{ path('user_edit', {'id': user.id}) }}">
+                    <button class="btn theme-action">Editer</button>
+                </a>
+            </div>
+            <div class="col-12"><hr></div>
+            <div class="col-6 text-left">
+                <a href="{{ path('user_index') }}">
+                    <button class="btn theme-action">retour aux utilisateurs</button>
+                </a>
+            </div>
+            <div class="col-6 text-right">
+                {{ include('user/_delete_form.html.twig') }}
+            </div>
+        </div>
+        <br>
+        <br>
     </div>
-    <br>
-    <div class="row">
-        <div class="col-12 text-center">
-            <table class="table">
-                <tbody>
-                    <tr>
-                        <th class="theme-d3">Pseudo</th>
-                        <td>{{ user.userName }}</td>
-                    </tr>
-                    <tr>
-                        <th class="theme-d3">Nom</th>
-                        <td>{{ user.lastName }}</td>
-                    </tr>
-                    <tr>
-                        <th class="theme-d3">Prenom</th>
-                        <td>{{ user.firstName }}</td>
-                    </tr>
-                    <tr>
-                        <th class="theme-d3">Date de naissance</th>
-                        <td>{{ user.birthDate ? user.birthDate|date('Y-m-d') : '' }}</td>
-                    </tr>
-                    <tr>
-                        <th class="theme-d3">Téléphone</th>
-                        <td>{{ user.phone }}</td>
-                    </tr>
-                    <tr>
-                        <th class="theme-d3">Adresse</th>
-                        <td>{{ user.address }}</td>
-                    </tr>
-                    <tr>
-                        <th class="theme-d3">Email</th>
-                        <td>{{ user.email }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12 text-right">
-            <a href="{{ path('user_edit', {'id': user.id}) }}"><button class="btn theme-action">Editer</button></a>
-        </div>
-        <div class="col-12"><hr></div>
-        <div class="col-6 text-left">
-            <a href="{{ path('user_index') }}"><button class="btn theme-action">retour aux utilisateurs</button></a>
-        </div>
-        <div class="col-6 text-right">
-            {{ include('user/_delete_form.html.twig') }}
-        </div>
-    </div>
-    <br>
-    <br>
-</div>
-
-
 
 
 {% endblock %}
