@@ -16,10 +16,6 @@
             <table class="table">
                 <tbody>
                     <tr>
-                        <th class="theme-d3">Id</th>
-                        <td>{{ alert_style.id }}</td>
-                    </tr>
-                    <tr>
                         <th class="theme-d3">Type d'alerte</th>
                         <td>{{ alert_style.name }}</td>
                     </tr>
@@ -32,7 +28,7 @@
             <a href="{{ path('alert_style_edit', {'id': alert_style.id}) }}" class="btn theme-action">Editer</a>
         </div>
         <div class="col-12"><hr></div>
-        <div class="col-6">
+        <div class="col-6 text-left">
             <a href="{{ path('alert_style_index') }}" class="btn theme-action">retour aux types d'alerte</a>
         </div>
         <div class="col-6 text-right">

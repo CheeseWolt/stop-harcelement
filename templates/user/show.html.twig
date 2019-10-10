@@ -16,10 +16,6 @@
             <table class="table">
                 <tbody>
                     <tr>
-                        <th class="theme-d3">Id</th>
-                        <td>{{ user.id }}</td>
-                    </tr>
-                    <tr>
                         <th class="theme-d3">Pseudo</th>
                         <td>{{ user.userName }}</td>
                     </tr>
@@ -56,7 +52,7 @@
             <a href="{{ path('user_edit', {'id': user.id}) }}"><button class="btn theme-action">Editer</button></a>
         </div>
         <div class="col-12"><hr></div>
-        <div class="col-6">
+        <div class="col-6 text-left">
             <a href="{{ path('user_index') }}"><button class="btn theme-action">retour aux utilisateurs</button></a>
         </div>
         <div class="col-6 text-right">

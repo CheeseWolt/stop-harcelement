@@ -16,10 +16,6 @@
             <table class="table">
                 <tbody>
                     <tr>
-                        <th class="theme-d3">Id</th>
-                        <td>{{ class_level.id }}</td>
-                    </tr>
-                    <tr>
                         <th class="theme-d3">Niveau scolaire</th>
                         <td>{{ class_level.name }}</td>
                     </tr>
@@ -32,7 +28,7 @@
             <a href="{{ path('class_level_edit', {'id': class_level.id}) }}" class="btn theme-action">Editer</a>
         </div>
         <div class="col-12"><hr></div>
-        <div class="col-6">
+        <div class="col-6 text-left">
             <a href="{{ path('class_level_index') }}" class="btn theme-action">retour aux niveaux scolaires</a>
         </div>
         <div class="col-6 text-right">

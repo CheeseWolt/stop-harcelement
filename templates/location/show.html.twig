@@ -17,10 +17,6 @@
             <table class="table">
                 <tbody>
                     <tr>
-                        <th class="theme-d3">Id</th>
-                        <td>{{ location.id }}</td>
-                    </tr>
-                    <tr>
                         <th class="theme-d3">Lieu</th>
                         <td>{{ location.name }}</td>
                     </tr>
@@ -33,7 +29,7 @@
             <a href="{{ path('location_edit', {'id': location.id}) }}"><button class="btn theme-action">Editer</button></a>
         </div>
         <div class="col-12"><hr></div>
-        <div class="col-6">
+        <div class="col-6 text-left">
             <a href="{{ path('location_index') }}"><button class="btn theme-action">retour aux lieux</button></a>
         </div>
         <div class="col-6 text-right">
