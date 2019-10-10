@@ -109,6 +109,11 @@ class User implements UserInterface
         $this->privateMessages = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return  $this->getLastName() . ' ' . $this->getFirstName();
+    }
+
     public function getId(): ?int
     {
         return $this->id;

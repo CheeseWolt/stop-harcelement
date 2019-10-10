@@ -41,7 +41,6 @@ class ClassNameController extends AbstractController
             ->add('userManager', EntityType::class, [
                 'class' => User::class,
                 'choices' => $profs,
-                'choice_label' => 'lastName',
                 'label' => 'Professeur principal'
             ]);
 
