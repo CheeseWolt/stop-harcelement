@@ -19,13 +19,13 @@
     <div class="row">
         {% for alert in alerts %}
 
-        <div class="col-md-4 col-sm-12">
-            <div class="card mb-3 overflow-hidden" style="border:2px solid #187f93;">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card mb-3 overflow-hidden" style="border:2px solid #187f93;height:30rem;background-color:#d1f1f8;">
                 <div class="card-header theme-d3">
                     Date du signalement :
                     {{ alert.alertDate ? alert.alertDate|date('d-m-Y H:i') : '' }}
                 </div>
-                <div class="card-body">
+                <div class="card-body h-25" style="border-bottom:1px solid lightgrey;min-height:25px">
                     <h5 class="card-title">Type de harcelement :</h5>
                     <p>
                         {% for type in alert.alertStyle %}
@@ -33,18 +33,18 @@
                         {% endfor %}
                     </p>
                 </div>
-                <div class="card-body theme-container">
+                <div class="card-body h-25" style="border-bottom:1px solid lightgrey;min-height:25px">
                     <h5 class="card-title">Dates des événements :</h5>
                     <p>
                         {{ alert.eventDate ? alert.eventDate|date('d-m-Y') : '' }}
                         {{ alert.eventTime ? alert.eventTime|date('H:i') : '' }}
                     </p>
                 </div>
-                <div class="card-body">
+                <div class="card-body h-25" style="border-bottom:1px solid lightgrey;min-height:25px">
                     <h5 class="card-title">Lieu des faits :</h5>
                     <p>{{ alert.location.name|length > 35 ? alert.location.name|slice(0,35) ~ '...' : alert.location.name }}</p>
                 </div>
-                <div class="card-body theme-container">
+                <div class="card-body">
                     <a href="{{ path('alert_show', {'id': alert.id}) }}" class="btn theme-action">Afficher details</a>
                 </div>
 
