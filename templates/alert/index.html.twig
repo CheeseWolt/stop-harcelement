@@ -45,7 +45,7 @@
                     <p>{{ alert.location.name|length > 35 ? alert.location.name|slice(0,35) ~ '...' : alert.location.name }}</p>
                 </div>
                 <div class="card-body">
-                    <a href="{{ path('alert_show', {'id': alert.id}) }}" class="btn theme-action">Afficher details</a>
+                    <a href="{{ path('alert_show', {'id': alert.id}) }}" class="btn theme-action w-75">Afficher details</a>
                 </div>
 
             </div>
