@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfilController!{% endblock %}
+{% block title %}Mon historique{% endblock %}
 
 {% block body %}
 
@@ -17,9 +17,9 @@
             <div class="row">
                 <div class="col-12 text-theme">
                     {% if app.user.role.name == "ROLE_ELEVE" %}
-                        Alerte(s) traitées: <strong>{{ alerts|length }}</strong>
+                        Alerte(s) traitée(s): <strong>{{ alerts|length }}</strong>
                     {% else %}
-                        Alerte(s) prise(s) en charge cloturées: <strong>{{ alerts|length }}</strong>
+                        Alerte(s) prise(s) en charge cloturée(s): <strong>{{ alerts|length }}</strong>
                     {% endif %}
                 </div>
             </div>

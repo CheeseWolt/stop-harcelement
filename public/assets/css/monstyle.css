@@ -117,11 +117,12 @@ html {
 }
 body {
     text-align: center;
-    margin-bottom: 60px;
+    
 }
 
 .container {
-    min-height: 86vh;
+    margin-bottom: 70px;
+    min-height: 100vh;
     box-shadow: 0px 4px 3px 5px rgba(9, 2, 90, 0.102);
 }
 
