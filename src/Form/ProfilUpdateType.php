@@ -16,7 +16,9 @@ class ProfilUpdateType extends AbstractType
     {
         $builder
             ->add('userName', TextType::class)
-            ->add('phone', TelType::class)
+            ->add('phone', TelType::class,[
+                'required'=>false
+            ])
             ->add('address', TextType::class)
             ->add('email', EmailType::class,[
                 'required'=>false
